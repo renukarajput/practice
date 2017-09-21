@@ -3,7 +3,12 @@ package edu.ren.datastructure.list;
 /**
  * uses floyd's tortoise and hare algorithm to detect loop
  */
+
 public class TortoiseHareLoopLinkList<T> extends LoopLinkList<T> {
+
+    public TortoiseHareLoopLinkList(LinkedList<T> linkedList) {
+        super(linkedList);
+    }
 
     public TortoiseHareLoopLinkList(LinkedList<T> linkedList, int index) {
         super(linkedList, index);
@@ -23,6 +28,26 @@ public class TortoiseHareLoopLinkList<T> extends LoopLinkList<T> {
             tortoiseSlowIndex = tortoiseSlowIndex.next;
         }
         return false;
+    }
+
+    public boolean hasLoopUsingPtr(){
+        Node<T> slowPtr = linkedList.head, fastPtr = linkedList.head;
+        while(true) {
+            if (slowPtr == null || fastPtr == null) {
+                return false;
+            }
+            slowPtr = slowPtr.next;
+
+            if (fastPtr.next != null) {
+                fastPtr = fastPtr.next.next;
+            }
+            else {
+                return false;
+            }
+
+            if (slowPtr == fastPtr)
+                return true;
+        }
     }
 
     @Override
