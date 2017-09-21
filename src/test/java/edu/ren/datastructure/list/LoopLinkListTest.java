@@ -3,13 +3,12 @@ package edu.ren.datastructure.list;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
+import static org.junit.Assert.*;
 
 /**
- * Created by kumarrak on 21/09/17.
+ * Created by kumarrak on 22/09/17.
  */
-public class TortoiseHareLoopLinkListTest {
+public class LoopLinkListTest {
     @Test
     public void hasLoop() throws Exception {
         LinkedList<Integer> linkedList = new LinkedList<>();
@@ -19,7 +18,7 @@ public class TortoiseHareLoopLinkListTest {
         linkedList.insertAtEnd(40);
         linkedList.insertAtEnd(50);
         linkedList.insertAtEnd(60);
-        TortoiseHareLoopLinkList<Integer> t1 = new TortoiseHareLoopLinkList(linkedList, 2);
+        LoopLinkList<Integer> t1 = new LoopLinkList(linkedList, 2);
         assertThat(t1.hasLoop(),is(true));
     }
 
@@ -32,7 +31,7 @@ public class TortoiseHareLoopLinkListTest {
         linkedList.insertAtEnd(40);
         linkedList.insertAtEnd(50);
         linkedList.insertAtEnd(60);
-        TortoiseHareLoopLinkList<Integer> t1 = new TortoiseHareLoopLinkList(linkedList, 3);
+        LoopLinkList<Integer> t1 = new LoopLinkList(linkedList, 3);
         assertThat(t1.hasLoop(),is(true));
     }
 
@@ -46,7 +45,7 @@ public class TortoiseHareLoopLinkListTest {
         linkedList.insertAtEnd(40);
         linkedList.insertAtEnd(50);
         linkedList.insertAtEnd(60);
-        TortoiseHareLoopLinkList<Integer> t1 = new TortoiseHareLoopLinkList(linkedList,3);
+        LoopLinkList<Integer> t1 = new LoopLinkList(linkedList,3);
         t1.removeLoop();
         assertThat(t1.hasLoop(),is(false));
     }
@@ -55,7 +54,7 @@ public class TortoiseHareLoopLinkListTest {
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.insertAtBeginning(10);
         linkedList.insertAtBeginning(20);
-        TortoiseHareLoopLinkList<Integer> t1 = new TortoiseHareLoopLinkList(linkedList,0);
+        LoopLinkList<Integer> t1 = new LoopLinkList(linkedList,0);
         t1.removeLoop();
         assertThat(t1.hasLoop(),is(false));
         assertThat(t1.size(),is(2));
@@ -72,51 +71,28 @@ public class TortoiseHareLoopLinkListTest {
         linkedList.insertAtEnd(10);
         linkedList.insertAtEnd(20);
         linkedList.insertAtEnd(30);
-        TortoiseHareLoopLinkList<Integer> loop = new TortoiseHareLoopLinkList(linkedList,1);
+        LoopLinkList<Integer> loop = new LoopLinkList(linkedList,1);
         assertThat(loop.getStartOfLoop().data,is(20));
         assertThat(loop.getLastNodeInLoop().data,is(30));
     }
 
     @Test
-    public void testLastNodeInLoopWithLoopAtHead() throws Exception {
+    public void testLastNodeInLoop1() throws Exception {
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.insertAtEnd(10);
         linkedList.insertAtEnd(20);
-        linkedList.insertAtEnd(30);
-        linkedList.insertAtEnd(40);
-        TortoiseHareLoopLinkList<Integer> loop = new TortoiseHareLoopLinkList(linkedList,0);
-        assertThat(loop.size(),is(4));
-        assertThat(loop.hasLoop(),is(true));
-        assertThat(loop.getStartOfLoop().data,is(10));
-        assertThat(loop.getLastNodeInLoop().data,is(40));
-        loop.removeLoop();
-        assertThat(loop.size(),is(4));
-        assertThat(loop.hasLoop(),is(false));
-    }
-
-    @Test
-    public void testLastNodeInCircularLoopWithLoopAtHead() throws Exception {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
-        linkedList.insertAtEnd(20);
-        TortoiseHareLoopLinkList<Integer> loop = new TortoiseHareLoopLinkList(linkedList,0);
+        LoopLinkList<Integer> loop = new LoopLinkList(linkedList,0);
         assertThat(loop.getStartOfLoop().data,is(10));
         assertThat(loop.getLastNodeInLoop().data,is(20));
     }
 
     @Test
-    public void testLastNodeInLoopWithHeadAsOnlyElement() throws Exception {
+    public void testLastNodeInLoop0() throws Exception {
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.insertAtEnd(10);
-        TortoiseHareLoopLinkList<Integer> loop = new TortoiseHareLoopLinkList(linkedList,0);
+        LoopLinkList<Integer> loop = new LoopLinkList(linkedList,0);
         assertThat(loop.getStartOfLoop().data,is(10));
         assertThat(loop.getLastNodeInLoop().data,is(10));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testTortoiseHareLoopLinkListOutOfBound() throws Exception {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
-        new TortoiseHareLoopLinkList(linkedList,1);
-    }
 }

@@ -6,55 +6,50 @@ package edu.ren.datastructure.list;
 
 public class TortoiseHareLoopLinkList<T> extends LoopLinkList<T> {
 
-    public TortoiseHareLoopLinkList(LinkedList<T> linkedList) {
-        super(linkedList);
-    }
+    private final Node<T> head;
 
     public TortoiseHareLoopLinkList(LinkedList<T> linkedList, int index) {
         super(linkedList, index);
+        head = linkedList.head;
     }
+
 
     @Override
     public boolean hasLoop() {
-        Node<T> tortoiseSlowIndex, hareFastIndex;
-        tortoiseSlowIndex = hareFastIndex = linkedList.head;
-        while (hareFastIndex != null) {
-            if (tortoiseSlowIndex == hareFastIndex) {
-                return true;
-            }
-            if (hareFastIndex.next != null) {
-                hareFastIndex = hareFastIndex.next.next;
-            }
-            tortoiseSlowIndex = tortoiseSlowIndex.next;
-        }
-        return false;
+        return getStartOfLoop() != null;
     }
 
-    public boolean hasLoopUsingPtr(){
-        Node<T> slowPtr = linkedList.head, fastPtr = linkedList.head;
-        while(true) {
-            if (slowPtr == null || fastPtr == null) {
-                return false;
-            }
-            slowPtr = slowPtr.next;
-
-            if (fastPtr.next != null) {
-                fastPtr = fastPtr.next.next;
-            }
-            else {
-                return false;
-            }
-
-            if (slowPtr == fastPtr)
-                return true;
-        }
-    }
 
     @Override
-    public Node<T> getStartOfLoop() {
-        //TODO
+    public Node<T> getLastNodeInLoop() {
+        Node<T> slowPtr = head, fastPtr = head;
+        while (true) {
+            if (fastPtr == null || fastPtr.next == null) { //linear list
+                return null;
+            }
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
 
+            if (slowPtr == fastPtr) {
+                break;
+            }
+        }
+        if(fastPtr==head){ //case when both meet at head ,this is needed to find last node in loop and not for start of loop as head is the start of loop in this case
+            while (slowPtr.next!=head){
+                slowPtr=slowPtr.next;
+            }
+            return slowPtr;
+        }
 
-        return null;
+        Node<T> prev=null ;
+        slowPtr = head;
+        while (slowPtr != fastPtr) {
+            prev = fastPtr;
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next;
+        }
+
+        return prev;
     }
+
 }
