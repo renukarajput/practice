@@ -1,7 +1,6 @@
 package edu.ren.datastructure.list;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -9,12 +8,8 @@ import java.util.Set;
  */
 public class LoopLinkList<T> {
     LinkedList<T> linkedList;
-    int size;
+    private int size;
 
-    public LoopLinkList(LinkedList<T> linkedList) {
-        this.linkedList = linkedList;
-        size = linkedList.size();
-    }
 
     public LoopLinkList(LinkedList<T> linkedList, int index) {
         this.linkedList = linkedList; //TODO copy
@@ -27,34 +22,40 @@ public class LoopLinkList<T> {
 
 
     public boolean hasLoop() {
-        return getNodeLoopIfPresent() != null;
+        return getStartOfLoop() != null;
     }
 
-    private Node<T> getNodeLoopIfPresent() {
+    public Node<T> getStartOfLoop() {
+        return getLastNodeInLoop() == null ? null : getLastNodeInLoop().next;
+    }
+
+    public Node<T> getLastNodeInLoop() {
         Node<T> node = linkedList.head;
+        Node<T> previousNode=null;
         Set<Node<T>> set = new HashSet();
         int size = size();
         for (int i = 0; i <= size; ++i) {
-            if (!set.contains(node)) {
+            if (node!=null && !set.contains(node)) {
                 set.add(node);
+                previousNode=node;
                 node = node.next;
             } else {
-                return node;
+                return previousNode;
             }
         }
         return null;
     }
 
-   public Node<T> getStartOfLoop(){
-        return getNodeLoopIfPresent();
-    }
+    public void removeLoop(){
+        getLastNodeInLoop().next=null;
 
+    }
     public int size() {
         Node<T> node = linkedList.head;
         Set<T> set = new HashSet();
 
         for (int i = 0; i <= size; ++i) {
-            if (!set.contains(node.data)) {
+            if (node!=null && !set.contains(node.data)) { //if loop is removed ,node can become null during iteration
                 set.add(node.data);
                 node = node.next;
             } else {

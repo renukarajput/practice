@@ -16,6 +16,10 @@ public class LinkedList<T> {
     }
 
     public void insertAtEnd(T val) {
+        if (head == null) {
+            head = new Node<>(val);
+            return;
+        }
         Node<T> start = this.head;
         Node<T> newNode = new Node<>(val);
         while (start.next != null) {
