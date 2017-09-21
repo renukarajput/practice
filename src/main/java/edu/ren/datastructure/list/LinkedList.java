@@ -2,21 +2,8 @@ package edu.ren.datastructure.list;
 
 //<T extends Comparator> <? super Comparator> <?>
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 public class LinkedList<T> {
     Node<T> head;
-
-    protected static class Node<T> {
-        T data;
-        protected Node<T> next;
-
-        public Node(T data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
 
     public void insertAtBeginning(T val) {
         if (head == null) {

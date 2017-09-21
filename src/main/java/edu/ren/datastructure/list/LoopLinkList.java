@@ -1,12 +1,13 @@
 package edu.ren.datastructure.list;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /**
  * Created by rrn3194 on 9/14/17.
  */
-public class LoopLinkList<T> extends LinkedList<T> {
+public class LoopLinkList<T>  {
     LinkedList<T> linkedList;
     int size;
     public LoopLinkList(LinkedList<T> linkedList,int index) {
@@ -20,21 +21,28 @@ public class LoopLinkList<T> extends LinkedList<T> {
 
 
     public boolean hasLoop(){
-        Node<T> node = linkedList.head;
-        Set<T> set = new HashSet();
-        int size = size();
-        for (int i = 0; i <=size; ++i) {
-            if (!set.contains(node.data)) {
-                set.add(node.data);
-                node = node.next;
-            } else {
-                return true;
-            }
-        }
-        return false;
+      return getNodeLoopIfPresent()!=null;
     }
 
-    @Override
+    private Node<T> getNodeLoopIfPresent(){
+        Node<T> node = linkedList.head;
+        Set<Node<T>> set = new HashSet();
+        int size = size();
+        for (int i = 0; i <=size; ++i) {
+            if (!set.contains(node)) {
+                set.add(node);
+                node = node.next;
+            } else {
+                return node;
+            }
+        }
+        return null;
+    }
+
+   public Node<T> getStartOfLoop(){
+        return getNodeLoopIfPresent();
+    }
+
     public int size() {
         Node<T> node = linkedList.head;
         Set<T> set = new HashSet();
@@ -51,7 +59,5 @@ public class LoopLinkList<T> extends LinkedList<T> {
        // return size; //no loop
         throw new IllegalStateException("no loop");
     }
-    Node<T> getStartOfLoop(){
-        return null;
-    }
+
 }
