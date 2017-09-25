@@ -10,9 +10,13 @@ public class LoopLinkList<T> {
     LinkedList<T> linkedList;
     private int size;
 
+    public LoopLinkList(LinkedList<T> linkedList){
+        this.linkedList = linkedList;
+        size = linkedList.size();
+    }
 
     public LoopLinkList(LinkedList<T> linkedList, int index) {
-        this.linkedList = linkedList; //TODO copy
+        this.linkedList = linkedList;
         size = linkedList.size();
         Node<T> existingNode = linkedList.getNode(index);
         int size = linkedList.size();
@@ -65,6 +69,40 @@ public class LoopLinkList<T> {
         }
        // return size; //no loop
         throw new IllegalStateException("no loop");
+    }
+
+    public Node<T> findStartOfLoop(){
+        if (linkedList == null || linkedList.head == null) {
+            return null;
+        }
+        Node<T> slow , fast;
+        fast = hasLoopUsingPtr();
+        slow = linkedList.head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
+    }
+
+    public Node<T> hasLoopUsingPtr(){
+        Node<T> slowPtr = linkedList.head, fastPtr = linkedList.head;
+        while(true) {
+            if (slowPtr == null || fastPtr == null) {
+                return null;
+            }
+            slowPtr = slowPtr.next;
+
+            if (fastPtr.next != null) {
+                fastPtr = fastPtr.next.next;
+            }
+            else {
+                return slowPtr;
+            }
+
+            if (slowPtr == fastPtr)
+                return slowPtr;
+        }
     }
 
 }
