@@ -49,6 +49,7 @@ public class LoopLinkListTest {
         t1.removeLoop();
         assertThat(t1.hasLoop(),is(false));
     }
+
     @Test
     public void hasLoopSizeBoundary() throws Exception {
         LinkedList<Integer> linkedList = new LinkedList<>();
@@ -61,9 +62,29 @@ public class LoopLinkListTest {
     }
 
     @Test
-    public void getStartOfLoop() throws Exception {
-
+    public void findLoopStart() throws Exception {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtEnd(30);
+        linkedList.insertAtEnd(40);
+        linkedList.insertAtEnd(50);
+        LoopLinkList<Integer> loop = new LoopLinkList(linkedList,1);
+        assertThat(loop.findStartOfLoop().data,is(20));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void findLoopStartNegativeInput() throws Exception {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtEnd(30);
+        linkedList.insertAtEnd(40);
+        linkedList.insertAtEnd(50);
+        LoopLinkList<Integer> loop = new LoopLinkList(linkedList);
+        assertThat(loop.findStartOfLoop().data,is(20));
+    }
+
 
     @Test
     public void testLastNodeInLoop() throws Exception {
