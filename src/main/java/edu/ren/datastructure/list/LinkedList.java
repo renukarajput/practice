@@ -34,9 +34,19 @@ public class LinkedList<T> {
         lastNode.next = newNode;
     }
 
-    public void deleteGivenIndexNode(int index){
-        Node<T> nodeToDelete = getNode(index);
 
+    public void insertInSortedList(T val){
+        Node<T> curr = this.head;
+        Node<T> nodeToInsert = new Node<>(val);
+
+        if (curr == null)
+            return ;
+        while  (curr.next != null && (((Comparable)curr.data).compareTo(nodeToInsert.data) < 0)) {
+            curr = curr.next;
+            break;
+        }
+        nodeToInsert.next = curr.next;
+        curr.next = nodeToInsert;
     }
 
     public void deleteElement(T elm){
