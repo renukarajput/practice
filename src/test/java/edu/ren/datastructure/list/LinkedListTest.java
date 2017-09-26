@@ -96,4 +96,20 @@ public class LinkedListTest {
         LoopLinkList<Integer> loopLinkList = new LoopLinkList<>(linkedList, 4);
         Integer [] expectedElem = {60, 40, 30, 50, 10, 20, 50};
     }
+
+    @Test
+    public void insertInSortedList(){
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtEnd(40);
+        linkedList.insertAtEnd(50);
+        linkedList.insertInSortedList(30);
+        Integer [] expectedElem = {10,20,30,40,50};
+
+        for (int i = 0; i < expectedElem.length; i++) {
+            assertEquals(expectedElem[i],linkedList.get(i));
+        }
+    }
+
 }
