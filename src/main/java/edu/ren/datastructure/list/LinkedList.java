@@ -34,13 +34,14 @@ public class LinkedList<T> {
         lastNode.next = newNode;
     }
 
-
     public void insertInSortedList(T val){
         Node<T> curr = this.head;
         Node<T> nodeToInsert = new Node<>(val);
 
-        if (curr == null)
-            return ;
+        if (curr == null) {
+            head = new Node<>(val);
+            return;
+        }
         while  (curr.next != null && (((Comparable)curr.data).compareTo(nodeToInsert.data) < 0)) {
             curr = curr.next;
             break;
