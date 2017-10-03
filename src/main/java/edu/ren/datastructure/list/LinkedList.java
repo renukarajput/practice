@@ -136,6 +136,23 @@ public class LinkedList<T> {
 //       return new LinkedList<>(prev);   //in this case make function type LinkedList<>()
     }
 
+
+    public void recursiveReverse(Node<T> node){
+        reverse(null, node, null);
+    }
+
+    private void reverse(Node<T> prevNode, Node<T> node, Node<T> nextNode) {
+       Node<T> currNode = node;
+        if (currNode == null)
+            return;
+        nextNode = currNode.next;
+        currNode.next = prevNode;
+        prevNode = currNode;
+        currNode = nextNode;
+        this.head = prevNode;
+        reverse(prevNode, currNode, nextNode);
+    }
+
     public int size() {
         int size = 0;
         Node<T> start = this.head;
