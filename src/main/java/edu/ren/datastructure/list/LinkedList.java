@@ -2,8 +2,18 @@ package edu.ren.datastructure.list;
 
 //<T extends Comparator> <? super Comparator> <?>
 
+import java.util.StringJoiner;
+
 public class LinkedList<T> {
+
     Node<T> head;
+
+    public LinkedList() {
+    }
+
+    public LinkedList(Node<T> head) {
+        this.head = head;
+    }
 
     public void insertAtBeginning(T val) {
         if (head == null) {
@@ -77,8 +87,8 @@ public class LinkedList<T> {
     protected Node<T> getNode(int index){
         Node<T> start = this.head;
         int i = 0;
-        int size=size();
-        if(index>=size){
+        int size = size();
+        if(index >= size){
             throw new IllegalArgumentException("index is out of bound");
         }
         while(i != index){
@@ -111,6 +121,20 @@ public class LinkedList<T> {
         return firstPtr.data;
     }
 
+    public void reverseList(Node<T> node){
+        Node<T> curr = node;
+        Node<T> prev = null;
+        Node<T> next = null;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+//        node = prev;
+        this.head = prev;
+//       return new LinkedList<>(prev);   //in this case make function type LinkedList<>()
+    }
 
     public int size() {
         int size = 0;
@@ -120,5 +144,20 @@ public class LinkedList<T> {
             size++;
         }
         return size;
+    }
+
+    @Override
+    public String toString() {
+        final StringJoiner stringJoiner = new StringJoiner("->");
+        Node<T> node = this.head;
+        while (node != null) {
+            if (node.data == null) {
+                stringJoiner.add("null");
+            } else {
+                stringJoiner.add(node.data.toString());
+            }
+            node = node.next;
+        }
+        return stringJoiner.toString();
     }
 }

@@ -112,4 +112,16 @@ public class LinkedListTest {
         }
     }
 
+    @Test
+    public void reverseList() {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtEnd(30);
+        linkedList.insertAtEnd(40);
+        linkedList.insertAtEnd(50);
+        linkedList.reverseList(linkedList.head);
+        assertThat(linkedList.toString(), is("50->40->30->20->10"));
+        assertThat(linkedList.get(2), is(30));
+    }
 }
