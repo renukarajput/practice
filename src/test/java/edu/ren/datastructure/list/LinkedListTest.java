@@ -62,13 +62,13 @@ public class LinkedListTest {
         for (int i = 0; i < expectedElem.length; i++) {
             assertEquals(expectedElem[i],linkedList.get(i));
         }
-        assertEquals(10,linkedList.size());
+        assertEquals(10, linkedList.size());
 
 //        System.out.println(linkedList.getNthFromLast(4));
 //        System.out.println(linkedList.getNthFromLastUsingOneLoop(4));
-        assertEquals((Integer) 90,linkedList.getNthFromLast(3));
-        assertEquals((Integer) 90,linkedList.getNthFromLastUsingOneLoop(3));
-        assertThat(linkedList.getNthFromLast(3),is(90));
+        assertEquals((Integer) 90, linkedList.getNthFromLast(3));
+        assertEquals((Integer) 90, linkedList.getNthFromLastUsingOneLoop(3));
+        assertThat(linkedList.getNthFromLast(3), is(90));
 
 
     }
@@ -83,8 +83,8 @@ public class LinkedListTest {
         linkedList.insertAtBeginning(40);
         linkedList.insertAtBeginning(60);
         LoopLinkList<Integer> loopLinkList = new LoopLinkList<>(linkedList, 1);
-        assertThat(loopLinkList.size(),is(6));
-        assertThat(loopLinkList.hasLoop(),is(true));
+        assertThat(loopLinkList.size(), is(6));
+        assertThat(loopLinkList.hasLoop(), is(true));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -94,7 +94,7 @@ public class LinkedListTest {
         linkedList.insertAtBeginning(10);
 
         LoopLinkList<Integer> loopLinkList = new LoopLinkList<>(linkedList, 4);
-        Integer [] expectedElem = {60, 40, 30, 50, 10, 20, 50};
+        Integer[] expectedElem = {60, 40, 30, 50, 10, 20, 50};
     }
 
     @Test
@@ -121,6 +121,19 @@ public class LinkedListTest {
         linkedList.insertAtEnd(40);
         linkedList.insertAtEnd(50);
         linkedList.reverseList(linkedList.head);
+        assertThat(linkedList.toString(), is("50->40->30->20->10"));
+        assertThat(linkedList.get(2), is(30));
+    }
+
+    @Test
+    public void recursiveReverse() {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtEnd(30);
+        linkedList.insertAtEnd(40);
+        linkedList.insertAtEnd(50);
+        linkedList.recursiveReverse(linkedList.head);
         assertThat(linkedList.toString(), is("50->40->30->20->10"));
         assertThat(linkedList.get(2), is(30));
     }
