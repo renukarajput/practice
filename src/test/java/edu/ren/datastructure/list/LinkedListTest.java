@@ -62,7 +62,7 @@ public class LinkedListTest {
         for (int i = 0; i < expectedElem.length; i++) {
             assertEquals(expectedElem[i],linkedList.get(i));
         }
-        assertEquals(10, linkedList.size());
+        assertEquals(10,linkedList.size());
 
 //        System.out.println(linkedList.getNthFromLast(4));
 //        System.out.println(linkedList.getNthFromLastUsingOneLoop(4));
@@ -94,7 +94,7 @@ public class LinkedListTest {
         linkedList.insertAtBeginning(10);
 
         LoopLinkList<Integer> loopLinkList = new LoopLinkList<>(linkedList, 4);
-        Integer[] expectedElem = {60, 40, 30, 50, 10, 20, 50};
+        Integer [] expectedElem = {60, 40, 30, 50, 10, 20, 50};
     }
 
     @Test

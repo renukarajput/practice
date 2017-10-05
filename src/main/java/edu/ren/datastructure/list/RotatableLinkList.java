@@ -1,8 +1,6 @@
 package edu.ren.datastructure.list;
 
 
-import com.sun.istack.internal.NotNull;
-
 public class RotatableLinkList<T> extends LinkedList<T> {
     // LinkedList<T> linkedList;
     private int size;
