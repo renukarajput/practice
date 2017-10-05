@@ -143,13 +143,14 @@ public class LinkedList<T> {
 
     private void reverse(Node<T> prevNode, Node<T> node, Node<T> nextNode) {
        Node<T> currNode = node;
-        if (currNode == null)
+        if (currNode == null) {
+            this.head = prevNode;
             return;
+        }
         nextNode = currNode.next;
         currNode.next = prevNode;
         prevNode = currNode;
         currNode = nextNode;
-        this.head = prevNode;
         reverse(prevNode, currNode, nextNode);
     }
 

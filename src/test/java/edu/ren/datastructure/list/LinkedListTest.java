@@ -137,4 +137,13 @@ public class LinkedListTest {
         assertThat(linkedList.toString(), is("50->40->30->20->10"));
         assertThat(linkedList.get(2), is(30));
     }
+
+    @Test
+    public void recursiveReverseWithOnlyOneElement() {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.recursiveReverse(linkedList.head);
+        assertThat(linkedList.toString(), is("10"));
+        assertThat(linkedList.get(0), is(10));
+    }
 }
