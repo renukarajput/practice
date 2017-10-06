@@ -11,7 +11,8 @@ public class RotatableLinkList<T> extends LinkedList<T> {
     }
 
     public void rotateList(int positions, DIRECTION direction) {
-        rotate(head, getNode(size - 1), positions, direction);
+        Node<T> newHead = rotate(head, getNode(size - 1), positions, direction);
+        head=newHead;
     }
 
     public void rotateBlocks(int blocksize, DIRECTION direction, int times) {
