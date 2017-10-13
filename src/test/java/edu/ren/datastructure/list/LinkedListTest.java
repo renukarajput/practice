@@ -146,4 +146,28 @@ public class LinkedListTest {
         assertThat(linkedList.toString(), is("10"));
         assertThat(linkedList.get(0), is(10));
     }
+
+    @Test
+    public void rotateClockwise() {  //left
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtEnd(30);
+        linkedList.insertAtEnd(40);
+        linkedList.insertAtEnd(50);
+        linkedList.rotateClockwise(2);   // 10 20 30 40 50
+        assertThat(linkedList.toString(), is("30->40->50->10->20"));
+    }
+
+    @Test
+    public void rotateClockwiseLargerThanLength() {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtEnd(30);
+        linkedList.insertAtEnd(40);
+        linkedList.insertAtEnd(50);
+        linkedList.rotateClockwise(8);
+        assertThat(linkedList.toString(), is("30->40->50->10->20"));
+    }
 }

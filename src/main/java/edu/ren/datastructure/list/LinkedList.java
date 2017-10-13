@@ -154,6 +154,21 @@ public class LinkedList<T> {
         reverse(prevNode, currNode, nextNode);
     }
 
+    public void rotateClockwise(int noOfTimes){
+        Node<T> current = head;
+        int size = size() - 1;
+        noOfTimes = noOfTimes % size;
+        Node<T> lastNode = getNode(size);
+
+        for (int i = 0; i < noOfTimes - 1; i++) {
+            current = current.next;
+        }
+        Node<T> newHead = current.next;
+        current.next = null;
+        lastNode.next = head;
+        head = newHead;
+    }
+
     public int size() {
         int size = 0;
         Node<T> start = this.head;

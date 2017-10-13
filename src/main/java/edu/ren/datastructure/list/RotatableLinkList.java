@@ -49,21 +49,24 @@ public class RotatableLinkList<T> extends LinkedList<T> {
 
     }
 
-    //1-2-3
+    //1-2-3  without using previous node
     private Node<T> rotate(Node<T> start, Node<T> end, int times, DIRECTION direction) {
         Node<T> currentNode = start;
-        Node<T> previousNode = start;
+//        Node<T> previousNode = start;
+        Node<T> newHead = null;
         int position = 0;
         int newHeadPosition = direction.getNewHeadPosition(getNumberOfElements(start, end), times);
-        while (position != newHeadPosition) {
-            previousNode = currentNode;
+        while (position != newHeadPosition-1) {
+//            previousNode = currentNode;
             currentNode = currentNode.next;
             position++;
         }
-        previousNode.next = null;
-        end.next = start;
+//        previousNode.next = null;
 
-        return currentNode;
+        end.next = start;
+        newHead = currentNode.next;
+        currentNode.next = null;
+        return newHead;
     }
 
     private int getNumberOfElements(Node<T> start, Node<T> end) {
