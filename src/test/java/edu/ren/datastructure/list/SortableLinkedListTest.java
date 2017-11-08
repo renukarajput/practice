@@ -10,20 +10,30 @@ import static org.junit.Assert.*;
  */
 public class SortableLinkedListTest {
     @Test
-    public void mergeSort()  {
+    public void input1()  {
         LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);   // 50 40 70 80 30 10   // 10 20 40 50 70 80
-        linkedList.insertAtEnd(30);   //
-        linkedList.insertAtEnd(80);
-        linkedList.insertAtEnd(70);
-        linkedList.insertAtEnd(40);
-        linkedList.insertAtEnd(50);
-//        linkedList.insertAtEnd(100);
-//        linkedList.insertAtEnd(20);
-//        linkedList.insertAtEnd(90);
-//        linkedList.insertAtEnd(60);
+        linkedList.insertAtEnd(3);
+        linkedList.insertAtEnd(1);
+        linkedList.insertAtEnd(4);
+        linkedList.insertAtEnd(2);
+        linkedList.insertAtEnd(6);
+        linkedList.insertAtEnd(5);
+        linkedList.insertAtEnd(0);
         SortableLinkedList<Integer> s1 = new SortableLinkedList<>(linkedList);
-        assertThat(s1.mergeSort(linkedList.head), is("10->30->40->50->70->80"));
-//        assertThat(s1.mergeSort(linkedList.head), is("10->20->30->40->50->60->70->80->90->100"));
+        assertThat((s1.mergeSort(linkedList.head)).toString(), is("0->1->2->3->4->5->6"));
+    }
+
+    @Test
+    public void input2()  {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.insertAtEnd(50);
+        linkedList.insertAtEnd(60);
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(3);
+        linkedList.insertAtEnd(1);
+        linkedList.insertAtEnd(4);
+        linkedList.insertAtEnd(2);
+        SortableLinkedList<Integer> s1 = new SortableLinkedList<>(linkedList);
+        assertThat((s1.mergeSort(linkedList.head)).toString(), is("1->2->3->4->10->50->60"));
     }
 }

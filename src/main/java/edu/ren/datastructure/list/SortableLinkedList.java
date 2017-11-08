@@ -2,22 +2,22 @@ package edu.ren.datastructure.list;
 
 public class SortableLinkedList<T> extends LinkedList<T> {
     private int size;
+    LinkedList<T> list = new LinkedList<>();
 
     public SortableLinkedList(LinkedList<T> linkedList) {
         this.head = linkedList.head;
         this.size = linkedList.size();
     }
-    // 10 5 8 7 4 3 1 2 9 6
 
-    public Node<T> mergeSort(Node head) {
+    public LinkedList<T> mergeSort(Node head) {
         if(head == null || head.next == null)
-            return head;
+            return new LinkedList<>(head);
 
         Node<T> midNode = getMiddle(head);
         Node<T> nextOfMid = midNode.next;
         midNode.next = null;
-        Node<T> left = mergeSort(head);
-        Node<T> right = mergeSort(nextOfMid);
+        LinkedList<T> left = mergeSort(head);
+        LinkedList<T> right = mergeSort(nextOfMid);
         return merge(left, right);
     }
 
@@ -31,26 +31,36 @@ public class SortableLinkedList<T> extends LinkedList<T> {
                 fastPtr = fastPtr.next;
                 slowPtr = slowPtr.next;
             }
-            System.out.println("mid = "+slowPtr);
         }
             return slowPtr;
         }
 
-    private Node<T> merge(Node<T> first, Node<T> second) {
-        Node<T> curr = null;
-        if (first == null)
-            return second;
-        if (second == null)
-            return first;
 
-        if(((Comparable)first.data).compareTo(second.data) < 0) {
-            curr = first;
-            curr.next = merge(first.next, second);
+    // 3 1 4 2
+    private LinkedList<T> merge(LinkedList<T> first, LinkedList<T> second) {
+        LinkedList<T> resultList = new LinkedList<>();
+        int i = 0, j = 0;
+
+        while (i < first.size() && j < second.size()) {
+            if (((Comparable) first.get(i)).compareTo(second.get(j)) < 0) {
+                resultList.insertAtEnd(first.get(i));
+                i++;
+            } else {
+                resultList.insertAtEnd(second.get(j));
+                j++;
+            }
         }
-        else {
-            curr = second;
-            curr.next = merge(second.next, first);
+
+        while (i < first.size()){
+            resultList.insertAtEnd(first.get(i));
+            i++;
         }
-        return curr;
+
+        while (j < second.size()){
+            resultList.insertAtEnd(second.get(j));
+            j++;
+        }
+
+        return resultList;
     }
 }
