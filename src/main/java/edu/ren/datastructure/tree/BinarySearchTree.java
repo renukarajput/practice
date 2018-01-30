@@ -1,8 +1,5 @@
-package scala.javaPro.dataStructure.tree;
+package edu.ren.datastructure.tree;
 
-/**
- * Created by rrn3194 on 1/3/17.
- */
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
     Node<T> root;
@@ -29,11 +26,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return root;
     }
 
-    private void inOrderTraversal(){
+    protected void inOrderTraversal(){
         inOrder(root);
     }
 
-    private void inOrder(Node root) {
+    protected void inOrder(Node root) {
         if (root != null) {
             inOrder(root.leftChild);
             System.out.println(root.val);
@@ -149,6 +146,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 //        System.out.println("Min : "+bst.getMinValue());
 //        System.out.println("Max : "+bst.getMaxValue());
         //bst.deletion();
-        bst.findKthSmallest(2);
-        }
+        bst.inOrderTraversal();
+    }
 }
