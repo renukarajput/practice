@@ -4,47 +4,57 @@ public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
     LinkedList<T> resultList = new LinkedList<>();
 
     public SortableLinkedList(Node<T> head) {
-        this.head=head;
+        this.head = head;
     }
 
     public SortableLinkedList(LinkedList<T> linkedList) {
         this.head = linkedList.head;
     }
 
-    public void mergeSortInPlace(){
-        mergeSortInPlaceUtil(this,0,this.size()-1);
+    public void mergeSortInPlace() {
+        mergeSortInPlaceUtil(this, 0, this.size() - 1);
     }
 
-    private void mergeSortInPlaceUtil(LinkedList<T>  list, int start, int end) {
-        int mid=(start+end)/2;
+    private void mergeSortInPlaceUtil(LinkedList<T> list, int start, int end) {
+        int mid = (start + end) / 2;
         if (start == end) {
             return;
         }
-        mergeSortInPlaceUtil(list,start,mid);
-        mergeSortInPlaceUtil(list,mid+1,end);
-        mergeInPlace(list,start,mid,end);
+        mergeSortInPlaceUtil(list, start, mid);
+        mergeSortInPlaceUtil(list, mid + 1, end);
+        mergeInPlace(list, start, mid, end);
     }
 
 
     private void mergeInPlace(LinkedList<T> list, int start, int mid, int end) {
-        int leftIndex=start,rightIndex=mid+1;
-        while (leftIndex<=mid && rightIndex<=end){
-            if(list.get(leftIndex).compareTo(list.get(rightIndex))>0){
+        int leftIndex = start, rightIndex = mid + 1;
+        while (leftIndex <= mid && rightIndex <= end) {
+            if (list.get(leftIndex).compareTo(list.get(rightIndex)) > 0) {
                 Node<T> smallerNodeOnRight = list.deleteElementAtIndex(rightIndex);
-                list.insertAtIndex(leftIndex,smallerNodeOnRight.data);
+                list.insertAtIndex(leftIndex, smallerNodeOnRight.data);
                 mid++; //since a element from right is moved to left  2-4-6-1-7-9 mid is 6 at index 2 ,left is index 0-2 ,right is index 3-5
                 //1-2-4-6-7-9 ,the mid node 6 is now at index 3 ,left is index 0-3 right is index 4-5
                 rightIndex++;
-            }else{
+            } else {
                 leftIndex++;
             }
         }
     }
 
 
+    //
+    private void mergeS(LinkedList<T> list, int start, int end) {
+        int mid = (start + end) / 2;
+        if (start == end) {
+            return;
+        }
+        //   mergeSortInPlaceUtil(list,start,mid);
+        //  mergeSortInPlaceUtil(list,mid+1,end);
+        // merge(list,start,mid,end);
+    }
 
     public LinkedList<T> mergeSort(Node head) {
-        if(head == null || head.next == null)
+        if (head == null || head.next == null)
             return new LinkedList<>(head);
 
         Node<T> midNode = getMiddle(head);
@@ -66,8 +76,8 @@ public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
                 slowPtr = slowPtr.next;
             }
         }
-            return slowPtr;
-        }
+        return slowPtr;
+    }
 
 
     // 3 1 4 2
@@ -85,12 +95,12 @@ public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
             }
         }
 
-        while (i < firstLen){
+        while (i < firstLen) {
             resultList.insertAtEnd(first.get(i));
             i++;
         }
 
-        while (j < secondLen){
+        while (j < secondLen) {
             resultList.insertAtEnd(second.get(j));
             j++;
         }
