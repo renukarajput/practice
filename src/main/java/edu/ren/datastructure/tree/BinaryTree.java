@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class BinaryTree<T> {
     Node<T> root;
+
     public BinaryTree() {
         root = null;
     }
@@ -33,7 +34,7 @@ public class BinaryTree<T> {
         return isInserted;
     }
 
-    public boolean isTreeSame(BinaryTree<T> t1, BinaryTree<T> t2){
+    public boolean isTreeSame(BinaryTree<T> t1, BinaryTree<T> t2) {
         if (t1 != null && t2 != null)
             return isTreeSame(t1.root, t2.root);
         return false;
@@ -48,17 +49,17 @@ public class BinaryTree<T> {
 
         if (node1 != null && node2 != null)
             if ((node1.leftChild == null && node2.leftChild == null ||
-                node1.leftChild != null && node2.leftChild != null )&&(
-                node1.rightChild == null && node2.rightChild == null ||
-                node1.rightChild != null && node2.rightChild != null))
-                    return isTreeSame(node1.leftChild, node2.leftChild) && isTreeSame(node1.rightChild, node2.rightChild);
+                    node1.leftChild != null && node2.leftChild != null) && (
+                    node1.rightChild == null && node2.rightChild == null ||
+                            node1.rightChild != null && node2.rightChild != null))
+                return isTreeSame(node1.leftChild, node2.leftChild) && isTreeSame(node1.rightChild, node2.rightChild);
         return false;
     }
 
-        public void deleteGivenNode(Node<T> nodeToDelete) {
+    public void deleteGivenNode(Node<T> nodeToDelete) {
         Node<T> rightMostChild = getRightMostNode(this.root);
 
-        swapNodeValues(nodeToDelete,rightMostChild);
+        swapNodeValues(nodeToDelete, rightMostChild);
         Node<T> parentNode = getParentNode(this.root, rightMostChild);
         System.out.println(parentNode.val);
         if (parentNode.leftChild != null && parentNode.leftChild.val == rightMostChild.val)
@@ -67,17 +68,16 @@ public class BinaryTree<T> {
             parentNode.rightChild = null;
     }
 
-    private void swapNodeValues(Node<T> nodeOne, Node<T> nodeTwo){
+    private void swapNodeValues(Node<T> nodeOne, Node<T> nodeTwo) {
         T temp = nodeOne.val;
-        nodeOne.val=nodeTwo.val;
-        nodeTwo.val=temp;
-
+        nodeOne.val = nodeTwo.val;
+        nodeTwo.val = temp;
     }
 
-    public Node<T> getRightMostNode(Node<T> root){
-        if (root.rightChild != null){
+    public Node<T> getRightMostNode(Node<T> root) {
+        if (root.rightChild != null) {
             root = getRightMostNode(root.rightChild);
-        }else{
+        } else {
             if (root.leftChild != null)
                 root = getRightMostNode(root.leftChild);
         }
@@ -93,7 +93,7 @@ public class BinaryTree<T> {
                 parent = root;
                 return parent;
             } else {
-              parent =  getParentNode(root.leftChild, nodeToSearch);
+                parent = getParentNode(root.leftChild, nodeToSearch);
                 if (parent == null) {
                     parent = getParentNode(root.rightChild, nodeToSearch);
                 }
@@ -110,6 +110,7 @@ public class BinaryTree<T> {
         }
     }
 
+    // Iterative insert
     public void insertInLevelOrder(T value) {
         insertInLevelOrder(root, new Node<>(value));
     }
@@ -140,29 +141,34 @@ public class BinaryTree<T> {
         }
     }
 
-   public void printByBfs(){
-       Queue<Node<T>> queue = new LinkedList<>();
-       Node<T> root = this.root;
-       queue.add(root);
-        while (!queue.isEmpty()){
+    // bfs in one line
+    public void printByBfs() {
+        Queue<Node<T>> queue = new LinkedList<>();
+        Node<T> root = this.root;
+        queue.add(root);
+        while (!queue.isEmpty()) {
             Node<T> qHead = queue.remove();
             if (qHead.leftChild != null) {
                 queue.add(qHead.leftChild);
             }
-            if (qHead.rightChild != null){
+            if (qHead.rightChild != null) {
                 queue.add(qHead.rightChild);
             }
             System.out.print(qHead.val + " ");
         }
     }
 
+    public void printInZigZagOrder(){
+
+    }
+
     // using two queue
-    public void printBfsByLine(){
+    public void printBfsByLine() {
         Queue<Node<T>> rootQueue = new LinkedList<>();
         Queue<Node<T>> childQueue = new LinkedList<>();
         Node<T> root = this.root;
         rootQueue.add(root);
-        while (!(rootQueue.isEmpty() && childQueue.isEmpty())){
+        while (!(rootQueue.isEmpty() && childQueue.isEmpty())) {
             Node<T> currentElement = rootQueue.remove();
             if (currentElement.leftChild != null)
                 childQueue.add(currentElement.leftChild);
@@ -170,9 +176,9 @@ public class BinaryTree<T> {
             if (currentElement.rightChild != null)
                 childQueue.add(currentElement.rightChild);
 
-            System.out.print(currentElement.val+ " ");
+            System.out.print(currentElement.val + " ");
 
-            if(rootQueue.isEmpty()){
+            if (rootQueue.isEmpty()) {
                 Queue<Node<T>> tempQueue;
                 tempQueue = rootQueue;
                 rootQueue = childQueue;
@@ -183,33 +189,31 @@ public class BinaryTree<T> {
     }
 
     // using marker
-public void bfsByLineUsingMarker() {
-    Queue<Node<T>> bfsQueue = new LinkedList<>();
-    Node<T> marker = null;
-    Node<T> root = this.root;
-    bfsQueue.add(root);
-    bfsQueue.add(marker);
-    while (true) {
-        Node<T> currentElement = bfsQueue.remove();
-        if (currentElement == marker) {
-            if (bfsQueue.isEmpty()){
-                break;
+    public void bfsByLineUsingMarker() {
+        Queue<Node<T>> bfsQueue = new LinkedList<>();
+        Node<T> marker = null;
+        Node<T> root = this.root;
+        bfsQueue.add(root);
+        bfsQueue.add(marker);
+        while (true) {
+            Node<T> currentElement = bfsQueue.remove();
+            if (currentElement == marker) {
+                if (bfsQueue.isEmpty()) {
+                    break;
+                }
+                System.out.println();
+                bfsQueue.add(marker);
+                continue;
             }
-            System.out.println();
-            bfsQueue.add(marker);
-            continue;
+            if (currentElement.leftChild != null)
+                bfsQueue.add(currentElement.leftChild);
+            if (currentElement.rightChild != null)
+                bfsQueue.add(currentElement.rightChild);
+            System.out.print(currentElement.val + " ");
         }
-        if (currentElement.leftChild != null)
-            bfsQueue.add(currentElement.leftChild);
-        if (currentElement.rightChild != null)
-            bfsQueue.add(currentElement.rightChild);
-        System.out.print(currentElement.val + " ");
-
     }
-}
 
-
-
+    // This adds elements in left subtree only.
     public void insertInBinaryTreee(T val) {
         root = insertInBinaryTree(root, val);
     }

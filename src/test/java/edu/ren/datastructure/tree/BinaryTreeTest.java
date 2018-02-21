@@ -81,12 +81,17 @@ public class BinaryTreeTest {
 
     @Test
     public void testBFSLineByLine() {
-
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9);
         BinaryTreePrinter.printNode(treeOne.root);
         treeOne.printBfsByLine();
         treeOne.printByBfs();
-        treeOne.bfsByLineUsingMarker();
+    }
+
+    @Test
+    public void testBFSInOneLine() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.printByBfs();
     }
 
     @Test
