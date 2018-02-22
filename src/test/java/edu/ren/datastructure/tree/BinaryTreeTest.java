@@ -84,7 +84,36 @@ public class BinaryTreeTest {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9);
         BinaryTreePrinter.printNode(treeOne.root);
         treeOne.printBfsByLine();
-        treeOne.printByBfs();
+    }
+
+    @Test
+    public void testZigZagOrderTraversalUsingStack() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.printZigZagOrderUsingStack();
+    }
+
+    //input upto 2 level
+    @Test
+    public void testZigZagOrderTraversal() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.printZigZagOrder();
+    }
+
+    @Test
+    public void testZigZagOrder1() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.printZigZagOrder1();
+    }
+
+    //input for more than 2 level
+    @Test
+    public void testZigZagOrder() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13,14,15);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.printZigZagOrder();
     }
 
     @Test

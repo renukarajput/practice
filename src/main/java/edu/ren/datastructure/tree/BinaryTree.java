@@ -158,8 +158,132 @@ public class BinaryTree<T> {
         }
     }
 
-    public void printInZigZagOrder(){
+    public void printZigZagOrder() {
+        Queue<Node<T>> queue = new LinkedList<>();
+        Stack<Node<T>> stack = new Stack<>();
+        Node<T> root = this.root;
+        Node<T> marker = null;
+        queue.add(root);
+        queue.add(marker);
+        while (!(queue.isEmpty())) {
+            Node<T> currentElement = queue.remove();
+            if (currentElement == marker) {
+                if (stack.isEmpty() && queue.isEmpty()) {
+                    break;
+                }
+                System.out.println();
+                queue.add(marker);
+                while (!stack.isEmpty()) {
+                    Node<T> topElem = stack.pop();
+                    System.out.print(topElem.val + " ");
+                }
+                System.out.println();
+            } else {
+                System.out.print(currentElement.val + " ");
+                addChildrenToStack(queue, stack, currentElement);
+            }
+        }
+    }
 
+    public void printZigZagOrder1() {
+        Queue<Node<T>> queue = new LinkedList<>();
+        Stack<Node<T>> stack = new Stack<>();
+        Node<T> root = this.root;
+        Node<T> curr;
+        Node<T> marker = null;
+        queue.add(root);
+        queue.add(marker);
+        while (!(queue.isEmpty())) {
+            Node<T> currentElement = queue.remove();
+
+            if (currentElement == marker){
+                if (stack.isEmpty() && queue.isEmpty()) {
+                    break;
+                }
+                queue.add(marker);
+                while (!stack.isEmpty()) {
+                    Node<T> childElm = stack.pop();
+                    System.out.print(childElm.val + " ");
+                }
+            }else {
+                System.out.print(currentElement.val + " ");
+
+                if (currentElement.leftChild != null) {
+                    curr = currentElement.leftChild;
+                    stack.push(curr);
+                    if (curr.leftChild != null)
+                        queue.add(curr.leftChild);
+                    if (curr.rightChild != null)
+                        queue.add(curr.rightChild);
+                }
+                if (currentElement.rightChild != null) {
+                    curr = currentElement.rightChild;
+                    stack.push(curr);
+                    if (curr.leftChild != null)
+                        queue.add(curr.leftChild);
+                    if (curr.rightChild != null)
+                        queue.add(curr.rightChild);
+                }
+            }
+        }
+    }
+
+    private void addChildrenToStack(Queue<Node<T>> queue, Stack<Node<T>> stack, Node<T> node) {
+        if (node.leftChild != null) {
+            stack.push(node.leftChild);
+            addChildrenToQueue(queue, node.leftChild);
+        }
+        if (node.rightChild != null) {
+            stack.push(node.rightChild);
+            addChildrenToQueue(queue, node.rightChild);
+
+        }
+    }
+
+    private void addChildrenToQueue(Queue<Node<T>> queue, Node<T> node) {
+        if (node.leftChild != null) {
+            queue.add(node.leftChild);
+        }
+        if (node.rightChild != null) {
+            queue.add(node.rightChild);
+        }
+    }
+
+    //using two stacks
+    public void printZigZagOrderUsingStack() {
+        Stack<Node<T>> currentLevel = new Stack<>();
+        Stack<Node<T>> nextLevel = new Stack<>();
+        Node<T> currentElement;
+        Node<T> root = this.root;
+        boolean leftToRight = true;
+        currentLevel.push(root);
+        while (!currentLevel.isEmpty()) {
+            currentElement = currentLevel.pop();
+            System.out.print(currentElement.val + " ");
+
+            if (leftToRight) {
+                if (currentElement.leftChild != null) {
+                    nextLevel.push(currentElement.leftChild);
+                }
+                if (currentElement.rightChild != null) {
+                    nextLevel.push(currentElement.rightChild);
+                }
+            } else {
+                if (currentElement.rightChild != null) {
+                    nextLevel.push(currentElement.rightChild);
+                }
+                if (currentElement.leftChild != null) {
+                    nextLevel.push(currentElement.leftChild);
+                }
+            }
+            if (currentLevel.isEmpty()) {
+                leftToRight = !leftToRight;
+                Stack<Node<T>> temp = currentLevel;
+                currentLevel = nextLevel;
+                nextLevel = temp;
+                System.out.println();
+            }
+        }
     }
 
     // using two queue
@@ -168,7 +292,7 @@ public class BinaryTree<T> {
         Queue<Node<T>> childQueue = new LinkedList<>();
         Node<T> root = this.root;
         rootQueue.add(root);
-        while (!(rootQueue.isEmpty() && childQueue.isEmpty())) {
+        while (!(rootQueue.isEmpty() & childQueue.isEmpty())) {
             Node<T> currentElement = rootQueue.remove();
             if (currentElement.leftChild != null)
                 childQueue.add(currentElement.leftChild);
@@ -179,8 +303,7 @@ public class BinaryTree<T> {
             System.out.print(currentElement.val + " ");
 
             if (rootQueue.isEmpty()) {
-                Queue<Node<T>> tempQueue;
-                tempQueue = rootQueue;
+                Queue<Node<T>> tempQueue = rootQueue;
                 rootQueue = childQueue;
                 childQueue = tempQueue;
                 System.out.println();
