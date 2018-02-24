@@ -140,6 +140,67 @@ public class BinaryTree<T> {
             root = bfs.get(position);
         }
     }
+public static int cnt=0;
+
+    public  Node<T> findLowestCommonAncestor(Node<T> root, T p, T q) {
+        cnt=0;
+        return findLowestCommonAncestor(root,p,q,new int[]{0});
+    }
+
+    public  Node<T> findLowestCommonAncestor(Node<T> root, T p, T q,int[] nodesFound) {
+        cnt++;
+        System.out.print(root.val+"--");
+
+        if (nodesFound[0]==2||root.val == p || root.val == q) {
+            nodesFound[0]++;
+            return root;
+        }
+
+         Node<T> left=null,right=null;
+
+        if (nodesFound[0] != 2 && root.leftChild!=null) {
+            left = findLowestCommonAncestor(root.leftChild, p, q, nodesFound);
+        }
+
+        if (nodesFound[0] != 2 && root.rightChild!=null) {
+            right = findLowestCommonAncestor(root.rightChild, p, q, nodesFound);
+        }
+
+        if (left != null && right != null)
+            return root;
+
+        if (left != null)
+            return left;
+        else
+            return right;
+    }
+
+    //Lowest common ancestor of given node
+//    public Node<T>[] findLCA(Node<T> root, T node1, T node2) {
+//        Node<T> left[] = null, right[] = null;
+//        if (root == null)
+//            return null;
+//
+//        if (root.val == node1)
+//            return new Node[]{root,null};
+//
+//        if (root.val == node2)
+//            return new Node[]{null,root};
+//
+//
+//        if (root.leftChild != null) {
+//            left = findLCA(root.leftChild, node1, node2);
+//        }
+//
+//        if (root.rightChild != null) {
+//           right = findLCA(root.rightChild, node1,node2);
+//        }
+//
+//        if (left[0] != null && right[1] != null) {
+//            return new Node[]{root,root};
+//        }
+//
+//    }
 
     // bfs in one line
     public void printByBfs() {

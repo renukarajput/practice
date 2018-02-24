@@ -34,7 +34,7 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void testParentNode(){
+    public void testParentNode() {
 
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
 
@@ -44,12 +44,12 @@ public class BinaryTreeTest {
         BinaryTreePrinter.printNode(treeOne.root);
 
         Node childNode = treeOne.root.leftChild.rightChild;
-        Node parentNode = treeOne.getParentNode(treeOne.root,childNode);
-        assertThat(parentNode.val,is(5));
+        Node parentNode = treeOne.getParentNode(treeOne.root, childNode);
+        assertThat(parentNode.val, is(5));
 
         Node childNode1 = treeOne.root.leftChild;
-        Node parentNode1 = treeOne.getParentNode(treeOne.root,childNode1);
-        assertThat(parentNode1.val,is(10));
+        Node parentNode1 = treeOne.getParentNode(treeOne.root, childNode1);
+        assertThat(parentNode1.val, is(10));
 
         Node rightMostNode = (treeOne.getRightMostNode(treeOne.root));
         assertThat(rightMostNode.val, is(4));
@@ -60,7 +60,7 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void testTreeSimilarity(){
+    public void testTreeSimilarity() {
 
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
 
@@ -70,13 +70,31 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void testTreeDisSimilarity(){
+    public void testTreeDisSimilarity() {
 
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
 
         BinaryTree<Integer> treeTwo = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4, 11);
 
         assertThat(treeOne.isTreeSame(treeOne, treeTwo), is(false));
+    }
+
+    @Test
+    public void testLCA() {
+
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7,8,9,10,11);
+        BinaryTreePrinter.printNode(treeOne.root);
+        testLCA(treeOne, 9, 10);
+        System.out.println();
+        testLCA(treeOne,9,5);
+       // testLCA(treeOne,0,0);
+    }
+
+    private void testLCA(BinaryTree<Integer> treeOne, int p, int q) {
+        Node<Integer> out =  treeOne.findLowestCommonAncestor(treeOne.root,p, q);
+        System.out.println("\nLCA of "+ p +" and "+ q + "= "+out.val);
+//        assertThat(treeOne.findLCA(treeOne.root, 2, 3), is(1));
+        System.out.println("number of recursive calls = "+BinaryTree.cnt);
     }
 
     @Test
@@ -111,7 +129,7 @@ public class BinaryTreeTest {
     //input for more than 2 level
     @Test
     public void testZigZagOrder() {
-        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13,14,15);
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
         BinaryTreePrinter.printNode(treeOne.root);
         treeOne.printZigZagOrder();
     }
