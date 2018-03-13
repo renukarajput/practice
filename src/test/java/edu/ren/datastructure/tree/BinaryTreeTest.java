@@ -2,6 +2,8 @@ package edu.ren.datastructure.tree;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,6 +16,30 @@ public class BinaryTreeTest {
         BinaryTree<Integer> binaryTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
         System.out.println("\n");
         BinaryTreePrinter.printNode(binaryTree.root);
+    }
+
+    @Test
+    public void testSearchPath() {
+        BinaryTree<Integer> binaryTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
+        System.out.println("\n");
+        BinaryTreePrinter.printNode(binaryTree.root);
+        assertThat(binaryTree.searchPath(50), is(Arrays.asList(20,10,50)));
+    }
+
+    @Test
+    public void testSearchPath1() {
+        BinaryTree<Integer> binaryTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
+        System.out.println("\n");
+        BinaryTreePrinter.printNode(binaryTree.root);
+        assertThat(binaryTree.searchPath(100), is(Collections.EMPTY_LIST));
+    }
+
+    @Test
+    public void testSearchPath2() {
+        BinaryTree<Integer> binaryTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
+        System.out.println("\n");
+        BinaryTreePrinter.printNode(binaryTree.root);
+        assertThat(binaryTree.searchPath(40), is(Arrays.asList(20,10,40)));
     }
 
     @Test
@@ -84,7 +110,7 @@ public class BinaryTreeTest {
 
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7,8,9,10,11);
         BinaryTreePrinter.printNode(treeOne.root);
-        testLCA(treeOne, 9, 10);
+        testLCA(treeOne, 2, 5);
         System.out.println();
         testLCA(treeOne,9,5);
        // testLCA(treeOne,0,0);
@@ -102,6 +128,20 @@ public class BinaryTreeTest {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9);
         BinaryTreePrinter.printNode(treeOne.root);
         treeOne.printBfsByLine();
+    }
+
+    @Test
+    public void testIterativeInOrder() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.iterativeInorder();
+    }
+
+    @Test
+    public void kThSmallestElment() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.kThSmallest(3), is(4));
     }
 
     @Test

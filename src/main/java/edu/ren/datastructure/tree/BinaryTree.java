@@ -102,11 +102,78 @@ public class BinaryTree<T> {
         }
     }
 
-    private void inOrder(Node root) {
+    public T kThSmallest(int k) {
+        Node<T> root = this.root;
+        ArrayList<T> list = new ArrayList<>();
+        inOrder(root, list);
+        Comparator<T> comparator = (x, y) -> ((Comparable) x).compareTo(y);
+        Collections.sort(list, comparator);
+        return list.get(k);
+    }
+
+    private void inOrder(Node<T> root, List<T> list) {
         if (root != null) {
-            inOrder(root.leftChild);
-            System.out.println(root.val);
-            inOrder(root.rightChild);
+            inOrder(root.leftChild, list);
+            list.add(root.val);
+            inOrder(root.rightChild, list);
+        }
+    }
+
+    public List<T> searchPath(T value) {
+        List<T> list = new LinkedList<>();
+        T found = searchPath(root, value, list);
+        if (found == null) {
+            return Collections.EMPTY_LIST;
+        }
+        return list;
+    }
+
+    private T searchPath(Node<T> root, T value, List<T> list) {
+        list.add(root.val);
+        if (root.val == value) {
+            return value;
+        }
+        T valueFound = null;
+
+        if (root.leftChild != null) {
+            valueFound = searchPath(root.leftChild, value, list);
+            if (valueFound == null && !list.isEmpty()) {
+                list.remove(list.size() - 1);
+            }
+        }
+
+        if (valueFound == null && root.rightChild != null) {
+            valueFound = searchPath(root.rightChild, value, list);
+            if (valueFound == null && !list.isEmpty()) {
+                list.remove(list.size() - 1);
+            }
+        }
+        return valueFound;
+    }
+
+
+    //iterative inorder
+    public void iterativeInorder() {
+        Node<T> current = this.root;
+        Stack<Node<T>> stack = new Stack<>();
+
+//        if (current == null)
+//            return;
+        while (current != null) {
+            stack.push(current);
+            current = current.leftChild;
+        }
+        while (!stack.isEmpty()) {
+            Node<T> top = stack.pop();
+            System.out.print(top.val + " - ");
+
+            if (top.rightChild != null)
+                current = top.rightChild;
+
+            while (current != null) {
+                stack.push(current);
+                current = current.leftChild;
+            }
         }
     }
 
@@ -140,29 +207,30 @@ public class BinaryTree<T> {
             root = bfs.get(position);
         }
     }
-public static int cnt=0;
 
-    public  Node<T> findLowestCommonAncestor(Node<T> root, T p, T q) {
-        cnt=0;
-        return findLowestCommonAncestor(root,p,q,new int[]{0});
+    public static int cnt = 0;
+
+    public Node<T> findLowestCommonAncestor(Node<T> root, T p, T q) {
+        cnt = 0;
+        return findLowestCommonAncestor(root, p, q, new int[]{0});
     }
 
-    public  Node<T> findLowestCommonAncestor(Node<T> root, T p, T q,int[] nodesFound) {
+    public Node<T> findLowestCommonAncestor(Node<T> root, T p, T q, int[] nodesFound) {
         cnt++;
-        System.out.print(root.val+"--");
+        System.out.print(root.val + "--");
 
-        if (nodesFound[0]==2||root.val == p || root.val == q) {
+        if (nodesFound[0] == 2 || root.val == p || root.val == q) {
             nodesFound[0]++;
             return root;
         }
 
-         Node<T> left=null,right=null;
+        Node<T> left = null, right = null;
 
-        if (nodesFound[0] != 2 && root.leftChild!=null) {
+        if (nodesFound[0] != 2 && root.leftChild != null) {
             left = findLowestCommonAncestor(root.leftChild, p, q, nodesFound);
         }
 
-        if (nodesFound[0] != 2 && root.rightChild!=null) {
+        if (nodesFound[0] != 2 && root.rightChild != null) {
             right = findLowestCommonAncestor(root.rightChild, p, q, nodesFound);
         }
 
@@ -175,32 +243,6 @@ public static int cnt=0;
             return right;
     }
 
-    //Lowest common ancestor of given node
-//    public Node<T>[] findLCA(Node<T> root, T node1, T node2) {
-//        Node<T> left[] = null, right[] = null;
-//        if (root == null)
-//            return null;
-//
-//        if (root.val == node1)
-//            return new Node[]{root,null};
-//
-//        if (root.val == node2)
-//            return new Node[]{null,root};
-//
-//
-//        if (root.leftChild != null) {
-//            left = findLCA(root.leftChild, node1, node2);
-//        }
-//
-//        if (root.rightChild != null) {
-//           right = findLCA(root.rightChild, node1,node2);
-//        }
-//
-//        if (left[0] != null && right[1] != null) {
-//            return new Node[]{root,root};
-//        }
-//
-//    }
 
     // bfs in one line
     public void printByBfs() {
@@ -257,7 +299,7 @@ public static int cnt=0;
         while (!(queue.isEmpty())) {
             Node<T> currentElement = queue.remove();
 
-            if (currentElement == marker){
+            if (currentElement == marker) {
                 if (stack.isEmpty() && queue.isEmpty()) {
                     break;
                 }
@@ -266,7 +308,7 @@ public static int cnt=0;
                     Node<T> childElm = stack.pop();
                     System.out.print(childElm.val + " ");
                 }
-            }else {
+            } else {
                 System.out.print(currentElement.val + " ");
 
                 if (currentElement.leftChild != null) {
