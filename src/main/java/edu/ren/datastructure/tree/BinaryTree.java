@@ -56,6 +56,26 @@ public class BinaryTree<T> {
         return false;
     }
 
+    public int sumOfNumberOfNodes(Node<T> root) {
+        if (root == null)
+            return 0;
+        else
+            return (1 + sumOfNumberOfNodes(root.leftChild) + sumOfNumberOfNodes(root.rightChild));
+    }
+
+    public Node<T> createMirrorTree(Node<T> root){
+        if (root == null)
+            return root;
+
+        Node<T> left = createMirrorTree(root.leftChild);
+        Node<T> right = createMirrorTree(root.rightChild);
+
+        root.leftChild = right;
+        root.rightChild = left;
+
+        return root;
+    }
+
     public void deleteGivenNode(Node<T> nodeToDelete) {
         Node<T> rightMostChild = getRightMostNode(this.root);
 

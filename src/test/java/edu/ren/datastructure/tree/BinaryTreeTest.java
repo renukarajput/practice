@@ -23,7 +23,7 @@ public class BinaryTreeTest {
         BinaryTree<Integer> binaryTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
         System.out.println("\n");
         BinaryTreePrinter.printNode(binaryTree.root);
-        assertThat(binaryTree.searchPath(50), is(Arrays.asList(20,10,50)));
+        assertThat(binaryTree.searchPath(50), is(Arrays.asList(20, 10, 50)));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class BinaryTreeTest {
         BinaryTree<Integer> binaryTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
         System.out.println("\n");
         BinaryTreePrinter.printNode(binaryTree.root);
-        assertThat(binaryTree.searchPath(40), is(Arrays.asList(20,10,40)));
+        assertThat(binaryTree.searchPath(40), is(Arrays.asList(20, 10, 40)));
     }
 
     @Test
@@ -108,19 +108,19 @@ public class BinaryTreeTest {
     @Test
     public void testLCA() {
 
-        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7,8,9,10,11);
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
         BinaryTreePrinter.printNode(treeOne.root);
         testLCA(treeOne, 2, 5);
         System.out.println();
-        testLCA(treeOne,9,5);
-       // testLCA(treeOne,0,0);
+        testLCA(treeOne, 9, 5);
+        // testLCA(treeOne,0,0);
     }
 
     private void testLCA(BinaryTree<Integer> treeOne, int p, int q) {
-        Node<Integer> out =  treeOne.findLowestCommonAncestor(treeOne.root,p, q);
-        System.out.println("\nLCA of "+ p +" and "+ q + "= "+out.val);
+        Node<Integer> out = treeOne.findLowestCommonAncestor(treeOne.root, p, q);
+        System.out.println("\nLCA of " + p + " and " + q + "= " + out.val);
 //        assertThat(treeOne.findLCA(treeOne.root, 2, 3), is(1));
-        System.out.println("number of recursive calls = "+BinaryTree.cnt);
+        System.out.println("number of recursive calls = " + BinaryTree.cnt);
     }
 
     @Test
@@ -217,4 +217,23 @@ public class BinaryTreeTest {
         System.out.println("\n");
         BinaryTreePrinter.printNode(binaryTree.root);
     }
+
+    @Test
+    public void testSumOfAllNode() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(12, 40, 20, 30, 1, 2, 3, 4, 5, 6);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.sumOfNumberOfNodes(treeOne.root), is(10));
+
+    }
+
+    @Test
+    public void testMirrorTree() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        Node<Integer> mirrorTree = treeOne.createMirrorTree(treeOne.root);
+        BinaryTreePrinter.printNode(mirrorTree);
+//        assertThat(treeOne.createMirrorTree(treeOne.root),is(10));
+    }
+
+
 }
