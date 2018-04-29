@@ -6,6 +6,15 @@ import java.util.List;
 import java.util.Optional;
 
 public class RangeBinarySearch<T extends Comparable<T>> {
+
+    public ArrayList<Integer> searchRange(final List<Integer> a, int b) {
+        Integer[] arr = a.toArray(new Integer[a.size()]);
+        int[] rangeIndexUsingBinarySearch =new RangeBinarySearch<Integer>().getRangeIndexUsingBinarySearch(arr,b);
+        final ArrayList<Integer> result=new ArrayList(2);
+        result.add(rangeIndexUsingBinarySearch[0]);
+        result.add(rangeIndexUsingBinarySearch[1]);
+        return result;
+    }
 //5,7,7,8,8,10
     //8->[3.4]
 public int[] getRangeIndexUsingBinarySearch(T[] a, T value) {
@@ -37,10 +46,11 @@ public int[] getRangeIndexUsingBinarySearch(T[] a, T value) {
         while (high >= low) {
             int mid = low+(high-low)/2;
             if(a[mid]==value){
-                if(mid==high){
+                int highest = getRangeHighestIndexUsingBinarySearch(a, value, mid + 1, high);
+                if(highest==-1){
                     return mid;
-                }
-                return getRangeHighestIndexUsingBinarySearch(a,value,mid+1,high);
+                }else
+                    return highest;
             }
             if (a[mid].compareTo(value)>0) {
                 high = mid-1;
@@ -55,13 +65,13 @@ public int[] getRangeIndexUsingBinarySearch(T[] a, T value) {
         while (high >= low) {
             int mid = low+(high-low)/2;
             if(a[mid]==value){
-                if(mid==low){
+                int lowest = getRangeLowestIndexUsingBinarySearch(a, value, low, mid - 1);
+                if(lowest==-1){
                     return mid;
                 }
-                //bin search mid+1 to high
-                return getRangeLowestIndexUsingBinarySearch(a,value,low,mid-1);
-                //bin search low to mid-1
-                //int lowestIndex=getRangeIndexUsingBinarySearch(a,value,low,mid-1);
+                else {
+                    return lowest;
+                }
             }
             if (a[mid].compareTo(value)>0) {
                 high = mid-1;
