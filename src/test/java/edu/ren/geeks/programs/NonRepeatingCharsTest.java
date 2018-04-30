@@ -1,12 +1,13 @@
 package edu.ren.geeks.programs;
 
 import org.junit.Test;
+import scala.collection.immutable.Nil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
 
 /**
@@ -14,13 +15,18 @@ import static org.junit.Assert.*;
  */
 public class NonRepeatingCharsTest {
 
-    private String getInput() {
-        System.out.print("Enter now : ");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.next();
-        return input;
-    }
+    @Test
+    public void input0() {
+        List<Character> characterList = new ArrayList<>();
+        String input = "aa bb";
+        String input1 = "aabb";
 
+        //List<Character> charList = input.chars().mapToObj(c ->(char) c).collect(Collectors.toList());
+        for (int i = 0; i < input.length(); i++) {
+            characterList.add(input.charAt(i));
+        }
+        assertThat(NonRepeatingChars.getNonRepeatingFirstChar(characterList), is(' '));
+    }
     @Test
     public void input1() {
         List<Character> characterList = new ArrayList<>();
@@ -77,7 +83,8 @@ public class NonRepeatingCharsTest {
         for (int i = 0; i < input.length(); i++) {
             characterList.add(input.charAt(i));
         }
-        assertThat(NonRepeatingChars.getNonRepeatingFirstChar(characterList), is(' '));
+
+        assertThat(NonRepeatingChars.getNonRepeatingFirstChar(characterList), is(nullValue()));
     }
 
     @Test
