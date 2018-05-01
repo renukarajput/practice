@@ -53,4 +53,18 @@ public class RangeBinarySearchTest {
         assertThat(rangeIndexUsingBinarySearch[0],is(98));
         assertThat(rangeIndexUsingBinarySearch[1],is(140));
     }
+
+@Test
+    public void indexOfInsert(){
+    Integer [] a={1,3,5,6};
+    assertThat(new RangeBinarySearch<Integer>().getIndexOfInsertOrder(a,5),is(2));
+    assertThat(new RangeBinarySearch<Integer>().getIndexOfInsertOrder(a,2),is(1));
+}
+
+    @Test
+    public void indexOfInsert2(){
+        Integer [] a={1,3,5,6,9,13,16,19};
+        assertThat(new RangeBinarySearch<Integer>().getIndexOfInsertOrder(a,14),is(6));
+       // assertThat(new RangeBinarySearch<Integer>().getIndexOfInsertOrder(a,2),is(1));
+    }
 }

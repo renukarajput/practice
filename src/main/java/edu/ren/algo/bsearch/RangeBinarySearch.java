@@ -7,14 +7,6 @@ import java.util.Optional;
 
 public class RangeBinarySearch<T extends Comparable<T>> {
 
-    public ArrayList<Integer> searchRange(final List<Integer> a, int b) {
-        Integer[] arr = a.toArray(new Integer[a.size()]);
-        int[] rangeIndexUsingBinarySearch =new RangeBinarySearch<Integer>().getRangeIndexUsingBinarySearch(arr,b);
-        final ArrayList<Integer> result=new ArrayList(2);
-        result.add(rangeIndexUsingBinarySearch[0]);
-        result.add(rangeIndexUsingBinarySearch[1]);
-        return result;
-    }
 //5,7,7,8,8,10
     //8->[3.4]
 public int[] getRangeIndexUsingBinarySearch(T[] a, T value) {
@@ -22,7 +14,7 @@ public int[] getRangeIndexUsingBinarySearch(T[] a, T value) {
     while (high >= low) {
         int mid = low+(high-low)/2;
         if(a[mid]==value){
-            int highestIndex = getRangeHighestIndexUsingBinarySearch(a, value, mid, high+1);
+            int highestIndex = getRangeHighestIndexUsingBinarySearch(a, value, mid+1, high);
             if(highestIndex==-1){
                 highestIndex=mid;
             }
@@ -43,43 +35,38 @@ public int[] getRangeIndexUsingBinarySearch(T[] a, T value) {
 }
 
     int getRangeHighestIndexUsingBinarySearch(T[] a, T value,int low,int high) {
+       int prevHighest=-1;
         while (high >= low) {
             int mid = low+(high-low)/2;
             if(a[mid]==value){
-                int highest = getRangeHighestIndexUsingBinarySearch(a, value, mid + 1, high);
-                if(highest==-1){
-                    return mid;
-                }else
-                    return highest;
+                prevHighest=mid;
+                low=mid+1;
             }
-            if (a[mid].compareTo(value)>0) {
+           else if (a[mid].compareTo(value)>0) {
                 high = mid-1;
             }else {
                 low=mid+1;
             }
         }
-        return -1;
+        return prevHighest;
     }
 
     int getRangeLowestIndexUsingBinarySearch(T[] a, T value,int low,int high) {
+        int prevLowest=-1;
         while (high >= low) {
             int mid = low+(high-low)/2;
             if(a[mid]==value){
-                int lowest = getRangeLowestIndexUsingBinarySearch(a, value, low, mid - 1);
-                if(lowest==-1){
-                    return mid;
-                }
-                else {
-                    return lowest;
-                }
+                prevLowest=mid;
+                high=mid-1;
+
             }
-            if (a[mid].compareTo(value)>0) {
+           else if (a[mid].compareTo(value)>0) {
                 high = mid-1;
             }else {
                 low=mid+1;
             }
         }
-        return -1;
+        return prevLowest;
     }
 
     Optional<Integer> getIndexUsingBinarySearch(T[] a, T value) {
@@ -98,4 +85,30 @@ public int[] getRangeIndexUsingBinarySearch(T[] a, T value) {
         }
         return Optional.empty();
     }
+
+    int getIndexOfInsertOrder(T[] a, T value) {
+        int low = 0, high = a.length - 1;
+        boolean isMidGreater = false;
+        int mid = 0;
+        while (high >= low) {
+            mid = low + (high - low) / 2;
+            if (a[mid] == value) {
+                return mid;
+            }
+            if (a[mid].compareTo(value) > 0) {
+                high = mid - 1;
+                isMidGreater = true;
+            } else {
+                low = mid + 1;
+                isMidGreater = false;
+            }
+        }
+        if (isMidGreater) {
+            return mid;
+        }
+        else {
+        return mid + 1;
+        }
+    }
+
 }
