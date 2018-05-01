@@ -26,19 +26,18 @@ public class LinkedList<T> {
     }
 
     public void insertAtIndex(int index,T val) {
-        if(index==0){
+        if (index == 0) {
             Node<T> oldHead = getNode(0);
             Node<T> newHead = new Node<>(val);
-            newHead.next=oldHead;
-            head=newHead;
+            newHead.next = oldHead;
+            head = newHead;
             return;
-
         }
         Node<T> prevNode = getNode(index - 1);
         Node<T> nextNode = getNode(index );
         Node<T> newNode = new Node<>(val);
-        prevNode.next=newNode;
-        newNode.next=nextNode;
+        prevNode.next = newNode;
+        newNode.next = nextNode;
 
     }
 

@@ -1,7 +1,6 @@
 package edu.ren.datastructure.list;
 
 import org.junit.Test;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -99,11 +98,7 @@ public class LinkedListTest {
 
     @Test
     public void insertInSortedList(){
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
-        linkedList.insertAtEnd(20);
-        linkedList.insertAtEnd(40);
-        linkedList.insertAtEnd(50);
+        LinkedList<Integer> linkedList = getIntegerList(10, 20, 40, 50);
         linkedList.insertInSortedList(30);
         Integer [] expectedElem = {10,20,30,40,50};
 
@@ -114,12 +109,7 @@ public class LinkedListTest {
 
     @Test
     public void reverseList() {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
-        linkedList.insertAtEnd(20);
-        linkedList.insertAtEnd(30);
-        linkedList.insertAtEnd(40);
-        linkedList.insertAtEnd(50);
+        LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50);
         linkedList.reverseList(linkedList.head);
         assertThat(linkedList.toString(), is("50->40->30->20->10"));
         assertThat(linkedList.get(2), is(30));
@@ -127,12 +117,7 @@ public class LinkedListTest {
 
     @Test
     public void recursiveReverse() {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
-        linkedList.insertAtEnd(20);
-        linkedList.insertAtEnd(30);
-        linkedList.insertAtEnd(40);
-        linkedList.insertAtEnd(50);
+        LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50);
         linkedList.recursiveReverse(linkedList.head);
         assertThat(linkedList.toString(), is("50->40->30->20->10"));
         assertThat(linkedList.get(2), is(30));
@@ -140,8 +125,8 @@ public class LinkedListTest {
 
     @Test
     public void recursiveReverseWithOnlyOneElement() {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
+        LinkedList<Integer> linkedList = getIntegerList(10);
+
         linkedList.recursiveReverse(linkedList.head);
         assertThat(linkedList.toString(), is("10"));
         assertThat(linkedList.get(0), is(10));
@@ -149,25 +134,29 @@ public class LinkedListTest {
 
     @Test
     public void rotateClockwise() {  //left
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
-        linkedList.insertAtEnd(20);
-        linkedList.insertAtEnd(30);
-        linkedList.insertAtEnd(40);
-        linkedList.insertAtEnd(50);
+        LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50);
         linkedList.rotateClockwise(2);   // 10 20 30 40 50
         assertThat(linkedList.toString(), is("30->40->50->10->20"));
     }
+// 4 > 20->30->40->50->10
+// 5 > 20->30->40->50->10
+// 6 > 30->40->50->10->20
+// 7 > 40->50->10->20->30
+// 8 > 20->30->40->50->10
+    //check this method
 
     @Test
     public void rotateClockwiseLargerThanLength() {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.insertAtEnd(10);
-        linkedList.insertAtEnd(20);
-        linkedList.insertAtEnd(30);
-        linkedList.insertAtEnd(40);
-        linkedList.insertAtEnd(50);
-        linkedList.rotateClockwise(8);
+        LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50);
+        linkedList.rotateClockwise(6);
         assertThat(linkedList.toString(), is("30->40->50->10->20"));
+    }
+
+    private LinkedList<Integer> getIntegerList(int... values) {
+        LinkedList<Integer> list = new LinkedList<>();
+        for (int value : values) {
+            list.insertAtEnd(value);
+        }
+        return list;
     }
 }
