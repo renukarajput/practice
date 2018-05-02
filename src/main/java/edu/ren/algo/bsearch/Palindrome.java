@@ -2,6 +2,12 @@ package edu.ren.algo.bsearch;
 
 public class Palindrome {
 
+    /**
+     * returns minimum number of chars required to be inserted at BEGINNING to make the string a palindrome
+     * inserts can only be done at start of string
+     * @param input
+     * @return
+     */
     public int numberOfCharsRequired(String input) {
         char[] arr = input.toCharArray();
         int len = arr.length;
