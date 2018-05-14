@@ -1,4 +1,4 @@
-package edu.ren.datastructure.tire;
+package edu.ren.datastructure.trie;
 
 import org.junit.Test;
 
@@ -20,13 +20,8 @@ public class TrieTest {
     @Test
     public void insert2() {
         Trie trie = new Trie();
-        trie.insert("gee$k");
-        assertTrue(trie.find("gee$k"));
-        assertFalse(trie.find("geen"));
+        trie.insert("geek$$$");
+        assertFalse(trie.find("geek$"));
     }
 
-
-    @Test
-    public void find() {
-    }
 }

@@ -1,4 +1,4 @@
-package edu.ren.datastructure.tire;
+package edu.ren.datastructure.trie;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class Trie {
 
             }
         }
-        trieNode.linkNodes.put(TERMINAL_CHAR, new TrieNode());
+        trieNode.linkNodes.put(TERMINAL_CHAR, null);
 
     }
 
@@ -41,10 +41,30 @@ public class Trie {
                 return false;
             }
         }
-        if (trieNode == null || !trieNode.linkNodes.containsKey(TERMINAL_CHAR)) {
+        if (trieNode == null || !trieNode.linkNodes.containsKey(TERMINAL_CHAR) || trieNode.linkNodes.get(TERMINAL_CHAR)!=null) {
             return false;
         }
         return true;
+    }
+
+    int[] findLengthOfMatchingPrefix(String key) {
+        int matchCount=0;
+        Map<Character, TrieNode> linkNodes = root.linkNodes;
+        TrieNode trieNode = null;
+        for (char ch : key.toCharArray()) {
+            if (linkNodes.containsKey(ch)) {
+                trieNode = linkNodes.get(ch);
+                linkNodes = trieNode.linkNodes;
+                matchCount++;
+            } else {
+                break;
+            }
+        }
+        if (trieNode == null || !trieNode.linkNodes.containsKey(TERMINAL_CHAR) || trieNode.linkNodes.get(TERMINAL_CHAR)!=null) {
+            return new int[]{matchCount,0};
+        }
+
+        return new int[]{matchCount,1};
     }
 
     private static class TrieNode {
