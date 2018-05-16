@@ -47,7 +47,18 @@ public class Trie {
         return true;
     }
 
-    int[] findLengthOfMatchingPrefix(String key) {
+public static class PrefixSearchResult{
+        int matchCount;
+        boolean isPrefix;
+        boolean isDictionaryWord;
+
+    public PrefixSearchResult(int matchCount, boolean isPrefix,boolean isDictionaryWord) {
+        this.matchCount = matchCount;
+        this.isPrefix = isPrefix;
+        this.isDictionaryWord=isDictionaryWord;
+    }
+}
+    PrefixSearchResult findLengthIfKeyIsAMatchingPrefix(String key) {
         int matchCount=0;
         Map<Character, TrieNode> linkNodes = root.linkNodes;
         TrieNode trieNode = null;
@@ -57,14 +68,28 @@ public class Trie {
                 linkNodes = trieNode.linkNodes;
                 matchCount++;
             } else {
-                break;
+                return new PrefixSearchResult(matchCount,false,false);
             }
         }
-        if (trieNode == null || !trieNode.linkNodes.containsKey(TERMINAL_CHAR) || trieNode.linkNodes.get(TERMINAL_CHAR)!=null) {
-            return new int[]{matchCount,0};
+
+        if (!isTerminalNode(trieNode)) {
+            return new PrefixSearchResult(matchCount,true,false);
         }
 
-        return new int[]{matchCount,1};
+        return new PrefixSearchResult(matchCount,true,true);
+    }
+
+    boolean isTerminalNode(TrieNode trieNode){
+        if(trieNode==null){
+            return false;
+        }
+        if(!trieNode.linkNodes.containsKey(TERMINAL_CHAR)){
+            return false;
+        }
+        if(trieNode.linkNodes.get(TERMINAL_CHAR)!=null)
+            return false;
+
+        return true;
     }
 
     private static class TrieNode {

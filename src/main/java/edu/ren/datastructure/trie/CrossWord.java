@@ -8,7 +8,7 @@ public class CrossWord {
     char[][] words;
     Trie trie;
 
-    CrossWord(String[] rows,Collection<String> dictionary) {
+    public CrossWord(String[] rows,Collection<String> dictionary) {
         words = new char[rows.length][rows[0].length()];
         trie=new Trie();
         dictionary.forEach(x->trie.insert(x));
@@ -20,47 +20,97 @@ public class CrossWord {
     }
     List<String> foundWords ;
 
-    List<String> getDictionaryWords() {
+    public List<String> getDictionaryWords() {
         foundWords = new ArrayList<>();
         traverse();
         return foundWords;
     }
 
-    void traverse() {
+    private void traverse() {
         for (int i = 0; i < words.length; i++) {
             for (int j = 0; j < words[0].length; j++) {
-
-                findWordsStartingAtCell(new StringBuilder(), i, j,0);
-                findWordsStartingAtCell(new StringBuilder(), i, j,1);
-                findWordsStartingAtCell(new StringBuilder(), i, j,2);
+                tryWordsInPossibleDirections(i, j);
             }
         }
     }
 
-    private void findWordsStartingAtCell(StringBuilder foundCharsStringBuilder, int x, int y,int direction) {
-        while (x < words.length && y < words[0].length) {
+
+    protected void tryWordsInPossibleDirections(int i, int j) {
+        for (Direction direction:Direction.values()) {
+            findWordsStartingAtCell(new StringBuilder(), i, j, direction);
+        }
+    }
+
+    protected enum Direction{
+        RIGHT {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x+1,y};
+            }
+        },
+        LEFT {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x-1,y};
+            }
+        },
+        DOWN {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x,y+1};
+            }
+        },
+        UP {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x,y-1};
+            }
+        },
+        RIGHT_TO_LEFT_DIAGONAL_DOWN {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x-1,y+1};
+            }
+        },
+        RIGHT_TO_LEFT_DIAGONAL_UP {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x-1,y-1};
+            }
+        },
+        LEFT_TO_RIGHT_DIAGONAL_DOWN {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x+1,y+1};
+            }
+        },
+        LEFT_TO_RIGHT_DIAGONAL_UP {
+            @Override
+            int[] getNextCellPosition(int x,int y) {
+                return new int[]{x+1,y-1};
+            }
+        };
+        abstract int[] getNextCellPosition(int x,int y);
+
+    }
+    protected void findWordsStartingAtCell(StringBuilder foundCharsStringBuilder, int x, int y,Direction direction) {
+        while (x>=0 &&y>=0 && x < words.length && y < words[0].length) {
             foundCharsStringBuilder.append(words[x][y]);
-            int[] result = getDictionaryWordOrPrefixLength(foundCharsStringBuilder.toString());
-            if (result[1] == 1) {
+            Trie.PrefixSearchResult result = getDictionaryWordOrPrefixLength(foundCharsStringBuilder.toString());
+            if (result.isDictionaryWord) {
                 foundWords.add(foundCharsStringBuilder.toString());
-            } else if (result[0] == 0) {
-                //backtrack to make prefix match a word in dict
-                foundCharsStringBuilder.deleteCharAt(foundCharsStringBuilder.length() - 1);
+            } else if (!result.isPrefix) {
+                 return;
             }
               //prefix found ,so continue search
-            if(direction==0){ //replace if/else with enum
-                x+=1;
-            }else if(direction==1){
-                y+=1;
-            }else if(direction==2){
-                x+=1;
-                y+=1;
-            }
+            int[] nextCellPosition = direction.getNextCellPosition(x, y);
+            x=nextCellPosition[0];
+            y=nextCellPosition[1];
 
         }
     }
 
-    int[] getDictionaryWordOrPrefixLength(String key) {
-        return trie.findLengthOfMatchingPrefix(key);
+    private Trie.PrefixSearchResult getDictionaryWordOrPrefixLength(String key) {
+        return trie.findLengthIfKeyIsAMatchingPrefix(key);
     }
 }
