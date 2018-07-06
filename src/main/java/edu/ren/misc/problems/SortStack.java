@@ -7,23 +7,40 @@ import java.util.Stack;
  */
 public class SortStack {
 
-    public static void sortStack(Stack<Integer> st){
+    // Recursive sorting of stack
+
+    public static void sortStackRecursively(Stack<Integer> st){
         if (!st.isEmpty()){
             int temp = st.pop();
-            sortStack(st);
-            sortedInsert(st, temp);
+            sortStackRecursively(st);
+            sortedInsertionRecursively(st, temp);
         }
     }
 
-    private static void sortedInsert(Stack<Integer> st, int elm) {
+    private static void sortedInsertionRecursively(Stack<Integer> st, int elm) {
         System.out.println(st);
-        if (st.isEmpty() || elm > st.lastElement()){
-            st.addElement(elm);
+        if (st.isEmpty() || elm > st.peek()){
+            st.push(elm);
             return;
         }
         int temp = st.pop();
-        sortedInsert(st, elm);
+        sortedInsertionRecursively(st, elm);
         st.push(temp);
-        System.out.println("+++++++++ "+st);
+    }
+
+    // Iterative sorting descending order
+    public static Stack<Integer> sortStackIteratively(Stack<Integer> stack){
+        Stack<Integer> tempStack = new Stack<>();
+
+        while(!stack.isEmpty()){
+            Integer elm = stack.pop();
+
+            while(!tempStack.isEmpty() && elm > tempStack.peek()){
+                Integer top = tempStack.pop();
+                stack.push(top);
+            }
+            tempStack.push(elm);
+        }
+        return tempStack;
     }
 }
