@@ -33,7 +33,35 @@ public class SortableLinkedListTest {
         assertThat(sortableLinkedList.toString(), is("1->2->3->4->10->50->60"));
     }
 
-    private LinkedList<Integer> getIntegerList(int... values) {
+    @Test
+    public void testReverseK() {
+        LinkedList<Integer> linkedList = getIntegerList(1, 2, 3, 4, 5, 6);
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList);
+        assertThat(sortableLinkedList.toString(), is("1->2->3->4->5->6"));
+        sortableLinkedList.reverseK(2);
+        assertThat(sortableLinkedList.toString(), is("2->1->4->3->6->5"));
+    }
+
+    @Test
+    public void testReverseFullList() {
+        LinkedList<Integer> linkedList = getIntegerList(1, 2, 3, 4, 5, 6);
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList);
+        assertThat(sortableLinkedList.toString(), is("1->2->3->4->5->6"));
+        Node<Integer> head = sortableLinkedList.head;
+        Node<Integer> start = sortableLinkedList.reverseSubList(head, 6);
+        assertThat(new SortableLinkedList(start).toString(),is("6->5->4->3->2->1"));
+    }
+
+    @Test
+    public void testReverseSublist() {
+        LinkedList<Integer> linkedList = getIntegerList(1, 2, 3, 4, 5, 6);
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList);
+        assertThat(sortableLinkedList.toString(), is("1->2->3->4->5->6"));
+        Node<Integer> head = sortableLinkedList.head;
+        Node<Integer> start = sortableLinkedList.reverseSubList(head, 4);
+        assertThat(new SortableLinkedList(start).toString(),is("4->3->2->1"));
+    }
+        private LinkedList<Integer> getIntegerList(int... values) {
         LinkedList<Integer> list = new LinkedList<>();
         for (int value : values) {
             list.insertAtEnd(value);
