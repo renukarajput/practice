@@ -107,4 +107,46 @@ public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
 
         return resultList;
     }
+
+    public void reverseK(int k) {
+        reverseK(head, k);
+    }
+
+    private void reverseK(Node<T> head, int k) {
+        boolean headDone = false;
+        Node<T> prevSlotEnd=null;
+        while (head!= null) {
+            Node<T> startOfNextSlot = getEndOfSlot(head, k).next;
+            Node<T> newHead = reverseSubList(head, k);
+            if(prevSlotEnd!=null){
+                prevSlotEnd.next=newHead;
+            }
+            if (!headDone) {
+                this.head = newHead;
+                headDone = true;
+            }
+            prevSlotEnd=head;
+            Node<T> nextHead = startOfNextSlot;
+            head = nextHead;
+        }
+    }
+
+    private Node<T> getEndOfSlot(Node<T> head, int k) {
+        while (--k > 0 && head.next != null) {
+            head = head.next;
+        }
+        return head;
+    }
+
+     Node<T> reverseSubList(Node<T> start, int k) {
+        Node<T> prevNode = null;
+        Node<T> currentNode = start;
+        while (k-- >0) {
+            Node<T> nextNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        return prevNode;
+    }
 }
