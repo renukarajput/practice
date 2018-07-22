@@ -26,4 +26,12 @@ public class Node<T> {
                 ", rightChild=" + right +
                 '}';
     }
+
+    public void setLeftChild(Node<T> leftChild) {
+        this.leftChild = leftChild;
+    }
+
+    public void setRightChild(Node<T> rightChild) {
+        this.rightChild = rightChild;
+    }
 }

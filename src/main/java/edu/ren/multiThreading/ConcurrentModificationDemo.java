@@ -1,9 +1,8 @@
 package edu.ren.multiThreading;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * Created by rrn3194 on 3/14/18.
@@ -17,6 +16,7 @@ public class ConcurrentModificationDemo {
         safeIteration(list);
         System.out.println("================ "+ list.size());
         list.forEach(x-> System.out.print(x+"**"));
+        iterateMap();
     }
 
     private static void unsafeIteration(List<String> list) {
@@ -37,5 +37,23 @@ public class ConcurrentModificationDemo {
             iterator.remove();
 //            count++;
         }
+    }
+
+    private static void iterateMap(){
+        ConcurrentMap<String, Integer> map = new ConcurrentHashMap<>();
+        map.put("renuka", 10);
+        map.put("john", 20);
+        map.put("smith", 5);
+        map.put("dave", 30);
+        map.put("xyz", 40);
+        map.put("def", 50);
+        Iterator<Map.Entry<String, Integer>> iterator = map.entrySet().iterator();
+
+//       map.forEach((x,y)->{map.remove(x,y);});
+
+        while (iterator.hasNext()){
+            map.remove(iterator.next().getKey());
+        }
+        System.out.println("map size - "+ map.size());
     }
 }

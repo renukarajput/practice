@@ -37,4 +37,32 @@ public class Palindrome {
 
         return count;
     }
+
+    public static boolean isPalindrome(String input) {
+        int start = 0;
+        int end = input.length() - 1;
+        while (start <= end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+    // Recursive palindrome
+    public static boolean isStringPalindrome(String input, int start, int end) {
+
+        if (start == end)
+            return true;
+
+        if (input.charAt(start) != input.charAt(end))
+            return false;
+
+        if (start < end)
+            return isStringPalindrome(input, start + 1, end - 1);
+
+        return true;
+    }
 }

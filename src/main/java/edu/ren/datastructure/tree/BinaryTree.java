@@ -10,6 +10,14 @@ public class BinaryTree<T> {
         root = null;
     }
 
+    public BinaryTree(Node<T> root) {
+        this.root = root;
+    }
+
+    public Node<T> getRoot() {
+        return root;
+    }
+
     public void insert(T val) {
         if (root == null) {
             this.root = new Node<>(val);
@@ -28,6 +36,7 @@ public class BinaryTree<T> {
             return true;
         }
         boolean isInserted = insert(root.leftChild, val);
+
         if (!isInserted) {
             isInserted = insert(root.rightChild, val);
         }
@@ -63,7 +72,7 @@ public class BinaryTree<T> {
             return (1 + sumOfNumberOfNodes(root.leftChild) + sumOfNumberOfNodes(root.rightChild));
     }
 
-    public Node<T> createMirrorTree(Node<T> root){
+    public Node<T> createMirrorTree(Node<T> root) {
         if (root == null)
             return root;
 
@@ -139,6 +148,33 @@ public class BinaryTree<T> {
         }
     }
 
+    public void findkThSmallest(Node<T> root, int k) {
+        int[] count = new int[1];
+        count[0] = 0;
+        findkThSmallest(root, k, count);
+    }
+
+    private void findkThSmallest(Node<T> node, int k, int[] count) {
+        count[0]++;
+        if (k == count[0]) {
+            System.out.println(k + "Th smallest : " + node.val + "--------------> Cnt : " + count[0]);
+            return;
+        }
+        if (node.rightChild == null && node.leftChild == null) {
+            return;
+        }
+        findkThSmallest(node.leftChild, k, count);
+        findkThSmallest(node.rightChild, k, count);
+    }
+
+    private void inOrder(Node<T> root) {
+        if (root != null) {
+            inOrder(root.leftChild);
+            System.out.println(root.val);
+            inOrder(root.rightChild);
+        }
+    }
+
     public List<T> searchPath(T value) {
         List<T> list = new LinkedList<>();
         T found = searchPath(root, value, list);
@@ -172,7 +208,7 @@ public class BinaryTree<T> {
     }
 
 
-    //iterative inorder
+    //iterative inorder - this has redundant code
     public void iterativeInorder() {
         Node<T> current = this.root;
         Stack<Node<T>> stack = new Stack<>();
@@ -193,6 +229,30 @@ public class BinaryTree<T> {
             while (current != null) {
                 stack.push(current);
                 current = current.leftChild;
+            }
+        }
+    }
+
+    // iterative inorder
+    public void inOrderByLoop() {
+        Node<T> current = this.root;
+        Stack<Node<T>> stack = new Stack<>();
+
+        while (true) {
+            if (current != null) {
+                stack.push(current);
+                current = current.leftChild;
+            } else {
+                if (!stack.isEmpty()) {
+                    Node<T> top = stack.pop();
+                    System.out.print(top.val + " - ");
+                if (top.rightChild != null) {
+                    current = top.rightChild;
+                }
+                } else {
+                   break;
+                }
+
             }
         }
     }

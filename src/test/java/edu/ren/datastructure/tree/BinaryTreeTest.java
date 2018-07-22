@@ -138,6 +138,13 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void testInOrderByLoop() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.inOrderByLoop();
+    }
+
+    @Test
     public void kThSmallestElment() {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
         BinaryTreePrinter.printNode(treeOne.root);
@@ -233,6 +240,13 @@ public class BinaryTreeTest {
         Node<Integer> mirrorTree = treeOne.createMirrorTree(treeOne.root);
         BinaryTreePrinter.printNode(mirrorTree);
 //        assertThat(treeOne.createMirrorTree(treeOne.root),is(10));
+    }
+
+    @Test
+    public void findKthSmallest() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        treeOne.findkThSmallest(treeOne.root,3);
     }
 
 

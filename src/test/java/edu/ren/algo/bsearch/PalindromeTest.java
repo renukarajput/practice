@@ -96,4 +96,51 @@ public class PalindromeTest {
     public void numberOfCharsRequired7() {
         assertThat(new Palindrome().numberOfCharsRequired("banana"),is(5));
     }
+
+    @Test
+    public void input1() {
+        assertThat(Palindrome.isPalindrome("banana"),is(false));
+    }
+
+    @Test
+    public void input2() {
+        assertThat(Palindrome.isPalindrome("aabbaa"),is(true));
+    }
+
+    @Test
+    public void input3() {
+        assertThat(Palindrome.isPalindrome("aabbaa"),is(true));
+    }
+
+    @Test
+    public void input4() {
+        assertThat(Palindrome.isPalindrome("renuka"),is(false));
+    }
+
+    @Test
+    public void input5() {
+        assertThat(Palindrome.isPalindrome("nitin"),is(true));
+    }
+
+    //Recursive palindrome check
+    @Test
+    public void input6() {
+        assertThat(Palindrome.isStringPalindrome("nitin",0,4),is(true));
+    }
+
+    @Test
+    public void input7() {
+        assertThat(Palindrome.isStringPalindrome("renuka", 0, 5),is(false));
+    }
+
+    @Test
+    public void input8() {
+        assertThat(Palindrome.isStringPalindrome("malayalam", 0, 8),is(true));
+    }
+
+    @Test
+    public void input9() {
+        assertThat(Palindrome.isStringPalindrome("aba", 0, 2),is(true));
+        assertThat(Palindrome.isStringPalindrome("abaa", 0, 3),is(false));
+    }
 }
