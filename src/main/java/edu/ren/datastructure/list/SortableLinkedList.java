@@ -1,14 +1,10 @@
 package edu.ren.datastructure.list;
 
 public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
-    LinkedList<T> resultList = new LinkedList<>();
+
 
     public SortableLinkedList(Node<T> head) {
         this.head=head;
-    }
-
-    public SortableLinkedList(LinkedList<T> linkedList) {
-        this.head = linkedList.head;
     }
 
     public void mergeSortInPlace(){
@@ -52,7 +48,7 @@ public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
         midNode.next = null;
         LinkedList<T> left = mergeSort(head);
         LinkedList<T> right = mergeSort(nextOfMid);
-        return merge(left, right, resultList);
+        return merge(left, right);
     }
 
     private Node<T> getMiddle(Node head) {
@@ -71,11 +67,11 @@ public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
 
 
     // 3 1 4 2
-    private LinkedList<T> merge(LinkedList<T> first, LinkedList<T> second, LinkedList<T> resultList) {
+    private LinkedList<T> merge(LinkedList<T> first, LinkedList<T> second) {
+        LinkedList<T> resultList = new LinkedList<>();
         int i = 0, j = 0;
-        int firstLen = first.size();
-        int secondLen = second.size();
-        while (i < firstLen && j < secondLen) {
+
+        while (i < first.size() && j < second.size()) {
             if (((Comparable) first.get(i)).compareTo(second.get(j)) < 0) {
                 resultList.insertAtEnd(first.get(i));
                 i++;
@@ -85,12 +81,12 @@ public class SortableLinkedList<T extends Comparable<T>> extends LinkedList<T> {
             }
         }
 
-        while (i < firstLen){
+        while (i < first.size()){
             resultList.insertAtEnd(first.get(i));
             i++;
         }
 
-        while (j < secondLen){
+        while (j < second.size()){
             resultList.insertAtEnd(second.get(j));
             j++;
         }

@@ -16,12 +16,11 @@ public class SortableLinkedListTest {
         linkedList.insertAtEnd(1);
         linkedList.insertAtEnd(4);
         linkedList.insertAtEnd(2);
-//        linkedList.insertAtEnd(6);
-//        linkedList.insertAtEnd(5);
-//        linkedList.insertAtEnd(0);
-        SortableLinkedList<Integer> s1 = new SortableLinkedList<>(linkedList);
-        assertThat((s1.mergeSort(linkedList.head)).toString(), is("1->2->3->4"));
-//        assertThat((s1.mergeSort(linkedList.head)).toString(), is("0->1->2->3->4->5->6"));
+        linkedList.insertAtEnd(6);
+        linkedList.insertAtEnd(5);
+        linkedList.insertAtEnd(0);
+        SortableLinkedList<Integer> s1 = new SortableLinkedList<>(linkedList.head);
+        assertThat((s1.mergeSort(linkedList.head)).toString(), is("0->1->2->3->4->5->6"));
     }
 
     @Test
