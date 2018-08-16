@@ -2,13 +2,16 @@ package edu.ren.datastructure.interviewBit;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 /**
  * Created by rrn3194 on 8/7/18.
  */
 public class DuplicateElementsTest {
 
     @Test
-    public void input1() {
+    public void inputWithMultipleDuplicates() {
         ListNode listNode = new ListNode(1);
         listNode.next = new ListNode(2);
         listNode.next.next = new ListNode(2);
@@ -16,21 +19,21 @@ public class DuplicateElementsTest {
         listNode.next.next.next.next = new ListNode(3);
         listNode.next.next.next.next.next = new ListNode(3);
 
-       new DuplicateElements().removeDuplicates(listNode);
-       // ListNode listNode1 = new Solution().deleteDuplicates(listNode);
-        System.out.println(ListNodeProxy.stringFromListNode(listNode));
+        new DuplicateElements().removeDuplicates(listNode);
+        assertThat(ListNodeProxy.stringFromListNode(listNode), is("1->2->3"));
+
     }
 
     @Test
-    public void input2() {
+    public void inputWithoutDuplicateForSize1() {
         ListNode listNode = new ListNode(1);
 
         new DuplicateElements().removeDuplicates(listNode);
-        System.out.println(ListNodeProxy.stringFromListNode(listNode));
+        assertThat(ListNodeProxy.stringFromListNode(listNode), is("1"));
     }
 
     @Test
-    public void input3() {
+    public void inputWithDuplicate() {
         ListNode listNode = new ListNode(1);
         listNode.next = new ListNode(2);
         listNode.next.next = new ListNode(2);
@@ -40,16 +43,16 @@ public class DuplicateElementsTest {
         listNode.next.next.next.next.next.next = new ListNode(4);
 
         new DuplicateElements().removeDuplicates(listNode);
-        System.out.println(ListNodeProxy.stringFromListNode(listNode));
+        assertThat(ListNodeProxy.stringFromListNode(listNode), is("1->2->3->4"));
     }
 
     @Test
-    public void input4() {
+    public void inputWithoutDuplicateSizeThree() {
         ListNode listNode = new ListNode(1);
         listNode.next = new ListNode(2);
         listNode.next.next = new ListNode(3);
 
         new DuplicateElements().removeDuplicates(listNode);
-        System.out.println(ListNodeProxy.stringFromListNode(listNode));
+        assertThat(ListNodeProxy.stringFromListNode(listNode), is("1->2->3"));
     }
 }
