@@ -10,17 +10,6 @@ class ListNode {
 
 public class MergeListsDemo {
 
-    public static void main(String[] args) {
-        ListNode listNode = new ListNode(5);
-        listNode.next = new ListNode(8);
-        listNode.next.next = new ListNode(20);
-
-        ListNode listNode1 = new ListNode(4);
-        listNode1.next = new ListNode(11);
-        listNode1.next.next = new ListNode(15);
-        ListNode listNode2 = new MergeListsDemo().mergeTwoLists(listNode, listNode1);
-        System.out.println(listNode2);
-    }
     public ListNode mergeTwoLists(ListNode A, ListNode B) {
         ListNode resultListNode = null;
         ListNode resultHeadNode = null;
