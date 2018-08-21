@@ -49,7 +49,7 @@ public class BinarySearchTreeTest {
         BinarySearchTree<Integer> binarySearchTree = getIntegerBinaryTree(20, 10, 30,9,11, 40, 35,25);
         System.out.println("\n");
         BinaryTreePrinter.printNode(binarySearchTree.root);
-        binarySearchTree.preOrder();
+        //binarySearchTree.preOrder();
     }
 
     @Test
