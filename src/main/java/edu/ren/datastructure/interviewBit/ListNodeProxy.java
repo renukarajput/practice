@@ -1,5 +1,7 @@
 package edu.ren.datastructure.interviewBit;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringJoiner;
 
 /**
@@ -47,9 +49,45 @@ public class ListNodeProxy {
         return listNode;
     }
 
+    void add(ListNode listNode,ListNode newNode){
+        listNode = getLastNode(listNode);
+        listNode.next=newNode;
+    }
+
+    public static ListNode getLastNode(ListNode listNode) {
+        while (listNode.next!=null){
+            listNode=listNode.next;
+        }
+        return listNode;
+    }
+
+   public static ListNode fromArray(int[] values) {
+        ListNode head = new ListNode(values[0]);
+        ListNode node = head;
+        for (int i = 1; i < values.length; i++) {
+            node.next = new ListNode(values[i]);
+            node = node.next;
+        }
+        return head;
+    }
+
+   public static void createCycle(ListNode listNode,int positionOfCycle){
+        ListNode startNodeOfCycle = getNodeAtPosition(listNode, positionOfCycle);
+        ListNode lastNode=getLastNode(listNode);
+        lastNode.next=startNodeOfCycle;
+    }
+    //1-2-3
     public static String stringFromListNode(ListNode node) {
         StringJoiner stringJoiner = new StringJoiner("->");
+        Set<ListNode> listNodes=new HashSet<>();
         while (node != null) {
+            if(listNodes.contains(node.next)){
+                //cycle
+                stringJoiner.add(String.valueOf(node.val));
+                stringJoiner.add("-~~->"+node.next.val);
+                break;
+            }
+            listNodes.add(node);
             stringJoiner.add(String.valueOf(node.val));
             node = node.next;
         }
