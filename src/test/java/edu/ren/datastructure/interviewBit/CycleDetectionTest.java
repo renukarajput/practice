@@ -34,6 +34,27 @@ public class CycleDetectionTest {
     }
 
     @Test
+    public void getNumCyclesBeforeCycleDetection3() {
+        ListNode listNode = ListNodeProxy.fromArray(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+        ListNodeProxy.createCycle(listNode, 6);
+        int[] arr = new CycleDetection().numCyclesBeforeCycleDetection(listNode);
+        assertThat(arr[1], is(2));
+        assertThat(arr[0], is(0));
+    }
+    @Test
+    public void getNumCyclesBeforeCycleDetection4() {
+        int [] input=new int[100];
+        for (int i = 0; i <100 ; i++) {
+            input[i]=i;
+        }
+        ListNode listNode = ListNodeProxy.fromArray(input);
+        ListNodeProxy.createCycle(listNode, 6);
+        int[] arr = new CycleDetection().numCyclesBeforeCycleDetection(listNode);
+        assertThat(arr[1], is(1));
+        assertThat(arr[0], is(0));
+    }
+
+    @Test
     public void inputWithCycle4() {
         ListNode listNode = ListNodeProxy.fromArray(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
         ListNodeProxy.createCycle(listNode, 3);
@@ -86,6 +107,15 @@ public class CycleDetectionTest {
         ListNodeProxy.createCycle(listNode, 3);
 
         ListNode output = new CycleDetection().findStartOfLoop(listNode);
+        assertThat(output.val, is(3));
+    }
+
+    @Test
+    public void usingVisitedSet() {
+        ListNode listNode = ListNodeProxy.fromArray(new int[]{1, 2, 3, 4, 5});
+        ListNodeProxy.createCycle(listNode, 3);
+
+        ListNode output = new CycleDetection().getStartOfLoopWithVisitedSet(listNode);
         assertThat(output.val, is(3));
     }
 }
