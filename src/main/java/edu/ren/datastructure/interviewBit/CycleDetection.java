@@ -6,12 +6,32 @@ import java.util.Set;
 /**
  * Created by rrn3194 on 8/21/18.
  */
+
+// https://www.interviewbit.com/problems/list-cycle/
 public class CycleDetection {
-    // 1 2 3 4 5
-    // 5->3
+
     public ListNode findStartOfLoop(ListNode listNode) {
         return getStartOfLoop(listNode);
-        //return getStartOfLoopWithVisitedSet(listNode);
+    }
+
+    public int[] numCyclesBeforeCycleDetection(ListNode listNode) {
+        ListNode fastPointer, slowPointer, startOfCycle = getStartOfLoop(listNode);
+        fastPointer = slowPointer = listNode;
+        int fastCount = -1, slowCount = -1;
+        while (fastPointer != null && fastPointer.next != null) {
+            if (fastPointer == startOfCycle || fastPointer.next == startOfCycle) {
+                fastCount++;
+            }
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+            if (fastPointer == slowPointer) {
+                break;
+            }
+            if (slowPointer == startOfCycle) {
+                slowCount++;
+            }
+        }
+        return new int[]{slowCount, fastCount};
     }
 
     private ListNode getStartOfLoop(ListNode listNode) {
@@ -26,19 +46,19 @@ public class CycleDetection {
                 break;
             }
         }
-        if(startOfCycle!=null){
-            fastPointer=listNode;
-            while (fastPointer!=slowPointer){
-                fastPointer=fastPointer.next;
-                slowPointer=slowPointer.next;
+        if (startOfCycle != null) {
+            fastPointer = listNode;
+            while (fastPointer != slowPointer) {
+                fastPointer = fastPointer.next;
+                slowPointer = slowPointer.next;
             }
-            startOfCycle=fastPointer;
+            startOfCycle = fastPointer;
         }
 
         return startOfCycle;
     }
 
-    private ListNode getStartOfLoopWithVisitedSet(ListNode listNode) {
+    public ListNode getStartOfLoopWithVisitedSet(ListNode listNode) {
         Set<ListNode> visitedSet = new HashSet<>();
         ListNode curr = listNode;
 
