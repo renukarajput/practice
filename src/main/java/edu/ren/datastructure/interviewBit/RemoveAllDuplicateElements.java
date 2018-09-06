@@ -9,8 +9,7 @@ public class RemoveAllDuplicateElements {
 
     public ListNode removeAllDuplicates(ListNode listNode) {
         ListNode curr = listNode;
-        ListNode prevOfCurrent, nextUnequalNode = null;
-        prevOfCurrent = null;
+        ListNode prevOfCurrent = null;
         while (curr != null && curr.next != null) {
             boolean isDuplicate = false;
             ListNode nextNode = curr.next;
@@ -19,12 +18,10 @@ public class RemoveAllDuplicateElements {
                 nextNode = nextNode.next;
             }
             if (isDuplicate) {
-                nextUnequalNode = nextNode;
+                curr = nextNode;
                 if (prevOfCurrent != null) {
-                    prevOfCurrent.next = nextUnequalNode;
-                    curr = nextUnequalNode;
+                    prevOfCurrent.next = nextNode;
                 } else {
-                    curr = nextUnequalNode;
                     listNode = curr;
                 }
             } else {
