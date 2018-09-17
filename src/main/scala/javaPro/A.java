@@ -1,4 +1,4 @@
-package scala.javaPro;
+package javaPro;
 
 /**
  * Created by rrn3194 on 6/27/16.
