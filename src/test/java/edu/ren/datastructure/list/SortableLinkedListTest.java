@@ -24,15 +24,38 @@ public class SortableLinkedListTest {
 
     @Test
     public void testInPlaceMergeSort() {
-        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(new Node<>(50));
-        sortableLinkedList.insertAtEnd(60);
-        sortableLinkedList.insertAtEnd(10);
-        sortableLinkedList.insertAtEnd(3);
-        sortableLinkedList.insertAtEnd(1);
-        sortableLinkedList.insertAtEnd(4);
-        sortableLinkedList.insertAtEnd(2);
+        LinkedList<Integer> linkedList = getIntegerList(60,10,3,1,4,2,50);
+
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList.head);
         sortableLinkedList.mergeSortInPlace();
         assertThat(sortableLinkedList.toString(), is("1->2->3->4->10->50->60"));
+    }
+
+    @Test
+    public void testMergeSortInput1() {
+        LinkedList<Integer> linkedList = getIntegerList(10, 5, 6, 8, 2, 3, 1, 4);
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList.head);
+
+        sortableLinkedList.mergeSortInPlace();
+        assertThat(sortableLinkedList.toString(), is("1->2->3->4->5->6->8->10"));
+    }
+
+    @Test
+    public void testMergeSortInput2() {
+        LinkedList<Integer> linkedList = getIntegerList(10);
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList.head);
+
+        sortableLinkedList.mergeSortInPlace();
+        assertThat(sortableLinkedList.toString(), is("10"));
+    }
+
+    @Test
+    public void testMergeSortInput3() {
+        LinkedList<Integer> linkedList = getIntegerList(10,5);
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList.head);
+
+        sortableLinkedList.mergeSortInPlace();
+        assertThat(sortableLinkedList.toString(), is("5->10"));
     }
 
     private LinkedList<Integer> getIntegerList(int... values) {
