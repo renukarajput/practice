@@ -7,7 +7,7 @@ class ListNode {
     public ListNode next;
     ListNode(int x) { val = x; next = null; }
 
-   @Override
+    @Override
     public String toString() {
         return ListNodeProxy.stringFromListNode(this);
     }
