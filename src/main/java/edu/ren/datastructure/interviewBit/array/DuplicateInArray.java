@@ -5,7 +5,7 @@ package edu.ren.datastructure.interviewBit.array;
  */
 public class DuplicateInArray {
 
-    @Test
+
     public void test() {
         int arr[] = {3, 2, 4, 5, 3};
     }
