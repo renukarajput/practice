@@ -19,4 +19,23 @@ public class FillRowColumnTest {
         new FillRowColumn().fillRowAndCol(arr);
     }
 
+    @Test
+    public void input1() {
+        int arr[][] = {
+                {0, 0, 0, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 1, 0}};
+        new FillRowColumnWithExtraSpace().fillRowAndCol(arr);
+    }
+
+    @Test
+    public void input() {
+        int arr[][] = {
+                {0, 0, 0},
+                {0, 1, 0},
+                {0, 0, 0}};
+        new FillRowColumnWithExtraSpace().fillRowAndCol(arr);
+    }
+
 }

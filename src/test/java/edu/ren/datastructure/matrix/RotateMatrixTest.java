@@ -2,7 +2,9 @@ package edu.ren.datastructure.matrix;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -27,6 +29,19 @@ public class RotateMatrixTest {
     }
 
     @Test
+    public void rotateSquareMatrixx() {
+        int input[][] = {
+                {1, 2},
+                {3, 4}};
+        int out[][] = new RotateMatrix().getClockwiseRotatedMatrix(input);
+        int output[][] = {
+                {3, 1},
+                {4, 2}};
+        assertArrayEquals(out, output);
+
+    }
+
+    @Test
     public void rotateMatrixInput1() {
         int input[][] = {
                 {1, 4, 7, 6},
@@ -41,6 +56,10 @@ public class RotateMatrixTest {
         printMatrix(result);
         assertArrayEquals(result, output);
 
+    }
+    @Test
+    public void rotateMatrixInput100() {
+        System.out.println(Long.MAX_VALUE);
     }
 
     @Test
