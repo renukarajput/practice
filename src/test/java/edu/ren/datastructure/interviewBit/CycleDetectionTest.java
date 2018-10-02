@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 public class CycleDetectionTest {
 
+
     @Test
     public void inputWithCycle1() {
         ListNode listNode = ListNodeProxy.fromArray(new int[]{1, 2, 3, 4, 5});
