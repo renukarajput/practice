@@ -1,7 +1,5 @@
 package edu.ren.datastructure.interviewBit.array;
 
-import scala.actors.threadpool.Arrays;
-
 import java.util.ArrayList;
 import java.util.List;
 

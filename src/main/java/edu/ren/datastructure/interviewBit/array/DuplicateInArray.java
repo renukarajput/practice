@@ -1,12 +1,21 @@
 package edu.ren.datastructure.interviewBit.array;
 
-/**
- * Created by rrn3194 on 10/3/18.
- */
 public class DuplicateInArray {
 
+    //[3 4 1 4]
+    //es=4*5/2 =10
+    //ac =12
+    //ep=4! =24
+    //ap= 48
+    //y/x=2 y-x=2
 
-    public void test() {
-        int arr[] = {3, 2, 4, 5, 3};
+    int and(int[] arr) {
+        int res = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            res = res ^ arr[i];
+
+        }
+        return res;
     }
 }
+
