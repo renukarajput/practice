@@ -14,6 +14,14 @@ public class BinarySearchTree {
 
     public class BinaryTreeNode {
         int val;
+
+        @Override
+        public String toString() {
+            return "BinaryTreeNode{" +
+                    "val=" + val +
+                    '}';
+        }
+
         BinaryTreeNode left;
         BinaryTreeNode right;
 
