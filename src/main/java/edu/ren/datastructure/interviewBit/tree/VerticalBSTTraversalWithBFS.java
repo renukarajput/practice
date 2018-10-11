@@ -16,28 +16,28 @@ public class VerticalBSTTraversalWithBFS {
 
     class NodeWithCount{
         int count;
-        BinarySearchTree.BinaryTreeNode binaryTreeNode;
+        TreeNode treeNode;
 
-        public NodeWithCount(int count, BinarySearchTree.BinaryTreeNode binaryTreeNode) {
+        public NodeWithCount(int count, TreeNode treeNode) {
             this.count = count;
-            this.binaryTreeNode = binaryTreeNode;
+            this.treeNode = treeNode;
         }
     }
 
 
-    private void computeInBFSOrder(BinarySearchTree.BinaryTreeNode binaryTreeNode,Map<Integer, ArrayList<Integer>> horizonIndexToNodes) {
+    private void computeInBFSOrder(TreeNode treeNode, Map<Integer, ArrayList<Integer>> horizonIndexToNodes) {
         List<NodeWithCount> queue=new ArrayList<>();
-        queue.add(new NodeWithCount(0,binaryTreeNode));
+        queue.add(new NodeWithCount(0, treeNode));
         while (!queue.isEmpty()){
             NodeWithCount head = queue.remove(0);
             horizonIndexToNodes.putIfAbsent(head.count,new ArrayList<>());
-            horizonIndexToNodes.get(head.count).add(head.binaryTreeNode.val);
-            if(head.binaryTreeNode.left!=null) {
-                queue.add(new NodeWithCount(head.count - 1, head.binaryTreeNode.left));
+            horizonIndexToNodes.get(head.count).add(head.treeNode.val);
+            if(head.treeNode.left!=null) {
+                queue.add(new NodeWithCount(head.count - 1, head.treeNode.left));
             }
 
-            if(head.binaryTreeNode.right!=null) {
-                queue.add(new NodeWithCount(head.count + 1, head.binaryTreeNode.right));
+            if(head.treeNode.right!=null) {
+                queue.add(new NodeWithCount(head.count + 1, head.treeNode.right));
             }
         }
     }

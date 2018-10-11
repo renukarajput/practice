@@ -17,7 +17,7 @@ public class VerticalBSTTraversal {
         computeInPreOrder(binarySearchTree.root, 0,0);
     }
 
-    private void computeInPreOrder(BinarySearchTree.BinaryTreeNode treeNode, int count,int level) {
+    private void computeInPreOrder(TreeNode treeNode, int count, int level) {
         if(treeNode==null){
             return;
         }

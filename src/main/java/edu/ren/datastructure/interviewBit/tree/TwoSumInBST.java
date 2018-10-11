@@ -1,13 +1,11 @@
 package edu.ren.datastructure.interviewBit.tree;
 
-import edu.ren.datastructure.interviewBit.tree.BinarySearchTree;
-
 public class TwoSumInBST {
     boolean twoSum(BinarySearchTree binarySearchTree, int sum) {
         return twoSum(binarySearchTree.root, sum);
     }
 
-    boolean twoSum(BinarySearchTree.BinaryTreeNode treeNode, int sum) {
+    boolean twoSum(TreeNode treeNode, int sum) {
         int minSumWithoutLeft = treeNode.val, maxSumWithoutRight = treeNode.val;
         if (treeNode.right == null) {
             minSumWithoutLeft = treeNode.val + treeNode.right.val;

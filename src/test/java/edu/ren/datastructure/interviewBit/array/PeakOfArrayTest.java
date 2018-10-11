@@ -26,6 +26,7 @@ public class PeakOfArrayTest {
         List<Integer> expectedPeaks= Arrays.asList(5,3);
         assertThat(expectedPeaks,hasItem(peak));
     }
+
     @Test
     public void peak_2() {
         int[] arr={1,2,3, 4, 5};

@@ -9,7 +9,7 @@ public class KthSmallestInBST {
         return res[0];
     }
 
-    void getKthSmallest(BinarySearchTree.BinaryTreeNode node, int[] k, int[] res) {
+    void getKthSmallest(TreeNode node, int[] k, int[] res) {
         if (node == null) {
             return;
         }
