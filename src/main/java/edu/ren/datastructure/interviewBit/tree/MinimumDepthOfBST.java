@@ -6,7 +6,7 @@ public class MinimumDepthOfBST {
         return minDepth(binarySearchTree.root);
     }
 
-    private int minDepth(BinarySearchTree.BinaryTreeNode node) {
+    private int minDepth(TreeNode node) {
         if (node.left == null && node.right == null) {
             return 1;
         }

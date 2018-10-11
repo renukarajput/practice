@@ -5,7 +5,7 @@ public class MaximumDepthOfBST {
         return maxDepth(binarySearchTree.root);
     }
 
-    protected int maxDepth(BinarySearchTree.BinaryTreeNode node) {
+    protected int maxDepth(TreeNode node) {
         if (node == null) {
             return 0;
         }

@@ -14,7 +14,7 @@ public class LCAOfBinaryTreeTest {
     public void preOrder() {
         int[] nodes1 = {5, 3, 4, 15, 13, 20};
         BinarySearchTree binarySearchTree = fromArray(nodes1);
-        List<BinarySearchTree.BinaryTreeNode> path = new LCAOfBinaryTree().getPath(binarySearchTree, 15);
+        List<TreeNode> path = new LCAOfBinaryTree().getPath(binarySearchTree, 15);
         System.out.println(path);
     }
     @Test
@@ -60,7 +60,13 @@ public class LCAOfBinaryTreeTest {
 
     @Test
     public void lca6() {
-        BinarySearchTree.BinaryTreeNode node=getNode(15);
+        BinarySearchTree binarySearchTree = getBinarySearchTree();
+        int result = new LCAOfBinaryTree().LCA(binarySearchTree, 5,33);
+        assertThat(result,is(5));
+    }
+
+    public static BinarySearchTree getBinarySearchTree() {
+        TreeNode node=getNode(15);
         node.left=getNode(20);
         node.left.left=getNode(35);
         node.left.left.left=getNode(26);
@@ -76,11 +82,10 @@ public class LCAOfBinaryTreeTest {
         node.left.right.left.right=getNode(24);
         BinarySearchTree binarySearchTree=new BinarySearchTree();
         binarySearchTree.root=node;
-        int result = new LCAOfBinaryTree().LCA(binarySearchTree, 5,33);
-        assertThat(result,is(5));
+        return binarySearchTree;
     }
 
-    BinarySearchTree.BinaryTreeNode getNode(int num){
-        return new BinarySearchTree().new BinaryTreeNode(num);
+    static TreeNode getNode(int num){
+        return new TreeNode(num);
     }
 }

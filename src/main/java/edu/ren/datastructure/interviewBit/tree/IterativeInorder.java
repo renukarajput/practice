@@ -8,8 +8,8 @@ public class IterativeInorder {
         return inorder(binarySearchTree.root);
     }
 
-    ArrayList<Integer> inorder(BinarySearchTree.BinaryTreeNode node) {
-        LinkedList<BinarySearchTree.BinaryTreeNode> pathStack = new LinkedList<>();
+    ArrayList<Integer> inorder(TreeNode node) {
+        LinkedList<TreeNode> pathStack = new LinkedList<>();
         final ArrayList<Integer> inorderResult = new ArrayList<>();
 
         while (true) {
@@ -20,7 +20,7 @@ public class IterativeInorder {
             if (pathStack.isEmpty()) {
                 break;
             }
-            BinarySearchTree.BinaryTreeNode topNode = pathStack.remove(0);
+            TreeNode topNode = pathStack.remove(0);
             inorderResult.add(topNode.val);
             if (topNode.right != null) {
                 node=topNode.right;
