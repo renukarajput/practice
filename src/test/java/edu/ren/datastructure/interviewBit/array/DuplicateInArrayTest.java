@@ -3,35 +3,48 @@ package edu.ren.datastructure.interviewBit.array;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
-//0 0 1
-//0 1 0
-//0 1 1
+
 public class DuplicateInArrayTest {
 
-    @Test
-    public void and() {
-        assertThat(new DuplicateInArray().and(new int[]{1,2,3}),is(0));
+    protected DuplicateInArray getDuplicateInArray() {
+        return new DuplicateInArray();
     }
 
     @Test
-    public void and_1() {
-        assertThat(new DuplicateInArray().and(new int[]{1,2,3,4}),is(0));
+    public void testDuplicate() {
+        assertThat(getDuplicateInArray().findDuplicate(new Integer[]{5, 1, 4, 2, 3, 5}), is(5));
     }
 
     @Test
-    public void andNotZero() {
-        assertThat(new DuplicateInArray().and(new int[]{1,2,3,2}),is(not(0)));
+    public void testDuplicate1() {
+        assertThat(getDuplicateInArray().findDuplicate(new Integer[]{1, 2, 3}), is(0));
     }
 
     @Test
-    public void andNotZeroAssociative_1() {
-        assertThat(new DuplicateInArray().and(new int[]{1,2,3})^2,is(not(0)));
+    public void testDuplicate2() {
+        assertThat(getDuplicateInArray().findDuplicate(new Integer[]{1, 2, 3, 4}), is(0));
     }
 
     @Test
-    public void andNotZeroAssociative() {
-        assertThat(new DuplicateInArray().and(new int[]{1,2,3})^4,is(not(0)));
+    public void testDuplicate3() {
+        assertThat(getDuplicateInArray().findDuplicate(new Integer[]{1, 2, 3, 2}), is(2));
     }
+
+    @Test
+    public void testDuplicateWithoutExtraSpace1() {
+        assertThat(getDuplicateInArray().findDuplicate(new Integer[]{1, 4, 3, 5, 2}), is(0));
+    }
+
+    @Test
+    public void testDuplicateWithoutExtraSpace2() {
+        assertThat(getDuplicateInArray().findDuplicate(new Integer[]{1, 4, 3, 5, 4}), is(4));
+    }
+
+    @Test
+    public void testDuplicateWithoutExtraSpace3() {
+        assertThat(getDuplicateInArray().findDuplicate(new Integer[]{5, 4, 3, 1, 2, 3}), is(3));
+    }
+
+
 }
