@@ -6,18 +6,29 @@ public class RotateMatrix {
     public int[][] getClockwiseRotatedMatrix(int input[][]) {
         final int inputRowSize = input.length;
         final int inputColSize = input[0].length;
-
+        int lastColumnOfResult = inputRowSize - 1;
 
         int[][] result = new int[inputColSize][inputRowSize];
-        int col = inputRowSize - 1;
-        int row = 0;
-
-        while (col >= 0) {
-            for (int i = 0; i <= inputColSize - 1; i++) {
-                result[i][col] = input[row][i];
+        for (int rowIndex = 0; rowIndex < inputRowSize; rowIndex++) {
+            for (int colIndex = 0; colIndex < inputColSize; colIndex++) {
+                result[colIndex][lastColumnOfResult] = input[rowIndex][colIndex];
             }
-            row++;
-            col--;
+            lastColumnOfResult--;
+        }
+        return result;
+    }
+
+    public int[][] getClockwiseRotatedMatrixInPlace(int input[][]) {
+        final int inputRowSize = input.length;
+        final int inputColSize = input[0].length;
+        int lastColumnOfResult = inputRowSize - 1;
+
+        int[][] result = new int[inputColSize][inputRowSize];
+        for (int rowIndex = 0; rowIndex < inputRowSize; rowIndex++) {
+            for (int colIndex = 0; colIndex < inputColSize; colIndex++) {
+                result[colIndex][lastColumnOfResult] = input[rowIndex][colIndex];
+            }
+            lastColumnOfResult--;
         }
         return result;
     }

@@ -20,7 +20,7 @@ public class EmployeeTest {
 
         System.out.println(empList);
         Collections.sort(empList);
-        System.out.println("Sorted list based on name = "+empList);
+        System.out.println("Sorted list based on name = " + empList);
     }
 
     @Test // comparator
@@ -33,7 +33,22 @@ public class EmployeeTest {
         empList.add(new Employee("rakesh", 700, 29));
         empList.add(new Employee("yogesh", 150, 20));
 
-        Collections.sort(empList,ageComparator);
-        System.out.println("Sorted list based on Age = "+empList);
+        Collections.sort(empList, ageComparator);
+        System.out.println("Sorted list based on Age = " + empList);
+    }
+
+    @Test
+    public void test() {
+        Human[] empArr = new Employee[3];
+        empArr[0] = new Employee("renuka", 100, 24);
+        empArr[1] = new Employee("nilesh", 900, 25);
+        empArr[2] = new Labour("jayesh", 600, 27);
+        System.out.println("========");
+
+        //Object x[] = new String[3];
+        // x[0] = new Integer(0);
+
     }
 }
+
+

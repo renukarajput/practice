@@ -4,10 +4,10 @@ package edu.ren.comparison;
 /**
  * Created by rrn3194 on 9/22/17.
  */
-public class Employee implements Comparable<Employee> {
-   String name;
-   Integer salary;
-   Integer age;
+public class Employee extends Human implements Comparable<Employee> {
+    String name;
+    Integer salary;
+    Integer age;
 
     @Override
     public boolean equals(Object o) {
@@ -31,6 +31,15 @@ public class Employee implements Comparable<Employee> {
         this.name = name;
         this.salary = salary;
         this.age = age;
+    }
+
+    @Override
+    public String getSocialStatus() {
+        return "employee";
+    }
+
+    public static String getOrigin() {
+        return "employee-origin";
     }
 
     @Override

@@ -1,8 +1,11 @@
 package edu.ren.datastructure.list;
 
 import org.junit.Test;
+
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -24,7 +27,7 @@ public class SortableLinkedListTest {
 
     @Test
     public void testInPlaceMergeSort() {
-        LinkedList<Integer> linkedList = getIntegerList(60,10,3,1,4,2,50);
+        LinkedList<Integer> linkedList = getIntegerList(60, 10, 3, 1, 4, 2, 50);
 
         SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList.head);
         sortableLinkedList.mergeSortInPlace();
@@ -50,8 +53,17 @@ public class SortableLinkedListTest {
     }
 
     @Test
+    public void testMergeSortInPlace() {
+        LinkedList<Integer> linkedList = getIntegerList(5, 66, 68, 42, 73, 25);
+        SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList.head);
+
+        sortableLinkedList.mergeSortInPlace();
+        assertThat(sortableLinkedList.toString(), is("5->25->42->66->68->73"));
+    }
+
+    @Test
     public void testMergeSortInput3() {
-        LinkedList<Integer> linkedList = getIntegerList(10,5);
+        LinkedList<Integer> linkedList = getIntegerList(10, 5);
         SortableLinkedList<Integer> sortableLinkedList = new SortableLinkedList<>(linkedList.head);
 
         sortableLinkedList.mergeSortInPlace();

@@ -15,3 +15,14 @@ package scala.concept
       println("output : "+obj(5))
     }
   }
+
+object Test{
+  def main(args: Array[String]): Unit = {
+    val arr = Array(0,0,3,0,5)
+    if(arr.forall(_ == 0)) "0"
+    else
+      println("else -- ")
+
+    print(arr.mkString(" "))
+  }
+}

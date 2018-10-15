@@ -1,9 +1,7 @@
 package edu.ren.datastructure.interviewBit.tree;
 
-import scala.actors.threadpool.Arrays;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
