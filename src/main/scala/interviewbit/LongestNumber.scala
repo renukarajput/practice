@@ -7,7 +7,6 @@ val arr=Array(0,0,0,0)
   print(brr.mkString(" "));
   def largestNumber(A: Array[Int]): String  = {
     if (A.forall(_ == 0)) {
-      print("--if--")
       "0"
     }
     else {

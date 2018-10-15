@@ -1,6 +1,7 @@
 package edu.ren.datastructure.interviewBit.tree;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PathSumExistsInAllPaths {
@@ -22,7 +23,9 @@ public class PathSumExistsInAllPaths {
 
         if (root.left == null && root.right == null) {
             if (currentSum[0] == sum) {
-                allPaths.add(new ArrayList<>(stack));
+                ArrayList<Integer> copyStack = new ArrayList<>(stack);
+                Collections.reverse(copyStack);
+                allPaths.add(copyStack);
                 return true;
             }
             return false;

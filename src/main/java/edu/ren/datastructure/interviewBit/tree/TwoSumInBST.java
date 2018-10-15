@@ -1,23 +1,40 @@
 package edu.ren.datastructure.interviewBit.tree;
 
+
 public class TwoSumInBST {
     boolean twoSum(BinarySearchTree binarySearchTree, int sum) {
-        return twoSum(binarySearchTree.root, sum);
+        return twoSum(binarySearchTree.root,binarySearchTree.root, sum);
     }
 
-    boolean twoSum(TreeNode treeNode, int sum) {
-        int minSumWithoutLeft = treeNode.val, maxSumWithoutRight = treeNode.val;
-        if (treeNode.right == null) {
-            minSumWithoutLeft = treeNode.val + treeNode.right.val;
+   private boolean twoSum(TreeNode treeNode,final TreeNode root, int sum) {
+        if(treeNode==null){
+            return false;
+        }
+        int remainingSum = sum - treeNode.val;
+        TreeNode node=search(root,treeNode, remainingSum);
+        if(node!=null){
+            System.out.println(treeNode.val+" + "+node.val+" = "+sum);
+            return true;
         }
 
-        if (treeNode.left != null) {
-            maxSumWithoutRight = treeNode.val + treeNode.left.val;
+        if(twoSum(treeNode.left,root,sum))
+            return true;
+        if( twoSum(treeNode.right,root,sum))
+            return true;
+        return false;
+    }
+
+   private TreeNode search(TreeNode rootNode, final TreeNode pair,int num) {
+        if (rootNode == null) {
+            return null;
         }
-        if (sum <= minSumWithoutLeft) {
-            return twoSum(treeNode.right, sum - treeNode.right.val);
+        if (rootNode.val == num && rootNode!=pair) {
+            return rootNode;
         }
-    return false;
+        if (rootNode.val < num) {
+            return search(rootNode.right,rootNode, num);
+        }
+        return search(rootNode.left,rootNode, num);
     }
 
 }
