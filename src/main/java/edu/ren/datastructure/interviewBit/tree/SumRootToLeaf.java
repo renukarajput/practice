@@ -5,7 +5,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class SumRootToLeaf {
-    int getSum(TreeNode root) {
+    public int getSum(BinarySearchTree binarySearchTree) {
+        return getSum(binarySearchTree.root);
+    }
+
+    private int getSum(TreeNode root) {
         Deque<TreeNode> stack = new ArrayDeque<>();
         BigInteger sum = new BigInteger("0");
         StringBuilder numberAsString = new StringBuilder();

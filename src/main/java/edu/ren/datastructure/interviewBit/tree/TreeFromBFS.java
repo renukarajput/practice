@@ -31,7 +31,7 @@ public class TreeFromBFS {
     }
 
     private TreeNode getNode(Map<Integer, TreeNode> nodes, int[] arr, int i) {
-        if (arr[i] == -1 || i > arr.length - 1) {
+        if (i > arr.length - 1||arr[i] == -1) {
             return null;
         }
         if (!nodes.containsKey(i)) {

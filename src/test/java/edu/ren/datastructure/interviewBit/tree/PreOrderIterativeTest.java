@@ -18,6 +18,10 @@ public class PreOrderIterativeTest {
         BinarySearchTree binarySearchTree=new TreeFromBFS().createFromArray(new int[]{1,2,6,3,5,8,-1,4,-1,7,-1,2,3});
        // BinaryTreePrinter.printNode(binarySearchTree.root);
         List<Integer> expected= Arrays.asList(1,2,3,4,5,7,6,8,2,3);
-        assertThat(new PreOrderIterative().preOrder(binarySearchTree.root),is(expected));
+        assertThat(getPreOrderIterative().preOrder(binarySearchTree.root),is(expected));
+    }
+
+    protected PreOrderIterative getPreOrderIterative() {
+        return new PreOrderIterative();
     }
 }

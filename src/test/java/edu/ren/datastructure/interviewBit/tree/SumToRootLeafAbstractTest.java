@@ -10,14 +10,14 @@ public abstract class SumToRootLeafAbstractTest {
     @Test
     public void getSum() {
         BinarySearchTree binarySearchTree=new TreeFromBFS().createFromArray(new int[]{1,2,3});
-        assertThat(getSumRootToLeaf().getSum(binarySearchTree.root),is(25));
+        assertThat(getSumRootToLeaf().getSum(binarySearchTree),is(25));
     }
 
     @Test
     public void getSum_1() {
         BinarySearchTree binarySearchTree=new TreeFromBFS().createFromArray(new int[]{1,2,6,3,5,8,-1,4,-1,7,-1,2,3});
         BinaryTreePrinter.printNode(binarySearchTree.root);
-        assertThat(getSumRootToLeaf().getSum(binarySearchTree.root),is(841));
+        assertThat(getSumRootToLeaf().getSum(binarySearchTree),is(841));
     }
 
 

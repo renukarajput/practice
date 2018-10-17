@@ -16,7 +16,6 @@ public class BinarySearchTree {
         BinarySearchTree binarySearchTree = new BinarySearchTree();
         for (int node : nodes) {
             binarySearchTree.insert(node);
-
         }
         return binarySearchTree;
     }
