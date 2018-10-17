@@ -25,6 +25,22 @@ public class LinkedList<T> {
         }
     }
 
+    public void insertAtIndex(int index,T val) {
+        if (index == 0) {
+            Node<T> oldHead = getNode(0);
+            Node<T> newHead = new Node<>(val);
+            newHead.next = oldHead;
+            head = newHead;
+            return;
+        }
+        Node<T> prevNode = getNode(index - 1);
+        Node<T> nextNode = getNode(index );
+        Node<T> newNode = new Node<>(val);
+        prevNode.next = newNode;
+        newNode.next = nextNode;
+
+    }
+
     public void insertAtEnd(T val) {
         if (head == null) {
             head = new Node<>(val);
@@ -60,6 +76,15 @@ public class LinkedList<T> {
         curr.next = nodeToInsert;
     }
 
+
+    public Node<T> deleteElementAtIndex(int index){
+        Node<T> prevNode = getNode(index - 1);
+        Node<T> node = prevNode.next;
+        Node<T> nexNode=node.next;
+        prevNode.next=nexNode;
+        return node;
+
+    }
     public void deleteElement(T elm){
 
     }
@@ -152,6 +177,21 @@ public class LinkedList<T> {
         prevNode = currNode;
         currNode = nextNode;
         reverse(prevNode, currNode, nextNode);
+    }
+
+    public void rotateClockwise(int noOfTimes){
+        Node<T> current = head;
+        int size = size() - 1;
+        noOfTimes = noOfTimes % size;
+        Node<T> lastNode = getNode(size);
+
+        for (int i = 0; i < noOfTimes - 1; i++) {
+            current = current.next;
+        }
+        Node<T> newHead = current.next;
+        current.next = null;
+        lastNode.next = head;
+        head = newHead;
     }
 
     public int size() {
