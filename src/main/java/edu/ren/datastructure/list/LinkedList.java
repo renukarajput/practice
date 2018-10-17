@@ -25,7 +25,7 @@ public class LinkedList<T> {
         }
     }
 
-    public void insertAtIndex(int index,T val) {
+    public void insertAtIndex(int index, T val) {
         if (index == 0) {
             Node<T> oldHead = getNode(0);
             Node<T> newHead = new Node<>(val);
@@ -34,11 +34,15 @@ public class LinkedList<T> {
             return;
         }
         Node<T> prevNode = getNode(index - 1);
-        Node<T> nextNode = getNode(index );
+        Node<T> nextNode = getNode(index);
         Node<T> newNode = new Node<>(val);
         prevNode.next = newNode;
         newNode.next = nextNode;
 
+    }
+
+    public void insertAtEnd(Node<T> node) {
+        getNode(size() - 1).next = node;
     }
 
     public void insertAtEnd(T val) {
@@ -60,7 +64,7 @@ public class LinkedList<T> {
         lastNode.next = newNode;
     }
 
-    public void insertInSortedList(T val){
+    public void insertInSortedList(T val) {
         Node<T> curr = this.head;
         Node<T> nodeToInsert = new Node<>(val);
 
@@ -68,7 +72,7 @@ public class LinkedList<T> {
             head = new Node<>(val);
             return;
         }
-        while  (curr.next != null && (((Comparable)curr.data).compareTo(nodeToInsert.data) < 0)) {
+        while (curr.next != null && (((Comparable) curr.data).compareTo(nodeToInsert.data) < 0)) {
             curr = curr.next;
             break;
         }
@@ -77,53 +81,50 @@ public class LinkedList<T> {
     }
 
 
-    public Node<T> deleteElementAtIndex(int index){
+    public Node<T> deleteElementAtIndex(int index) {
         Node<T> prevNode = getNode(index - 1);
         Node<T> node = prevNode.next;
-        Node<T> nexNode=node.next;
-        prevNode.next=nexNode;
+        Node<T> nexNode = node.next;
+        prevNode.next = nexNode;
         return node;
 
     }
-    public void deleteElement(T elm){
 
-    }
-
-    public void deleteLast(){
+    public void deleteLast() {
         Node<T> temp = this.head;
         if (temp == null)
             return;
 
-        Node<T> lastNodePrev = getNode(size()-2);
+        Node<T> lastNodePrev = getNode(size() - 2);
         lastNodePrev.next = null;
     }
 
     public void deleteFirst() {
         Node<T> temp = this.head;
         this.head = temp.next;
-        System.out.println("temp : "+ temp.data);
+        System.out.println("temp : " + temp.data);
         temp.data = null;
     }
 
-    public T get(int index){
-       return getNode(index).data;
+    public T get(int index) {
+        return getNode(index).data;
     }
 
-    protected Node<T> getNode(int index){
+    public Node<T> getNode(int index) {
         Node<T> start = this.head;
         int i = 0;
         int size = size();
-        if(index >= size){
+        if (index >= size) {
             throw new IllegalArgumentException("index is out of bound");
         }
-        while(i != index){
+        while (i != index) {
             start = start.next;
             i++;
         }
         return start;
     }
 
-    public T getNthFromLast(int nthIndex){
+    public T getNthFromLast(int nthIndex) {
         Node<T> start = this.head;
         int diff = size() - nthIndex;
         for (int i = 0; i < diff; i++) {
@@ -132,12 +133,12 @@ public class LinkedList<T> {
         return start.data;
     }
 
-    public T getNthFromLastUsingOneLoop(int nthIndex){
+    public T getNthFromLastUsingOneLoop(int nthIndex) {
         Node<T> start = this.head;
         Node<T> firstPtr = start, secondPtr = start;
         int pos = 0;
-        while(pos < size()){
-            if (pos >= nthIndex){
+        while (pos < size()) {
+            if (pos >= nthIndex) {
                 firstPtr = firstPtr.next;
             }
             secondPtr = secondPtr.next;
@@ -146,7 +147,7 @@ public class LinkedList<T> {
         return firstPtr.data;
     }
 
-    public void reverseList(Node<T> node){
+    public void reverseList(Node<T> node) {
         Node<T> curr = node;
         Node<T> prev = null;
         Node<T> next = null;
@@ -162,12 +163,12 @@ public class LinkedList<T> {
     }
 
 
-    public void recursiveReverse(Node<T> node){
+    public void recursiveReverse(Node<T> node) {
         reverse(null, node, null);
     }
 
     private void reverse(Node<T> prevNode, Node<T> node, Node<T> nextNode) {
-       Node<T> currNode = node;
+        Node<T> currNode = node;
         if (currNode == null) {
             this.head = prevNode;
             return;
@@ -179,7 +180,7 @@ public class LinkedList<T> {
         reverse(prevNode, currNode, nextNode);
     }
 
-    public void rotateClockwise(int noOfTimes){
+    public void rotateClockwise(int noOfTimes) {
         Node<T> current = head;
         int size = size() - 1;
         noOfTimes = noOfTimes % size;

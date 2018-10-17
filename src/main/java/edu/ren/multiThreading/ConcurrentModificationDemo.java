@@ -10,17 +10,29 @@ import java.util.concurrent.ConcurrentMap;
 public class ConcurrentModificationDemo {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
-        String[] names = {"renuka", "rakesh", "neha", "smita", "rahul", "xyz", "def"};
+        String[] names = {"renuka", "rakesh", "neha", "smita", "rahul", "zen", "ren"};
         list.addAll(Arrays.asList(names));
 //        unsafeIteration(list);
-        safeIteration(list);
+//        safeIteration(list);
+        safeIterationUsingListIterator(list);
         System.out.println("================ "+ list.size());
-        list.forEach(x-> System.out.print(x+"**"));
+        list.forEach(x -> System.out.print(x+"**"));
         iterateMap();
     }
 
+    private static void safeIterationUsingListIterator(List<String> list) {
+        ListIterator<String> listItr = list.listIterator();
+
+        while (listItr.hasNext()){
+            System.out.println(listItr.next());
+//            listItr.remove();
+//            listItr.set("priya");
+            listItr.add("nil");
+        }
+    }
+
     private static void unsafeIteration(List<String> list) {
-        int count=0;
+        int count = 0;
         for (String name:list){
             System.out.println(name);
             list.remove(count);
@@ -35,7 +47,8 @@ public class ConcurrentModificationDemo {
         while (iterator.hasNext()){
         System.out.println(iterator.next());
             iterator.remove();
-//            count++;
+            list.remove(count);
+            count++;
         }
     }
 
