@@ -177,6 +177,13 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return root;
     }
 
+    public int heightOfTree(Node<T> root){
+        if (root == null)
+            return 0;
+        else
+            return 1 + Math.max(heightOfTree(root.leftChild), heightOfTree(root.rightChild));
+    }
+
     public List<Node<T>> search(T val) {
         Node<T> rootNode = this.root;
         List<Node<T>> list = new LinkedList<>();

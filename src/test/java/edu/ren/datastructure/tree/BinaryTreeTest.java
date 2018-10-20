@@ -234,6 +234,20 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void maxHeightInput1() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(3));
+    }
+
+    @Test
+    public void maxHeightInput2() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(4));
+    }
+
+    @Test
     public void testMirrorTree() {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
         BinaryTreePrinter.printNode(treeOne.root);
@@ -246,7 +260,7 @@ public class BinaryTreeTest {
     public void findKthSmallest() {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
         BinaryTreePrinter.printNode(treeOne.root);
-        treeOne.findkThSmallest(treeOne.root,3);
+        treeOne.findkThSmallest(treeOne.root, 3);
     }
 
 

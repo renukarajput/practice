@@ -72,6 +72,17 @@ public class BinaryTree<T> {
             return (1 + sumOfNumberOfNodes(root.leftChild) + sumOfNumberOfNodes(root.rightChild));
     }
 
+    public int heightOfTree(Node<T> root){
+        if (root == null)
+            return 0;
+
+            int left = heightOfTree(root.leftChild);
+            int right = heightOfTree(root.rightChild);
+
+            return (1 + (left >= right ? left : right));
+        //  return 1 + Math.max(heightOfTree(root.leftChild), heightOfTree(root.rightChild));
+    }
+
     public Node<T> createMirrorTree(Node<T> root) {
         if (root == null)
             return root;
@@ -246,13 +257,12 @@ public class BinaryTree<T> {
                 if (!stack.isEmpty()) {
                     Node<T> top = stack.pop();
                     System.out.print(top.val + " - ");
-                if (top.rightChild != null) {
-                    current = top.rightChild;
-                }
+                    if (top.rightChild != null) {
+                        current = top.rightChild;
+                    }
                 } else {
-                   break;
+                    break;
                 }
-
             }
         }
     }

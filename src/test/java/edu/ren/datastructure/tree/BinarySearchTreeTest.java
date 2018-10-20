@@ -53,6 +53,20 @@ public class BinarySearchTreeTest {
     }
 
     @Test
+    public void maxHeightInput1() {
+        BinarySearchTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(6));
+    }
+
+    @Test
+    public void maxHeightInput2() {
+        BinarySearchTree<Integer> treeOne = getIntegerBinaryTree(20, 10, 30,5,8,3,1);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(5));
+    }
+
+    @Test
     public void searchInBst() {
         BinarySearchTree<Integer> binarySearchTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
         System.out.println("\n");

@@ -61,3 +61,21 @@ public class TreeMapDemo {
     }
 }
 
+class A {
+
+    public Set<Integer> findmax(ArrayList<Integer> list, int start){
+        System.out.println("set");return null;}
+
+        public Integer findmax(ArrayList<Integer> list, int start,int y){
+        System.out.println("set");return null;}
+
+
+}
+
+class B extends A {
+    public HashSet<Integer> findmax(ArrayList<Integer> mylist, int start) {
+        System.out.println("hashset");
+        return null;
+    }
+}
+

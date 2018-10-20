@@ -16,8 +16,10 @@ public class Employee extends Human implements Comparable<Employee> {
 
         Employee employee = (Employee) o;
 
-        if (!name.equals(employee.name)) return false;
-        return age.equals(employee.age);
+//        if (!name.equals(employee.name)) return false;
+//        return age.equals(employee.age);
+
+        return !name.equals(employee.name) ? false : age.equals(employee.age);
     }
 
     @Override
