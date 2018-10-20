@@ -1,5 +1,6 @@
 package edu.ren.datastructure.interviewBit.array;
 
+import edu.ren.datastructure.interviewBit.tree.BinarySearchTree;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

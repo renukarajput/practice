@@ -1,7 +1,6 @@
 package edu.ren.datastructure.interviewBit.tree;
 
-public class BinarySearchTree {
-    TreeNode root;
+public class BinarySearchTree extends BinaryTree{
 
     void insert(int val) {
         if (root == null) {
