@@ -1,7 +1,7 @@
 package edu.ren.datastructure.interviewBit.tree;
 
 public class MaximumDepthOfBST {
-    int maxDepth(BinarySearchTree binarySearchTree) {
+    public int maxDepth(BinarySearchTree binarySearchTree) {
         return maxDepth(binarySearchTree.root);
     }
 

@@ -10,6 +10,18 @@ public class TreeNode {
                 '}';
     }
 
+    public int getVal() {
+        return val;
+    }
+
+    public TreeNode getLeft() {
+        return left;
+    }
+
+    public TreeNode getRight() {
+        return right;
+    }
+
     TreeNode left;
     TreeNode right;
 
