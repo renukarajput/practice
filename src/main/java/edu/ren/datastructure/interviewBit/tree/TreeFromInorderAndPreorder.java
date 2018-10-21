@@ -3,6 +3,7 @@ package edu.ren.datastructure.interviewBit.tree;
 import sun.text.bidi.BidiBase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TreeFromInorderAndPreOrder {
     public BinaryTree buildFrom(ArrayList<Integer> preOrder, ArrayList<Integer> inOrder){
@@ -24,7 +25,7 @@ public class TreeFromInorderAndPreOrder {
         return root;
     }
 
-    private int getIndexInOrder(int root,ArrayList<Integer> inOrder,int start,int end) {
+    static int getIndexInOrder(int root, List<Integer> inOrder, int start, int end) {
       int maxIndex=-1;
         for (int i = start; i <= end; i++) {
             if(inOrder.get(i)==root){
