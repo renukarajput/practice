@@ -2,6 +2,8 @@ package edu.ren.datastructure.interviewBit.tree;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -23,4 +25,21 @@ public class BinarySearchTreeTest {
         assertThat(binarySearchTree.root.left.left.left,is(nullValue()));
         assertThat(binarySearchTree.root.left.left.right,is(nullValue()));
     }
+
+    public static void main(String[] args) {
+        final test[] values = Some.some1.values();
+        System.out.println(Arrays.toString(values));
+    }
+
+    interface test{
+         default test[] values(){
+            return new test[0];
+        }
+    }
+    enum Some implements test{
+        some1,
+        some2,
+        some3;
+    }
+
 }
