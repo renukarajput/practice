@@ -96,6 +96,26 @@ public class BinaryTree<T> {
         return root;
     }
 
+    // structure as well as node values
+    public int isSameTree(Node<T> node1, Node<T> node2) {
+        if (node1 == null && node2 == null)
+            return 1;
+
+        if (node1 == null && node2 != null || node1 != null && node2 == null)
+            return 0;
+
+        if (node1.val != node2.val)
+            return 0;
+
+        if ((node1.leftChild == null && node2.leftChild == null) && (node1.rightChild == null && node2.rightChild == null))
+            return 1;
+
+        if (isSameTree(node1.leftChild, node2.leftChild) == 1 && isSameTree(node1.rightChild, node2.rightChild) == 1)
+            return 1;
+
+        return 0;
+    }
+
     public void deleteGivenNode(Node<T> nodeToDelete) {
         Node<T> rightMostChild = getRightMostNode(this.root);
 
