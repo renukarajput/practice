@@ -23,25 +23,4 @@ public class BinaryTreeEquals {
        }
        return 0;
     }
-
-    public int isSameTree(TreeNode node1, TreeNode node2) {
-        if (node1 == null && node2 == null)
-            return 1;
-
-        if ((node1.left == null && node2.left == null) && (node1.right == null && node2.right == null))
-            return 1;
-
-        if (node1 != null && node2 != null)
-            if ((node1.left == null && node2.left == null ||
-                    node1.left != null && node2.left != null) && (
-                    node1.right == null && node2.right == null ||
-                            node1.right != null && node2.right != null)) {
-
-                int left = isSameTree(node1.left, node2.left);
-                int right = isSameTree(node1.right, node2.right);
-                if (left == 1 && right == 1)
-                    return 1;
-            }
-        return 0;
-    }
 }

@@ -43,7 +43,6 @@ public class BinaryTree<T> {
         return isInserted;
     }
 
-    //structure
     public boolean isTreeSame(BinaryTree<T> t1, BinaryTree<T> t2) {
         if (t1 != null && t2 != null)
             return isTreeSame(t1.root, t2.root);
@@ -64,26 +63,6 @@ public class BinaryTree<T> {
                             node1.rightChild != null && node2.rightChild != null))
                 return isTreeSame(node1.leftChild, node2.leftChild) && isTreeSame(node1.rightChild, node2.rightChild);
         return false;
-    }
-
-    // structure as well as node values
-    public int isSameTree(Node<T> node1, Node<T> node2) {
-        if (node1 == null && node2 == null)
-            return 1;
-
-        if (node1 == null && node2 != null || node1 != null && node2 == null)
-            return 0;
-
-        if (node1.val != node2.val)
-            return 0;
-
-        if ((node1.leftChild == null && node2.leftChild == null) && (node1.rightChild == null && node2.rightChild == null))
-            return 1;
-
-        if (isSameTree(node1.leftChild, node2.leftChild) == 1 && isSameTree(node1.rightChild, node2.rightChild) == 1)
-            return 1;
-
-        return 0;
     }
 
     public int sumOfNumberOfNodes(Node<T> root) {
