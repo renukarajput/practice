@@ -26,20 +26,4 @@ public class BinarySearchTreeTest {
         assertThat(binarySearchTree.root.left.left.right,is(nullValue()));
     }
 
-    public static void main(String[] args) {
-        final test[] values = Some.some1.values();
-        System.out.println(Arrays.toString(values));
-    }
-
-    interface test{
-         default test[] values(){
-            return new test[0];
-        }
-    }
-    enum Some implements test{
-        some1,
-        some2,
-        some3;
-    }
-
 }
