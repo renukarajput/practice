@@ -1,4 +1,4 @@
-package edu.ren.datastructure.list;
+package edu.ren.datastructure.stack;
 
 import org.junit.Test;
 

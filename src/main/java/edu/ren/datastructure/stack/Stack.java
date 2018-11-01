@@ -1,5 +1,6 @@
-package edu.ren.datastructure.list;
+package edu.ren.datastructure.stack;
 
+import edu.ren.datastructure.list.LinkedList;
 
 import java.util.EmptyStackException;
 
