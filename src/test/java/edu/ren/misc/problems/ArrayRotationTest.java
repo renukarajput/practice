@@ -1,6 +1,7 @@
 package edu.ren.misc.problems;
 
 import org.junit.Test;
+import java.util.Arrays;
 
 public class ArrayRotationTest {
     @Test
@@ -36,14 +37,14 @@ public class ArrayRotationTest {
     public void rotateByInput4() {
         int arr[] = {1,2,3,4,6,8};
         ArrayRotation.leftRotate(arr, 5, arr.length);
-        for (int a: arr)
-            System.out.print(a+" ");
+        System.out.println(Arrays.toString(arr));
     }
 
     @Test
     public void rotateByInput5() {
         int input[] = {9, 4, 6, 8, 5, 0, 7};
-        ArrayRotation.rotate(input, 4);
+        int[] out = ArrayRotation.rotate(input, 4);
+        System.out.println(Arrays.toString(out));
     }
 
     @Test
@@ -62,8 +63,20 @@ public class ArrayRotationTest {
     public void rotateByInput8() {
         int arr[] = {1, 2, 3, 4, 5};
         int[] output = ArrayRotation.rotate(arr, 4);
-        for (int a:output) {
-            System.out.print(a+" ");
-        }
+        System.out.println(Arrays.toString(output));
+    }
+
+    @Test
+    public void rotateArrayByK() {
+        int arr[] = {1, 2, 3, 4, 5};
+        ArrayRotation.rotateArrByOne(arr, 2);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
+    public void rotateArrayByK_1() {
+        int arr[] = {1, 2, 3, 4, 5};
+        ArrayRotation.rotateArrByOne(arr, 3);
+        System.out.println(Arrays.toString(arr));
     }
 }

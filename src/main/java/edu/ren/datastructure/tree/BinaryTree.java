@@ -186,16 +186,20 @@ public class BinaryTree<T> {
     }
 
     private void findkThSmallest(Node<T> node, int k, int[] count) {
+        if (node == null) {
+            return;
+        }
+        findkThSmallest(node.leftChild, k, count);
+
         count[0]++;
+
         if (k == count[0]) {
             System.out.println(k + "Th smallest : " + node.val + "--------------> Cnt : " + count[0]);
             return;
         }
-        if (node.rightChild == null && node.leftChild == null) {
-            return;
-        }
-        findkThSmallest(node.leftChild, k, count);
-        findkThSmallest(node.rightChild, k, count);
+        //if (node.rightChild != null) {
+            findkThSmallest(node.rightChild, k, count);
+        //}
     }
 
     private void inOrder(Node<T> root) {

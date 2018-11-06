@@ -3,7 +3,7 @@ package edu.ren.corejava.immutable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImmutabilityDemo {
+public class CollectionImmutabilityDemo {
 
     public static void main(String[] args) {
         String[] teacherNames = {"jane", "john", "smith", "mark"};
