@@ -1,4 +1,4 @@
-package edu.ren.geeks.programs;
+package edu.ren.geeks.string;
 
 /**
  * Created by rrn3194 on 9/5/17.

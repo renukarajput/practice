@@ -1,4 +1,4 @@
-package edu.ren.geeks.programs;
+package edu.ren.geeks.string;
 
 import org.junit.Ignore;
 import org.junit.Test;

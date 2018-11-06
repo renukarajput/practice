@@ -1,10 +1,7 @@
-package edu.ren.geeks.programs;
+package edu.ren.geeks.string;
 
 import java.util.*;
 
-/**
- * Created by rrn3194 on 4/18/18.
- */
 public class NonRepeatingChars {
 
     public static Character getNonRepeatingFirstChar(List<Character> characterList) {

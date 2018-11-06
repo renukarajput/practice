@@ -1,7 +1,6 @@
-package edu.ren.geeks.programs;
+package edu.ren.geeks.string;
 
 import org.junit.Test;
-import scala.collection.immutable.Nil;
 
 import java.util.ArrayList;
 import java.util.List;
