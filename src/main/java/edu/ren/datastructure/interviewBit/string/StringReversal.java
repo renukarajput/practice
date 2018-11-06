@@ -41,10 +41,12 @@ public class StringReversal {
     private List<WordIndexRange> split(char[] input) {
         List<WordIndexRange> wordIndexRangeList = new ArrayList<>();
         int start = 0, end = 0;
+        boolean isWritten=false;
         while (end < input.length) {
             if (input[start] == SPACE) {
                 start++;
                 end++;
+                isWritten=false;
             } else {
                 //was not space and is space or end of string and end is not space
                 if (end > 0 && input[end - 1] != SPACE && input[end] == SPACE || (input[end] != SPACE && end == input.length - 1)) {
@@ -54,9 +56,15 @@ public class StringReversal {
                         wordIndexRangeList.add(new WordIndexRange(start, end - 1));
                         start = end;
                     }
+                    isWritten=true;
                 }
                 end++;
             }
+        }
+
+        if (!isWritten && input[start] != SPACE) {
+            wordIndexRangeList.add(new WordIndexRange(start,end-1));
+
         }
         return wordIndexRangeList;
     }

@@ -17,5 +17,20 @@ public class StringReversalTest {
         System.out.println(reversed);
 
     }
+    @Test
+    public void reverse_1() throws Exception {
+        String str = "  this is   a new   world  of t";
+        final String reversed = new StringReversal().reverse(str);
+        assertThat(reversed, is("t of world new a is this"));
+
+    }
+
+    @Test
+    public void reverse_2() throws Exception {
+        String str = "  a";
+        final String reversed = new StringReversal().reverse(str);
+        assertThat(reversed, is("a"));
+
+    }
 
 }
