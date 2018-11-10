@@ -19,7 +19,7 @@ PalindromePartition palindromePartition=new PalindromePartition();
 
     @Test
     public void partition_1() {
-        ArrayList<ArrayList<String>> subsets = palindromePartition.partition("aabb");
+        ArrayList<ArrayList<String>> subsets = palindromePartition.partition("aaabaaa");
         subsets.forEach(s-> System.out.println(s));
     }
 }
