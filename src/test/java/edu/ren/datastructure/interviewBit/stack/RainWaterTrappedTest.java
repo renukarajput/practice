@@ -31,9 +31,28 @@ RainWaterTrapped rainWaterTrapped=new RainWaterTrapped();
         Integer[] bars={1,2,3};
         assertThat(rainWaterTrapped.getAmount(bars),is(0));
     }
+
     @Test
     public void getAmount_1() {
         Integer[] bars={1,2,3,0,1};
         assertThat(rainWaterTrapped.getAmount(bars),is(1));
+    }
+
+    @Test
+    public void getAmount_12() {
+        Integer[] bars={1,0,2,0,1,0,3,0,1,0,2};
+        assertThat(rainWaterTrapped.getAmount(bars),is(11));
+    }
+
+    @Test
+    public void getAmount_13() {
+        Integer[] bars= {3, 0, 0, 2, 0, 4};
+        assertThat(rainWaterTrapped.getAmount(bars),is(10));
+    }
+
+    @Test
+    public void getAmount_14() {
+        Integer[] bars= {2, 0, 2};
+        assertThat(rainWaterTrapped.getAmount(bars),is(2));
     }
 }

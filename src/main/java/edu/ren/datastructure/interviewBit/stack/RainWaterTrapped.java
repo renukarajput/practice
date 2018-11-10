@@ -3,13 +3,36 @@ package edu.ren.datastructure.interviewBit.stack;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public class RainWaterTrapped {
     int getAmount(Integer[] bars) {
         return getAmount(Arrays.asList(bars));
     }
+    public int getAmount(List<Integer>  bars) {
+        // skip zeros
+        int currentIndex = 0;
+        while (currentIndex < bars.size() && bars.get(currentIndex) == 0) ++currentIndex;
 
-    int getAmount(List<Integer> bars) {
+        // check each one
+        int volume = 0;
+        Stack<Integer> stack = new Stack<>();
+        while (currentIndex < bars.size()) {
+            while (!stack.isEmpty() && bars.get(currentIndex) >= bars.get(stack.peek())) {
+                int lastRemoved = stack.pop();
+                if (stack.isEmpty()) break;
+                Integer topIndex = stack.peek();
+                int minCommonHeight = Math.min(bars.get(currentIndex), bars.get(topIndex));
+                volume += ((currentIndex - topIndex - 1) * (minCommonHeight - bars.get(lastRemoved)));
+            }
+            stack.push(currentIndex);
+            ++currentIndex;
+        }
+
+        return volume;
+    }
+
+    int getAmount_(List<Integer> bars) {
         ArrayDeque<Integer> stack = new ArrayDeque<>();
         int currentBarVolumeSum = 0, amount = 0;
         int totalAmount = 0;
@@ -27,10 +50,11 @@ public class RainWaterTrapped {
                 if (stack.isEmpty()) {
                     break;
                 }
-                if(bars.get(topIndex)<stack.getFirst()){
+                Integer newTopIndex = stack.getFirst();
+                if(bars.get(topIndex)<bars.get(newTopIndex)){
                     isMatch = true;
                 }
-                topIndex = stack.getFirst();
+                topIndex = newTopIndex;
             }
 
             if (isMatch) {
@@ -46,7 +70,7 @@ public class RainWaterTrapped {
             if(stack.isEmpty()){
                 currentBarVolumeSum=0;
             }
-            //System.out.println(i+"=="+totalAmount);
+            System.out.println(i+"=="+totalAmount);
             stack.addFirst(i);
         }
         return totalAmount;

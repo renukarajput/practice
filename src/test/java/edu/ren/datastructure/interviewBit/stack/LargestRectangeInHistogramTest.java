@@ -20,6 +20,12 @@ public class LargestRectangeInHistogramTest {
         assertThat(largestRectangeInHistogram.getMaxArea(arr), is(12));
     }
 
+   @Test
+    public void getMaxArea_2() {
+        int[] arr = {1};
+        assertThat(largestRectangeInHistogram.getMaxArea(arr), is(1));
+    }
+
 
     @Test
     public void nearestSmallestElementsOnRight() {

@@ -11,7 +11,10 @@ public class LargestRectangeInHistogram extends LargestRectangleInHistogramNaive
         int[] right = indexOfNearestSmallestElementsOnRight(arr);
         for (int i = 0; i <arr.length ; i++) {
             int numBars,area;
-            if(left[i]==-1){
+            if(left[i]==-1 && right[i]==-1){
+                numBars=arr.length;
+            }
+           else if(left[i]==-1){
               numBars=right[i];
             }else if(right[i]==-1){
                 numBars=(arr.length-1-left[i]);

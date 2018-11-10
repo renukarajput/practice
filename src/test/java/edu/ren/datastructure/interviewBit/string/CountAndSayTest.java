@@ -28,7 +28,7 @@ CountAndSay countAndSay=new CountAndSay();
         assertThat(countAndSay.nThSequence(4),is("1211"));
     }
     @Test
-    public void nThSequence() {
+    public void nThSequence_5() {
         assertThat(countAndSay.nThSequence(5),is("111221"));
     }
 }

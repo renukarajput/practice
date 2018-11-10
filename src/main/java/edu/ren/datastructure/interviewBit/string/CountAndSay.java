@@ -14,24 +14,21 @@ public class CountAndSay {
 
     char[] nThSequence(char[] seq) {
         int index = 0;
-        int lookAheadIndex = 0;
+        int lookAheadIndex = 1;
         StringBuilder stringBuilder = new StringBuilder();
         while (lookAheadIndex < seq.length) {
-            if (lookAheadIndex == seq.length - 1 || (seq[index] != seq[lookAheadIndex])) {
+            if (seq[index] != seq[lookAheadIndex]) {
                 int count = lookAheadIndex - index;
-                if (seq[index] == seq[lookAheadIndex]) { //this is last char and last equals char at index
-                    count += 1;
-                }
                 stringBuilder.append(count);
                 stringBuilder.append(seq[index]);
-                if (lookAheadIndex == seq.length - 1 && seq[index] != seq[lookAheadIndex]) {
-                    stringBuilder.append(1);
-                    stringBuilder.append(seq[lookAheadIndex]);
-                }
                 index = lookAheadIndex;
             }
             lookAheadIndex++;
         }
+//write last pending char
+        int count = lookAheadIndex - index;
+        stringBuilder.append(count);
+        stringBuilder.append(seq[index]);
 
         return stringBuilder.toString().toCharArray();
     }
