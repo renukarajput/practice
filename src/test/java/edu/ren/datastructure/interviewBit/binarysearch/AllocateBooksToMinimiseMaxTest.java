@@ -3,6 +3,7 @@ package edu.ren.datastructure.interviewBit.binarysearch;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -37,7 +38,7 @@ public class AllocateBooksToMinimiseMaxTest {
     @Test
     public void maxAllocation_3() {
         Integer[] arr={15,14,8,19,5,16,13,4,12,17,2,11,3,1};
-        assertThat(booksToMinimiseMax.maxAllocation(Arrays.asList(arr),3),is(46));
+        assertThat(booksToMinimiseMax.maxAllocation(Arrays.asList(arr),3),is(53));
     }
 
     @Test

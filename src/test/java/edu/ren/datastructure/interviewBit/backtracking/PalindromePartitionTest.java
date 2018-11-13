@@ -22,4 +22,18 @@ PalindromePartition palindromePartition=new PalindromePartition();
         ArrayList<ArrayList<String>> subsets = palindromePartition.partition("aaabaaa");
         subsets.forEach(s-> System.out.println(s));
     }
+
+    @Test
+    public void partition_2() {
+        ArrayList<ArrayList<String>> subsets = palindromePartition.partition("cccaacbcaabb");
+        subsets.forEach(s-> System.out.println(s));
+    }
+
+    @Test
+    public void partition_3() {
+        ArrayList<ArrayList<String>> subsets = palindromePartition.partition("efe");
+        subsets.forEach(s-> System.out.println(s));
+    }
+
+
 }

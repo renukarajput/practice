@@ -12,6 +12,8 @@ public class Permutations {
 
     private void permute(ArrayList<Integer> input, int size, ArrayList<ArrayList<Integer>> result) {
         if (size == input.size()) {
+             System.out.println(input);
+
             ArrayList<Integer> copy = new ArrayList<>(input);
             result.add(copy);
             return;
@@ -23,7 +25,7 @@ public class Permutations {
         }
     }
 
-    private void swap(ArrayList<Integer> input, int index1, int index2) {
+    protected void swap(ArrayList<Integer> input, int index1, int index2) {
         int temp = input.get(index1);
         input.set(index1, input.get(index2));
         input.set(index2, temp);
