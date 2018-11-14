@@ -1,6 +1,17 @@
 package edu.ren.datastructure.interviewBit.string;
 
+// https://www.interviewbit.com/problems/amazing-subarrays/
+
 public class AmazingSubstring {
+    private static final char[] VOWELS = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+
+    private boolean isVowel(char ch){
+        for (char v : VOWELS){
+            if (ch == v)
+                return true;
+        }
+        return false;
+    }
 
     public int countOfSubstrings(String input) {
         int length = 0;
@@ -8,15 +19,13 @@ public class AmazingSubstring {
         input = input.replaceAll("\\W+", "");
 
         for (int i = 0; i < input.length(); i++) {
-            if (Character.toUpperCase(input.charAt(i)) == 'A' || Character.toUpperCase(input.charAt(i)) == 'E' ||
-                    Character.toUpperCase(input.charAt(i)) == 'I' || Character.toUpperCase(input.charAt(i)) == 'O' ||
-                    Character.toUpperCase(input.charAt(i)) == 'U') {
-                System.out.println("char = " + input.charAt(i));
+            if (isVowel(input.charAt(i))) {
                 substring = input.substring(i);
                 length += substring.length();
             }
         }
-        length = length % 10003;
+        if (length >= 10003)
+            length = length % 10003;
         return length;
     }
 }
