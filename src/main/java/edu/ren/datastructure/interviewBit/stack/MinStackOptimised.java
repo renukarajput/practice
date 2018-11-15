@@ -2,7 +2,8 @@ package edu.ren.datastructure.interviewBit.stack;
 
 import java.util.ArrayDeque;
 
-public class MinStack<T extends Comparable<? super T>> {
+public class MinStackOptimised<T extends Comparable<? super T>>  extends MinStack<T> {
+
     private final ArrayDeque<T> stack;
     private final ArrayDeque<MinValueIndexPair> minStack;
 
@@ -16,7 +17,7 @@ public class MinStack<T extends Comparable<? super T>> {
         }
     }
 
-    public MinStack() {
+    public MinStackOptimised() {
         stack = new ArrayDeque<>();
         minStack = new ArrayDeque<>();
     }
@@ -35,12 +36,6 @@ public class MinStack<T extends Comparable<? super T>> {
 
     }
 
-    T top() {
-        if (stack.isEmpty()) {
-            return null;
-        }
-        return stack.getFirst();
-}
     T pop() {
         if (minStack.getFirst().index == stack.size()) {
             minStack.pop();
