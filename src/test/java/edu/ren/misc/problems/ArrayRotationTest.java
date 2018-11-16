@@ -1,82 +1,108 @@
 package edu.ren.misc.problems;
 
 import org.junit.Test;
-import java.util.Arrays;
+
+import static org.junit.Assert.assertArrayEquals;
 
 public class ArrayRotationTest {
     @Test
     public void rotateByInput1() {
-        int arr[] = {1,2,3,4,5};
-        ArrayRotation.leftRotate(arr, 4, arr.length);
-        for (int a: arr)
-            System.out.print(a+" ");
+        int actual[] = {1, 2, 3, 4, 5};
+        int expected[] = {5, 1, 2, 3, 4};
+        ArrayRotation.leftRotate(actual, 4, actual.length);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void rotateByInput2() {
-        int arr[] = {5,8,9,1,2,3,6,7};
-        ArrayRotation.leftRotate(arr, 5, arr.length);
-        for (int a: arr)
-            System.out.print(a+" ");
-    }
-
-    @Test
-    public void testModulo(){
-        System.out.println(5%3);
-        System.out.println(-5%3);
-        System.out.println(3%5);
+        int actual[] = {5, 8, 9, 1, 2, 3, 6, 7};
+        int expected[] = {3, 6, 7, 5, 8, 9, 1, 2};
+        ArrayRotation.leftRotate(actual, 5, actual.length);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void rotateByInput3() {
-        int arr[] = {1,2,3};
+        int arr[] = {1, 2, 3};
         ArrayRotation.leftRotate(arr, 5, arr.length);
     }
 
     @Test
     public void rotateByInput4() {
-        int arr[] = {1,2,3,4,6,8};
-        ArrayRotation.leftRotate(arr, 5, arr.length);
-        System.out.println(Arrays.toString(arr));
+        int actual[] = {1, 2, 3, 4, 6, 8};
+        int expected[] = {8, 1, 2, 3, 4, 6};
+        ArrayRotation.leftRotate(actual, 5, actual.length);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void rotateByInput5() {
         int input[] = {9, 4, 6, 8, 5, 0, 7};
-        int[] out = ArrayRotation.rotate(input, 4);
-        System.out.println(Arrays.toString(out));
+        int expected[] = {5, 0, 7, 9, 4, 6, 8};
+        int[] actual = ArrayRotation.rotate(input, 4);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void rotateByInput6() {
         int input[] = null;
-        ArrayRotation.rotate(input, 2);
+        int[] actual = ArrayRotation.rotate(input, 2);
+        assertArrayEquals(null, actual);
+
     }
 
     @Test
     public void rotateByInput7() {
         int input[] = {};
-        ArrayRotation.rotate(input, -2);
+        int[] actual = ArrayRotation.rotate(input, -2);
+        assertArrayEquals(input, actual);
     }
 
     @Test
     public void rotateByInput8() {
         int arr[] = {1, 2, 3, 4, 5};
+        int expected[] = {5, 1, 2, 3, 4};
         int[] output = ArrayRotation.rotate(arr, 4);
-        System.out.println(Arrays.toString(output));
+        assertArrayEquals(expected, output);
     }
 
     @Test
     public void rotateArrayByK() {
-        int arr[] = {1, 2, 3, 4, 5};
-        ArrayRotation.rotateArrByOne(arr, 2);
-        System.out.println(Arrays.toString(arr));
+        int actual[] = {1, 2, 3, 4, 5};
+        int expected[] = {4, 5, 1, 2, 3};
+        ArrayRotation.rotateArrByOne(actual, 2);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void rotateArrayByK_1() {
-        int arr[] = {1, 2, 3, 4, 5};
-        ArrayRotation.rotateArrByOne(arr, 3);
-        System.out.println(Arrays.toString(arr));
+        int actual[] = {1, 2, 3, 4, 5};
+        int expected[] = {3, 4, 5, 1, 2};
+        ArrayRotation.rotateArrByOne(actual, 3);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void rotateUsingReverse_1() {
+        int actual[] = {1, 2, 3, 4, 5, 6, 7};
+        int expected[] = {3, 4, 5, 6, 7, 1, 2};
+        ArrayRotation.rotateUsingReverse(actual, 2);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void rotateUsingReverse_2() {
+        int actual[] = {1, 2, 3, 4, 5};
+        int expected[] = {1, 2, 3, 4, 5};
+        ArrayRotation.rotateUsingReverse(actual, 5);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void rotateUsingReverse_3() {
+        int actual[] = {1, 2, 3, 4, 5};
+        int expected[] = {5, 1, 2, 3, 4};
+        ArrayRotation.rotateUsingReverse(actual, 4);
+        assertArrayEquals(expected, actual);
     }
 }

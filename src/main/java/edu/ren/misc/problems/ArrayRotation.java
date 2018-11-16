@@ -54,11 +54,28 @@ public class ArrayRotation {
     private static void rotateArr(int[] arr, int len) {
         int temp = arr[len];
         for (int i = len - 1; i >= 0; --i) {
-            arr[i+1] = arr[i];
+            arr[i + 1] = arr[i];
         }
         arr[0] = temp;
     }
 
+    //d = 2, 1 2 3 4 5 => 21 345, 21 543, 345 12
+    public static void rotateUsingReverse(int arr[], int d) {
+        int len = arr.length;
+        reverseArray(arr, 0, d - 1);
+        reverseArray(arr, d, len - 1);
+        reverseArray(arr, 0, len - 1);
+    }
 
-
+    //reverse arr[] from index start to end
+    private static void reverseArray(int[] input, int start, int end) {
+        int temp;
+        while (start < end) {
+            temp = input[start];
+            input[start] = input[end];
+            input[end] = temp;
+            start++;
+            end--;
+        }
+    }
 }
