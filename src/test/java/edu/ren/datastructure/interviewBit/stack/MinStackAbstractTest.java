@@ -18,7 +18,9 @@ public abstract class MinStackAbstractTest {
         minStack.push(5);
         minStack.push(1);
         assertThat(minStack.min(), is(1));
+        assertThat(minStack.top(), is(1));
         minStack.pop(); //pop 1
+        assertThat(minStack.top(),is(5));
         assertThat(minStack.min(), is(3));
         minStack.pop(); //pop 5
         assertThat(minStack.min(), is(3));

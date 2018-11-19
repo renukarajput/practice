@@ -44,6 +44,13 @@ public class MinStackOptimised<T extends Comparable<? super T>>  extends MinStac
         return popped;
     }
 
+    T top() {
+        if (stack.isEmpty()) {
+            return null;
+        }
+        return stack.getFirst();
+    }
+
     T min() {
         if (minStack.isEmpty()) {
             return null;
