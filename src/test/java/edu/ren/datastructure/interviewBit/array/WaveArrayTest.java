@@ -19,6 +19,14 @@ public class WaveArrayTest {
     }
 
     @Test
+    public void waveSort_0() {
+        Integer[] arr = {1, 2, 3};
+        Integer[] expected = {2, 1, 3};
+        ArrayList<Integer> result = new WaveArray().waveSort(new ArrayList(Arrays.asList(arr)));
+        assertThat(result, is(new ArrayList(Arrays.asList(expected))));
+    }
+
+    @Test
     public void waveSort_1() {
         Integer[] arr = {1, 6, 8, 9, 5}; //1 6 5 9 8
         Integer[] expected = {5, 1, 8, 6, 9};
