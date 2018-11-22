@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class MinSumPathInMatrixTest {
-    MinSumPathInMatrix minSumPathInMatrix = new MinSumPathInMatrix();
+    MinSumPathInMatrix minSumPathInMatrix = new MinSumPathInMatrix2();
 
     @Test
     public void testMinSum() {

@@ -1,8 +1,9 @@
 package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
-public class MinJumpGameArrayTest extends MinJumpGameArrayAbstractTest {
+public class MinJumGameArrayOptimisedTest extends MinJumpGameArrayAbstractTest{
+
     @Override
     protected MinJumpGameArray getMinJumpGameArray() {
-        return new MinJumpGameArray();
+        return new MinJumGameArrayOptimised();
     }
 }
