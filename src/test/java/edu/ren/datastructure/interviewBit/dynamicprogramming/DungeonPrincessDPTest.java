@@ -1,9 +1,9 @@
 package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
-public class DungeonPrincessTest extends DungeonPrincessAbstractTest{
+public class DungeonPrincessDPTest extends DungeonPrincessAbstractTest{
 
     @Override
     protected DungeonPrincess getDungeonPrincess() {
-        return new DungeonPrincess();
+        return new DungeonPrincessDP();
     }
 }

@@ -1,8 +1,6 @@
 package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Stack;
 
 public class DungeonPrincess {
@@ -43,7 +41,11 @@ public class DungeonPrincess {
 
     int minimumInititalHealth(Integer[][] grid) {
         List<List<Integer>> gridAsLists = UniquePathsInGrid.getGridAsLists(grid);
-        return minimumInititalHealth(gridAsLists, new Stack<>());
+        return minimumInititalHealth(gridAsLists);
+    }
+    protected int minimumInititalHealth(List<List<Integer>> grid){
+        return minimumInititalHealth(grid, new Stack<>());
+
     }
 
     private int minimumInititalHealth(List<List<Integer>> grid, Stack<Cell> stack) {
