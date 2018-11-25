@@ -28,4 +28,14 @@ public abstract class MaxRectangleWithAllOnesAbstractTest {
        assertThat(maxRectangleWithAllOnes.max(grid),is(6));
     }
 
+    @Test
+    public void getMaxArea_2(){
+        Integer[][] grid={
+                {1,1,1,0,1},
+                {0,1,1,1,1},
+                {1,1,1,0,1},
+                {1,1,1,1,1}};
+       assertThat(maxRectangleWithAllOnes.max(grid),is(8));
+    }
+
 }

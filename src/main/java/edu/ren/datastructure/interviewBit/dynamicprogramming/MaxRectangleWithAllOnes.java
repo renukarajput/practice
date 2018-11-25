@@ -11,7 +11,7 @@ public class MaxRectangleWithAllOnes extends Grid {
     public int max(List<List<Integer>> grid) {
         int[] colOfLastZeroInRow = new int[grid.size()];
         Arrays.fill(colOfLastZeroInRow,-1);
-        int[] rowOfLastZeroInColumn = new int[grid.size()];
+        int[] rowOfLastZeroInColumn = new int[grid.get(0).size()];
         Arrays.fill(rowOfLastZeroInColumn,-1);
         final int row = grid.size() - 1;
         final int col = grid.get(0).size() - 1;
@@ -27,8 +27,8 @@ public class MaxRectangleWithAllOnes extends Grid {
                 for (int firstColumn = maxUnSelectableColumnInRow+1; firstColumn <= j; firstColumn++) {
                     int maxSelectableColumn = Math.min(firstColumn,col);
                     int maxSelectableRow = 0;
-                    for (int k = maxUnSelectableColumnInRow+1; k <= j; k++) {
-                        maxSelectableRow = Math.max(maxSelectableRow, rowOfLastZeroInColumn[k]);
+                    for (int k = firstColumn; k <= j; k++) {
+                        maxSelectableRow = Math.max(maxSelectableRow, rowOfLastZeroInColumn[k]+1);
                     }
                      maxSelectableRow = Math.min(maxSelectableRow,row);
                     int area = (1 + j - maxSelectableColumn) * (1 + i - maxSelectableRow);
