@@ -2,6 +2,8 @@ package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
