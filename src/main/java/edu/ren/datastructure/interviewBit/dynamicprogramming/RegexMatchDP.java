@@ -10,16 +10,13 @@ public class RegexMatchDP extends RegexMatch2 {
            // result[0][0] = true;
             result[0][1] = true;
         }
-        int i1 = 0, j1 = 0;
 
-        while (i1 < word.length && j1 < pattern.length) {
-            if (word[i1] == pattern[j1]) {
-                result[i1][j1] = true;
+        for (int i = 0; i <pattern.length ; i++) {
+            if ('*'== pattern[i]) {
+                result[0][i] = true;
             } else {
                 break;
             }
-            i1++;
-            j1++;
         }
 
 
