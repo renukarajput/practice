@@ -2,10 +2,10 @@ package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
 import static org.junit.Assert.*;
 
-public class RegexMatchTest extends RegexMatchAbstractTest{
+public class RegexMatchDPTest extends RegexMatchAbstractTest{
 
     @Override
     protected RegexMatch getRegexMatch() {
-        return new RegexMatch();
+        return new RegexMatchDP();
     }
 }
