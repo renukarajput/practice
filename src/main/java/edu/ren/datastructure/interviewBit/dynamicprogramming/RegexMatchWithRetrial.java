@@ -1,9 +1,8 @@
 package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
-import java.util.Arrays;
 import java.util.Stack;
 
-public class RegexMatch2 extends RegexMatch {
+public class RegexMatchWithRetrial extends RegexMatch {
 
     @Override
     boolean isMatch(char[] word, char[] pattern) {

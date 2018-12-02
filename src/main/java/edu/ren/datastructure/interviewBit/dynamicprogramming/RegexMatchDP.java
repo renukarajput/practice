@@ -1,6 +1,6 @@
 package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
-public class RegexMatchDP extends RegexMatch2 {
+public class RegexMatchDP extends RegexMatchWithRetrial {
     @Override
     boolean isMatch(char[] word, char[] pattern) {
         boolean[][] result = new boolean[word.length + 1][pattern.length + 1];
