@@ -21,7 +21,8 @@ public class Stock2BuySell {
                 indexOfLastSell = i;
                // System.out.print("bought on day " + currentMinPriceIndex + " " + prices.get(currentMinPriceIndex));
                 //System.out.println("sold on day " + i + " " + prices.get(i));
-            } else if (currentProfit + maxProfitTillMin > maxProfit) {
+            }
+            if (currentProfit + maxProfitTillMin > maxProfit) {
                 maxProfit = currentProfit + maxProfitTillMin;
                 indexOfLastSell = i;
                // System.out.print("bought on day " + currentMinPriceIndex + " " + prices.get(currentMinPriceIndex));

@@ -20,4 +20,9 @@ public class Stock2BuySellTest {
         Integer[] arr={1,2,3};
         assertThat(stock2BuySell.maxProfit(arr),is(2));
     }
+    @Test
+    public void maxProfit_1() {
+        Integer[] arr={0,50,100,150,200,20,600};
+        assertThat(stock2BuySell.maxProfit(arr),is(780));
+    }
 }
