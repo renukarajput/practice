@@ -4,31 +4,16 @@ public class SquareRoot {
 
     public static int squareRootOfNo(int no){
         return findSquareRoot(no, 0, no);
-    }
-
-    private static int squareRootOfNo(int no, int start, int end) {
-        int mid = start + (end - start) / 2;
-        int square = mid * mid;
-        if (start <= end) {
-            if (square == no) {
-                return mid;
-            }
-            if (square < no) {
-                return squareRootOfNo(no, mid + 1, end);
-            }
-            return squareRootOfNo(no, start, mid - 1);
-
-        }
-        return 0;
+//        return squareRootOfNoRec(no, 0, no);
     }
 
     private static int findSquareRoot(int no, int start, int end) {
         int mid = 0;
         while (start <= end) {
             mid = start + (end - start) / 2;
-            int square = mid * mid;
+            long square = (long)mid * mid;
             if (square == no) {
-                break;
+                return mid;
             }
             if (square < no) {
                 start = mid+1;
@@ -36,7 +21,7 @@ public class SquareRoot {
                 end = mid - 1;
             }
         }
-        return mid;
+        return end;
     }
 
     public static int squareRoot(int no){
@@ -44,6 +29,22 @@ public class SquareRoot {
             if (i*i == no){
                 return i;
             }
+        }
+        return 0;
+    }
+
+    private static int squareRootOfNoRec(int no, int start, int end) {
+        int mid = start + (end - start) / 2;
+        int square = mid * mid;
+        if (start <= end) {
+            if (square == no) {
+                return mid;
+            }
+            if (square < no) {
+                return squareRootOfNoRec(no, mid + 1, end);
+            }
+            return squareRootOfNoRec(no, start, mid - 1);
+
         }
         return 0;
     }
