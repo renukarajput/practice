@@ -9,6 +9,28 @@ public class Stock2BuySell {
     }
 
     int maxProfit(List<Integer> prices) {
+        int localMin, localMax;
+        int profit = 0;
+        for (int i = 1; i < prices.size(); i++) {
+            while (i < prices.size() - 1 && prices.get(i) < prices.get(i - 1)) {
+                i++;
+            }
+            if(i==prices.size()){
+                return profit;
+            }
+            localMin= i - 1;
+            while (i < prices.size()-1 && prices.get(i) < prices.get(i + 1)) {
+                i++;
+            }
+            localMax = i ;
+            int localProfit = prices.get(localMax) - prices.get(localMin);
+            profit += localProfit;
+
+        }
+        return profit;
+    }
+
+ /*   int maxProfit(List<Integer> prices) {
         int indexOfLastSell = -1;
         int maxProfit = 0;
         int maxProfitTillMin = 0;
@@ -35,6 +57,6 @@ public class Stock2BuySell {
         }
 
         return maxProfit;
-    }
+    }*/
 
 }
