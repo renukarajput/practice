@@ -13,15 +13,18 @@ public class CandiesDP extends Candies {
             if (arr[i] > arr[i - 1]) {
                 result[i] = result[i - 1] + 1;
             } else {
+                result[i]=1;
                 int j = i;
-                while (j > 0 && arr[j] < arr[j - 1]) {
-                    if (result[j - 1] <= result[j]) {
-                        result[j - 1] = 1 + result[j];
-                    }
+                while (j > 0 && arr[j] < arr[j - 1] && result[j - 1] <= result[j]) {
+                    result[j - 1] = 1 + result[j];
                     j--;
                 }
             }
         }
+        return sum(result);
+    }
+
+    protected int sum(int[] result) {
         int sum = 0;
         for (int res : result) {
             sum += res;
