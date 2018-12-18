@@ -4,8 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PossiblePairsForK {
+   public int getPairForKSum(int[] input, int k) {
+       Set<Pair> pairForK = getPairForK(input, k);
+       return pairForK.size();
+   }
 
-    public Set<Pair> getPairForK(int[] input, int k) {
+    private Set<Pair> getPairForK(int[] input, int k) {
         Set<Integer> elements = addToSet(input);
         Set<Pair> pairForSum = new HashSet<>();
 
