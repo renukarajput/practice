@@ -2,17 +2,18 @@ package edu.ren.datastructure.interviewBit.binarysearch;
 
 public class PowerFunction {
     int powerMod(int base, int power, int divisor) {
-        int result = (int)power(base, Math.abs(power), divisor);
-        if (power < 0 && result!=0) {
+        int result = (int) power(base, Math.abs(power), divisor);
+        if (power < 0 && result != 0) {
             return 1 / result;
         }
-        if(result<0){
-            result+=divisor;
+        if (result < 0) {
+            result += divisor;
         }
         return result % divisor;
     }
 
-    /**9^2%5 =((9%5)*(9%5))%5
+    /**
+     * 9^2%5 =((9%5)*(9%5))%5
      * 81%5=
      * ((5*1+4)*(5*1+4))%5
      * =(5*5+5*4+4*5+4*4)%5
@@ -31,11 +32,18 @@ public class PowerFunction {
         }
 
         if (power % 2 != 0) {
-            return (base * power(base, power - 1, divisor))%divisor;
+            return (base * power(base, power - 1, divisor)) % divisor;
         }
         long resultOfHalf = power(base, power / 2, divisor);
-        long square = (resultOfHalf%divisor) *(resultOfHalf%divisor);
-        return square%divisor;
+        long square = (resultOfHalf % divisor) * (resultOfHalf % divisor);
+        return square % divisor;
 
+    }
+
+    // tail recursion ->
+    public long power(int x, int n) {
+        if (n == 0) return 1;
+
+        return x * power(x, n - 1);
     }
 }
