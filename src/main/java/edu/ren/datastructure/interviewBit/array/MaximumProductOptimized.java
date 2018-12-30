@@ -1,6 +1,5 @@
 package edu.ren.datastructure.interviewBit.array;
 
-
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -50,54 +49,60 @@ public class MaximumProductOptimized {
         return pair;
     }
 
-    // -1, -2, -4, -6, -3, -7, -8
+    public int getMaxProductUsingPriorityQueue(int[] input, int length) {
 
-    public int[] getPairOfMaxProductUsingPriorityQueue(int[] input) {
-        final int length = 2;
-        final int[] pair = new int[length];
-        Integer currentMin = Integer.MIN_VALUE;
-        Integer currentMax = Integer.MAX_VALUE;
-        PriorityQueue<Integer> topElements = new PriorityQueue(2);
+        Comparator<Integer> comparator = Comparator.comparingInt(i -> i.intValue());
         Comparator<Integer> reverseComparator = Comparator.<Integer>comparingInt(i -> i.intValue()).reversed();
-        PriorityQueue<Integer> minElements = new PriorityQueue(2, reverseComparator);
+
+        PriorityQueue<Integer> topElementsQueue = new PriorityQueue(2);
+        PriorityQueue<Integer> minElementsQueue = new PriorityQueue(2, reverseComparator);
+
 
         for (int i = 0; i < input.length; i++) {
-            if (!topElements.isEmpty()) {
-                currentMin = topElements.peek();
+            addElementToQueueIfFitsInTopK(topElementsQueue, comparator, input[i], length);
+            addElementToQueueIfFitsInTopK(minElementsQueue, reverseComparator, input[i], length);
+        }
+        int maxElement = Integer.MIN_VALUE;
+        int productFromMaxElements = 1;
+        for (int element : topElementsQueue) {
+            productFromMaxElements *= element;
+            maxElement = Math.max(maxElement, element);
+        }
+
+        //-7 -8 1 2 3 4 5
+        if (length % 2 == 0) {
+            int productFromMinElements = 1;
+            for (int element : minElementsQueue) {
+                productFromMinElements *= element;
             }
-            if (topElements.size() == length) {
-                if (currentMin < input[i]) {
+            return Math.max(productFromMaxElements, productFromMinElements);
+        } else {
+            int product = 1;
+            minElementsQueue.remove();
+            for (int element : minElementsQueue) {
+                product *= element;
+            }
+            return Math.max(productFromMaxElements, maxElement * product);
+        }
+    }
+
+
+    private void addElementToQueueIfFitsInTopK(PriorityQueue<Integer> topElements, Comparator<Integer> comparator, int input, final int k) {
+        int currentBest;
+        if (!topElements.isEmpty()) {
+            currentBest = topElements.peek();
+
+            if (topElements.size() == k) {
+                if (comparator.compare(currentBest, input) < 0) {
                     topElements.remove();
-                    topElements.add(input[i]);
+                    topElements.add(input);
                 }
             }
-            if (topElements.size() < length) {
-                topElements.add(input[i]);
-            }
-            if (!minElements.isEmpty()) {
-                currentMax = minElements.peek();
-            }
-            if (minElements.size() == length) {
-                if (currentMax > input[i]) {
-                    minElements.remove();
-                    minElements.add(input[i]);
-                }
-            }
-            if (minElements.size() < length) {
-                minElements.add(input[i]);
-            }
         }
-        int first = minElements.remove();
-        int second = minElements.remove();
 
-        pair[0] = topElements.remove();
-        pair[1] = topElements.remove();
-
-        if (first * second > pair[0] * pair[1]) {
-            pair[0] = first;
-            pair[1] = second;
+        if (topElements.size() < k) {
+            topElements.add(input);
         }
-        return pair;
     }
 }
 

@@ -88,9 +88,9 @@ public class MakePalindromeTest {
         System.out.println("== " + (s1 == s2));
         System.out.println("eq " + (s1.equals(s2)));
 
-        int i1 = 10;
+        int StockStatistic = 10;
         int i2 = 10;
-        System.out.println("== " + (i1 == i2));
+        System.out.println("== " + (StockStatistic == i2));
 
         Integer a = new Integer(10);
         Integer b = new Integer(10);
