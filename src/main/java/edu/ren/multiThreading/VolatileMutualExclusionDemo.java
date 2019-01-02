@@ -1,7 +1,5 @@
 package edu.ren.multiThreading;
 
-import java.util.concurrent.locks.ReentrantLock;
-
 /**
  * Created by rrn3194 on 9/28/18.
  */

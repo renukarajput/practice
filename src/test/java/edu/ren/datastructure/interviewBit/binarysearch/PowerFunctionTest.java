@@ -72,4 +72,22 @@ public class PowerFunctionTest {
         assertThat(result, is(20805472));
 
     }
+
+    @Test
+    public void testPower_1(){
+        long result = powerFunction.power(2,3);
+        assertThat(result, is(8L));
+    }
+
+    @Test
+    public void testPower_2(){
+        long result = powerFunction.power(2,50);
+        assertThat(result, is(1125899906842624L));
+    }
+
+    @Test
+    public void testPower_3(){
+        long result = powerFunction.power(2,16);
+        assertThat(result, is(65536L));
+    }
 }

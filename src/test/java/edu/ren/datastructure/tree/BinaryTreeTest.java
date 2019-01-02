@@ -86,7 +86,7 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void testTreeSimilarity() {
+    public void testTreeStructuralSimilarity() {
 
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
 
@@ -96,13 +96,31 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void testTreeDisSimilarity() {
-
+    public void testTreeStructuralDisSimilarity () {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
 
         BinaryTree<Integer> treeTwo = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4, 11);
 
         assertThat(treeOne.isTreeSame(treeOne, treeTwo), is(false));
+    }
+
+    @Test
+    public void isSameTree () {
+
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
+
+        BinaryTree<Integer> treeTwo = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
+
+        assertThat(treeOne.isSameTree(treeOne.root, treeTwo.root), is(1));
+    }
+
+    @Test
+    public void isSameTree_1 () {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(10, 5, 8, 1, 2, 3, 4);
+
+        BinaryTree<Integer> treeTwo = getIntegerBinaryTree(10, 5, 4, 1, 2, 3, 6);
+
+        assertThat(treeOne.isSameTree(treeOne.root, treeTwo.root), is(0));
     }
 
     @Test
@@ -234,8 +252,31 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void maxHeightInput1() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(3));
+    }
+
+    @Test
+    public void maxHeightInput2() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7, 8);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(4));
+    }
+
+    @Test
     public void testMirrorTree() {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
+        BinaryTreePrinter.printNode(treeOne.root);
+        Node<Integer> mirrorTree = treeOne.createMirrorTree(treeOne.root);
+        BinaryTreePrinter.printNode(mirrorTree);
+//        assertThat(treeOne.createMirrorTree(treeOne.root),is(10));
+    }
+
+    @Test
+    public void isMirrorTree() {
+        BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 2, 3, 4, 4, 3);
         BinaryTreePrinter.printNode(treeOne.root);
         Node<Integer> mirrorTree = treeOne.createMirrorTree(treeOne.root);
         BinaryTreePrinter.printNode(mirrorTree);
@@ -246,7 +287,7 @@ public class BinaryTreeTest {
     public void findKthSmallest() {
         BinaryTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6, 7);
         BinaryTreePrinter.printNode(treeOne.root);
-        treeOne.findkThSmallest(treeOne.root,3);
+        treeOne.findkThSmallest(treeOne.root, 3);
     }
 
 

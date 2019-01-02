@@ -72,6 +72,17 @@ public class BinaryTree<T> {
             return (1 + sumOfNumberOfNodes(root.leftChild) + sumOfNumberOfNodes(root.rightChild));
     }
 
+    public int heightOfTree(Node<T> root){
+        if (root == null)
+            return 0;
+
+            int left = heightOfTree(root.leftChild);
+            int right = heightOfTree(root.rightChild);
+
+            return (1 + (left >= right ? left : right));
+        //  return 1 + Math.max(heightOfTree(root.leftChild), heightOfTree(root.rightChild));
+    }
+
     public Node<T> createMirrorTree(Node<T> root) {
         if (root == null)
             return root;
@@ -83,6 +94,26 @@ public class BinaryTree<T> {
         root.rightChild = left;
 
         return root;
+    }
+
+    // structure as well as node values
+    public int isSameTree(Node<T> node1, Node<T> node2) {
+        if (node1 == null && node2 == null)
+            return 1;
+
+        if (node1 == null && node2 != null || node1 != null && node2 == null)
+            return 0;
+
+        if (node1.val != node2.val)
+            return 0;
+
+        if ((node1.leftChild == null && node2.leftChild == null) && (node1.rightChild == null && node2.rightChild == null))
+            return 1;
+
+        if (isSameTree(node1.leftChild, node2.leftChild) == 1 && isSameTree(node1.rightChild, node2.rightChild) == 1)
+            return 1;
+
+        return 0;
     }
 
     public void deleteGivenNode(Node<T> nodeToDelete) {
@@ -155,16 +186,20 @@ public class BinaryTree<T> {
     }
 
     private void findkThSmallest(Node<T> node, int k, int[] count) {
+        if (node == null) {
+            return;
+        }
+        findkThSmallest(node.leftChild, k, count);
+
         count[0]++;
+
         if (k == count[0]) {
             System.out.println(k + "Th smallest : " + node.val + "--------------> Cnt : " + count[0]);
             return;
         }
-        if (node.rightChild == null && node.leftChild == null) {
-            return;
-        }
-        findkThSmallest(node.leftChild, k, count);
-        findkThSmallest(node.rightChild, k, count);
+        //if (node.rightChild != null) {
+            findkThSmallest(node.rightChild, k, count);
+        //}
     }
 
     private void inOrder(Node<T> root) {
@@ -246,13 +281,12 @@ public class BinaryTree<T> {
                 if (!stack.isEmpty()) {
                     Node<T> top = stack.pop();
                     System.out.print(top.val + " - ");
-                if (top.rightChild != null) {
-                    current = top.rightChild;
-                }
+                    if (top.rightChild != null) {
+                        current = top.rightChild;
+                    }
                 } else {
-                   break;
+                    break;
                 }
-
             }
         }
     }

@@ -5,6 +5,7 @@ import edu.ren.comparison.Human;
 import edu.ren.comparison.Labour;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -13,17 +14,6 @@ import java.util.Set;
  * Created by rrn3194 on 9/6/18.
  */
 public class OverLoadingTest {
-    @Test
-    public void t1(){
-        Integer[] a={1,2,3,4,5,6,7,8,9};
-        final List<Integer> list = Arrays.asList(a);
-        list.forEach(i->{
-            if(i==3){
-                return;
-            }
-            System.out.println(i);
-        });
-    }
     @Test
     public void testOverloadingAmbigious() {
         // fun(null);
@@ -64,4 +54,10 @@ public class OverLoadingTest {
         return s;
     }
 
+    @Test
+    public void test() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(1,2,0,3,4));
+        list.remove((Integer)0);
+        System.out.println(list);
+    }
 }

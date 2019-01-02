@@ -1,11 +1,9 @@
 package edu.ren.datastructure.interviewBit.tree;
 
-import sun.text.bidi.BidiBase;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class TreeFromInorderAndPreOrder {
+class TreeFromInorderAndPreOrder {
     public BinaryTree buildFrom(ArrayList<Integer> preOrder, ArrayList<Integer> inOrder){
         TreeNode root = construct(preOrder, inOrder,0,inOrder.size()-1);
         BinaryTree binaryTree = new BinaryTree();
