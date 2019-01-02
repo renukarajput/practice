@@ -1,5 +1,6 @@
 package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MinSumPathInTriangeDP extends MinSumPathInTriangle {
@@ -13,6 +14,7 @@ public class MinSumPathInTriangeDP extends MinSumPathInTriangle {
             for (int j = 0; j < triangle.get(i).size(); j++) {
                 nextLevelPathSum[j] = getBestPathTillJSoFar(pathSum, j,triangle.get(i-1).size()) + triangle.get(i).get(j);
             }
+           // System.out.println(Arrays.toString(nextLevelPathSum));
             int[] temp = nextLevelPathSum;
             nextLevelPathSum = pathSum;
             pathSum = temp;

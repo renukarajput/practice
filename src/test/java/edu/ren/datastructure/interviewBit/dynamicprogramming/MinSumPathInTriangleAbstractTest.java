@@ -5,10 +5,12 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-public abstract class MinSumPathInTriangleAbstractTest {
+public  class MinSumPathInTriangleAbstractTest {
     MinSumPathInTriangle minSumPathInTriangle= getMinSumPathInTriange();
 
-    protected abstract MinSumPathInTriangle getMinSumPathInTriange();
+    protected  MinSumPathInTriangle getMinSumPathInTriange(){
+        return new MinSumPathInTriangeDP();
+    };
 
     @Test
     public void minPathSum() {
@@ -30,6 +32,6 @@ public abstract class MinSumPathInTriangleAbstractTest {
                 {4,1,8,3},
                 {100,101,4,5,7}
         };
-       assertThat(minSumPathInTriangle.minPath(triangle),is(20));
+       assertThat(minSumPathInTriangle.minPath(triangle),is(15));
     }
 }
