@@ -9,26 +9,26 @@ public class TwoRobots {
     }
 
     int getMinDistanceMoved(int[][] queries, int index, int robotOnePosition, int robotTwoPosition, int total) {
-        System.out.println(index + " "+robotOnePosition+" "+robotTwoPosition+" "+total);
+       // System.out.println(index + " "+robotOnePosition+" "+robotTwoPosition+" "+total);
         if (index == queries.length) {
             return total;
         }
-        final int[] query = queries[index];
-        total += Math.abs(query[0] - query[1]);
-        int distanceOne, distanceTwo;
+        final int[] sourceToDestination = queries[index];
+        total += Math.abs(sourceToDestination[0] - sourceToDestination[1]);
+        int extraDistanceOne, extraDistanceTwo;
 
         if (robotOnePosition == -1) {
-            distanceOne = 0;
+            extraDistanceOne = 0;
         } else {
-            distanceOne = Math.abs(robotOnePosition - query[0]);
+            extraDistanceOne = Math.abs(robotOnePosition - sourceToDestination[0]);
         }
-        final int minByMovingOne = getMinDistanceMoved(queries, index + 1, query[1], robotTwoPosition, total + distanceOne);
+        final int minByMovingOne = getMinDistanceMoved(queries, index + 1, sourceToDestination[1], robotTwoPosition, total + extraDistanceOne);
         if (robotTwoPosition == -1) {
-            distanceTwo = 0;
+            extraDistanceTwo = 0;
         } else {
-            distanceTwo = Math.abs(robotTwoPosition - query[0]);
+            extraDistanceTwo = Math.abs(robotTwoPosition - sourceToDestination[0]);
         }
-        final int minByMovingTwo = getMinDistanceMoved(queries, index + 1, robotOnePosition, query[1], total + distanceTwo);
+        final int minByMovingTwo = getMinDistanceMoved(queries, index + 1, robotOnePosition, sourceToDestination[1], total + extraDistanceTwo);
         return Math.min(minByMovingOne, minByMovingTwo);
     }
 }

@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 /**
  * Created by kumarrak on 15/12/18.
  */
-public class TwoRobotsTest extends TwoRobotsAbstractTest {
+public class TwoRobotsDPTest extends TwoRobotsAbstractTest {
 
     @Override
     protected TwoRobots getTwoRobots() {
-        return new TwoRobots();
+        return new TwoRobotsDP();
     }
 }
