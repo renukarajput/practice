@@ -20,6 +20,9 @@ public class ShoppingCartTest {
 
         //pay by credit card
         cart.pay(new CreditCardStrategy("Renuka Rajput", "1234567890123456", "786", "12/15"));
+
+
     }
+
 
 }

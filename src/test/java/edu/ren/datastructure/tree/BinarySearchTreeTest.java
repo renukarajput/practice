@@ -15,10 +15,55 @@ public class BinarySearchTreeTest {
 
     @Test
     public void kThSmallest() {
+        BinarySearchTree<Integer> binarySearchTree = getIntegerBinaryTree(20, 10, 30, 40);
+        System.out.println("\n");
+        BinaryTreePrinter.printNode(binarySearchTree.root);
+        assertThat(binarySearchTree.kThSmallest(3), is(30));
+    }
+
+    @Test
+    public void kThSmallestWithOneElement() {
+        BinarySearchTree<Integer> binarySearchTree = getIntegerBinaryTree(20);
+        System.out.println("\n");
+        BinaryTreePrinter.printNode(binarySearchTree.root);
+        assertThat(binarySearchTree.kThSmallest(1), is(20));
+    }
+
+    @Test
+    public void kThSmallestWithElements() {
+        BinarySearchTree<Integer> binarySearchTree = getIntegerBinaryTree(20,15,10,30,50);
+        System.out.println("\n");
+        BinaryTreePrinter.printNode(binarySearchTree.root);
+        assertThat(binarySearchTree.kThSmallest(2), is(15));
+    }
+    @Test
+    public void kThSmallestinput2() {
         BinarySearchTree<Integer> binarySearchTree = getIntegerBinaryTree(20, 10, 30, 40, 50, 60, 70);
         System.out.println("\n");
         BinaryTreePrinter.printNode(binarySearchTree.root);
-        assertThat(binarySearchTree.kThSmallest(3), is(40));
+        assertThat(binarySearchTree.kThSmallest(6), is(60));
+    }
+
+    @Test
+    public void preOrderInput1() {
+        BinarySearchTree<Integer> binarySearchTree = getIntegerBinaryTree(20, 10, 30,9,11, 40, 35,25);
+        System.out.println("\n");
+        BinaryTreePrinter.printNode(binarySearchTree.root);
+        //binarySearchTree.preOrder();
+    }
+
+    @Test
+    public void maxHeightInput1() {
+        BinarySearchTree<Integer> treeOne = getIntegerBinaryTree(1, 2, 3, 4, 5, 6);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(6));
+    }
+
+    @Test
+    public void maxHeightInput2() {
+        BinarySearchTree<Integer> treeOne = getIntegerBinaryTree(20, 10, 30,5,8,3,1);
+        BinaryTreePrinter.printNode(treeOne.root);
+        assertThat(treeOne.heightOfTree(treeOne.root), is(5));
     }
 
     @Test

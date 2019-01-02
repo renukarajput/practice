@@ -38,8 +38,5 @@ public class FillRowColumn {
             }
             System.out.println();
         }
-
-
     }
-
 }

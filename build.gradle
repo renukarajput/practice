@@ -9,4 +9,5 @@ repositories {
 dependencies {
     compile 'org.scala-lang:scala-library:2.11.6'
     testCompile 'junit:junit:4.11'
+    testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 }

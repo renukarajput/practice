@@ -1,9 +1,6 @@
 package edu.ren.datastructure.tree;
 
-
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
     Node<T> root;
@@ -43,9 +40,63 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         }
     }
 
+    public void preOrder() {
+        Stack<Node<T>> stack = new Stack<>();
+        Set<Node<T>> visitedNodes = new HashSet<>();
+
+        preOrder(root, stack, visitedNodes);
+    }
+
+    private void preOrder(Node root, Stack<Node<T>> stack, Set<Node<T>> visitedNodes) {
+        if (root != null) {
+            stack.push(root);
+            if (root.leftChild == null && root.rightChild == null) {
+                System.out.println(Arrays.toString(stack.stream().map(n -> n.val).toArray()));
+                visitedNodes.add(root);
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                    Node<T> top = stack.peek();
+                    while ((top.leftChild == null || visitedNodes.contains(top.leftChild)) &&
+                            (top.rightChild == null || visitedNodes.contains(top.rightChild))) {
+                        if (stack.isEmpty())
+                            break;
+                        Node<T> nodeToRemove = stack.pop();
+                        visitedNodes.remove(nodeToRemove.leftChild);
+                        visitedNodes.remove(nodeToRemove.rightChild);
+                        top = stack.peek();
+                        visitedNodes.add(top);
+                    }
+                }
+            }
+            preOrder(root.leftChild, stack, visitedNodes);
+            preOrder(root.rightChild, stack, visitedNodes);
+        }
+    }
+
+    // print path using loop
+    public void printPath() {
+
+        Node<T> current = this.root;
+        Stack<Node<T>> stack = new Stack<>();
+
+        while (true) {
+            if (current != null) {
+                stack.push(current);
+                current = current.leftChild;
+            } else {
+
+
+            }
+            if (current.leftChild == null && root.rightChild == null) {
+                System.out.println(Arrays.toString(stack.toArray()));
+                stack.pop();
+            }
+        }
+    }
+
     public T kThSmallest(int k) {
         int[] cnt = new int[1];
-        cnt[0] = 0;
+        cnt[0] = 1;
         return getKThSmallest(root, cnt, k);
     }
 
@@ -54,15 +105,20 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         if (root == null) {
             return null;
         }
+
+        if (root.leftChild != null)
+            kThSmallest = getKThSmallest(root.leftChild, cnt, k);
+
         if (cnt[0] == k) {
             System.out.print("root val = " + root.val + " k : " + cnt[0]);
             return root.val;
-        } else {
-            kThSmallest = getKThSmallest(root.leftChild, cnt, k);
-            cnt[0]++;
-            if (kThSmallest == null)
-                kThSmallest = getKThSmallest(root.rightChild, cnt, k);
         }
+
+        cnt[0]++;
+        if (kThSmallest == null)
+            if (root.leftChild != null)
+                kThSmallest = getKThSmallest(root.rightChild, cnt, k);
+
         return kThSmallest;
     }
 
@@ -80,23 +136,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         root.leftChild = null;
         root.rightChild = null;
         root.val = null;
-    }
-
-
-    public void isBST() {
-        if (isBstUtil(root) == true)
-            System.out.println("BST");
-        else
-            System.out.println("Not BST");
-    }
-
-    private boolean isBstUtil(Node root) {
-        if (root == null)
-            return true;
-//        if (root.leftChild != null && getMaxValue().compareTo(root)){
-//
-//        }
-        return false;
     }
 
 
@@ -136,6 +175,13 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             root = root.rightChild;
         }
         return root;
+    }
+
+    public int heightOfTree(Node<T> root){
+        if (root == null)
+            return 0;
+        else
+            return 1 + Math.max(heightOfTree(root.leftChild), heightOfTree(root.rightChild));
     }
 
     public List<Node<T>> search(T val) {

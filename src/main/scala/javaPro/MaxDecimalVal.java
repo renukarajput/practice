@@ -1,4 +1,4 @@
-package scala.javaPro;
+package javaPro;
 
 /**
  * Created by rrn3194 on 4/20/16.
@@ -8,11 +8,11 @@ public class MaxDecimalVal {
             int arr[][] = new int[][]{{0, 1, 0},
                                       {1, 1, 0},
                                       {1, 1, 1}};
-            System.out.println("Max is:::"+findMaxDecimalVal(arr));
+            System.out.println("Max is:::"+findMaxDecimalValForBinary(arr));
 
         }
 
-        private static int findMaxDecimalVal(int[][] arr) {
+        private static int findMaxDecimalValForBinary(int[][] arr) {
             int max = 0;
             for (int i = 0; i < arr.length; i++) {
                 int sum = 0;
@@ -26,14 +26,4 @@ public class MaxDecimalVal {
             }
             return max;
         }
-
-    private static int findMaxDecimal(int arr[][]){
-        RowComparator rc = new RowComparator();
-        int max = 0;
-        for (int i = 1; i < arr.length; i++) {
-           max = rc.compare(arr[i],arr[i]);
-        }
-
-        return max;
-    }
 }
