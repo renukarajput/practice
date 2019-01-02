@@ -24,5 +24,8 @@ object Mammal {
     mammal.travel
     println(mammal.getNoOfLegs())
     println(str) //way to call singleton object <Mammal.str>
+    val list = List("hello", "World", "Are", "you", "there")
+    println(list.map(x => x.concat("$$")))
+    println(list.flatMap(x => x.concat("**")))
   }
 }

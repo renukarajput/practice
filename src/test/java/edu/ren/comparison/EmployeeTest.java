@@ -2,9 +2,7 @@ package edu.ren.comparison;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
 public class EmployeeTest {
@@ -47,6 +45,23 @@ public class EmployeeTest {
 
         //Object x[] = new String[3];
         // x[0] = new Integer(0);
+
+    }
+
+    // comparison based on name comparator along with age comparison
+    @Test
+    public void testTreeMap() {
+        NameComparator name = new NameComparator();
+        Employee e1 = new Employee("renuka", 100, 24);
+        Employee e2 = new Employee("nilesh", 900, 25);
+        Employee e3 = new Employee("jayesh", 600, 27);
+        Employee e4 = new Employee("renuka", 10, 24);
+        Map<Employee, Integer> map = new TreeMap(name);
+        map.put(e1, 1);
+        map.put(e2, 1);
+        map.put(e3, 1);
+        map.put(e4, 2);
+        System.out.println("Sorted name = " + map);
 
     }
 }

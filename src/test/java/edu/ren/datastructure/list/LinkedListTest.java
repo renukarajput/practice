@@ -1,6 +1,7 @@
 package edu.ren.datastructure.list;
 
 import org.junit.Test;
+import java.util.Arrays;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -108,6 +109,36 @@ public class LinkedListTest {
     }
 
     @Test
+    public void nThFromLastInput_1(){
+        LinkedList<Integer> linkedList = getIntegerList(60, 40, 30, 50, 10/*, 70,80, 90, 95, 100*/);
+//        assertEquals((Integer) 90, linkedList.getNthFromLast(3));
+        System.out.println(Arrays.asList(linkedList));
+        assertEquals((Integer) 50, linkedList.nthFromLast(2));
+    }
+
+    @Test
+    public void nThFromLast1(){
+        LinkedList<Integer> linkedList = getIntegerList(60, 40, 30, 50, 10, 70,80, 90);
+//        assertEquals((Integer) 90, linkedList.getNthFromLast(3));
+        System.out.println(Arrays.asList(linkedList));
+        linkedList.nthFromLast(2);
+    }
+
+    @Test
+    public void nThFromLastInput_2(){
+        LinkedList<Integer> linkedList = getIntegerList(60, 40, 30, 50, 10, 70,80, 90, 95, 100);
+        System.out.println(Arrays.asList(linkedList));
+        assertEquals((Integer) 90, linkedList.nthFromLast(3));
+    }
+
+    @Test
+    public void nThFromLastInput_3(){
+        LinkedList<Integer> linkedList = getIntegerList(60, 40, 30, 50, 10, 70,80, 90, 95, 100);
+        System.out.println(Arrays.asList(linkedList));
+        assertEquals((Integer) 80, linkedList.nthFromLast(4));
+    }
+
+    @Test
     public void reverseList() {
         LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50);
         linkedList.reverseList(linkedList.head);
@@ -138,12 +169,6 @@ public class LinkedListTest {
         linkedList.rotateClockwise(2);   // 10 20 30 40 50
         assertThat(linkedList.toString(), is("30->40->50->10->20"));
     }
-// 4 > 20->30->40->50->10
-// 5 > 20->30->40->50->10
-// 6 > 30->40->50->10->20
-// 7 > 40->50->10->20->30
-// 8 > 20->30->40->50->10
-    //check this method
 
     @Test
     public void rotateClockwiseLargerThanLength() {

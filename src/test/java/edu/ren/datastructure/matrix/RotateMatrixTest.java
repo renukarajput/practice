@@ -79,6 +79,41 @@ public class RotateMatrixTest {
 
     }
 
+    @Test
+    public void getClockwiseRotatedMatrixInPlace() {
+        int input[][] = {
+                {1, 4, 7},
+                {2, 5, 8},
+                {3, 6, 9},
+                {2, 5, 7}};
+        int result[][] = new RotateMatrix().getClockwiseRotatedMatrixInPlace(input);
+        int output[][] = {
+                {2, 3, 2, 1},
+                {5, 6, 5, 4},
+                {7, 9, 8, 7}};
+        printMatrix(result);
+        assertArrayEquals(result, output);
+
+    }
+
+
+    @Test
+    public void rotate() {
+        int input[][] = {
+                {1, 4, 7},
+                {2, 5, 8},
+                {3, 6, 9}};
+        int result[][] = new RotateMatrix().rotate(input);
+        int output[][] = {
+                {3, 2, 1},
+                {6, 5, 4},
+                {9, 8, 7}};
+        printMatrix(result);
+        assertArrayEquals(result, output);
+
+    }
+
+
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void rotateMatrixWithInvalidInput() {
         int input[][] = {
@@ -89,6 +124,7 @@ public class RotateMatrixTest {
         new RotateMatrix().getClockwiseRotatedMatrix(input);
 
     }
+
     private void printMatrix(int[][] result) {
         int row = result.length - 1;
         for (int i = 0; i <= row; i++) {

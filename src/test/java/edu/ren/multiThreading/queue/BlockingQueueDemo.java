@@ -3,6 +3,7 @@ package edu.ren.multiThreading.queue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -58,6 +59,12 @@ public class BlockingQueueDemo {
         for (int i = 0; i < 5; i++) {
             assertTrue(blockingQueue.offer(i));
         }
+        System.out.println("size -- "+ blockingQueue.size());
+        blockingQueue.offer(8);
+        blockingQueue.offer(9);
+        blockingQueue.offer(10);
+        blockingQueue.offer(11);
+        System.out.println("size ++ "+ blockingQueue.size());
         assertFalse(blockingQueue.offer(6));
     }
 
@@ -88,6 +95,11 @@ public class BlockingQueueDemo {
         assertThat(blockingQueue.size(), is(5));
         long elapsed = end - start;
         assertTrue(elapsed >= 15000);
+    }
+
+    @Test
+    public void temp(){
+        System.out.println(Integer.MAX_VALUE); // (2^32) - 1
     }
 
 }
