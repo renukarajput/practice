@@ -7,7 +7,7 @@ import java.util.List;
 public class PostOrderTraversal2 extends PostOrderTraversal{
 
     @Override
-    List<Integer> postOrder(BinarySearchTree binarySearchTree) {
+    List<Integer> postOrder(BinaryTree binarySearchTree) {
         return postOrder(binarySearchTree.root);
     }
 

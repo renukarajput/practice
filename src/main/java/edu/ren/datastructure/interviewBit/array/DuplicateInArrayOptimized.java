@@ -6,7 +6,7 @@ public class DuplicateInArrayOptimized extends DuplicateInArray{
 
     @Override
     public Integer findDuplicate(Integer[] input) {
-        int elmAtIndex = 0, elmToReplace = 0;
+        int elmAtIndex, elmToReplace;
         for (int i = 0; i < input.length; i++) {
             if (i != input[i] - 1) {
                 elmAtIndex = input[i];
@@ -18,7 +18,7 @@ public class DuplicateInArrayOptimized extends DuplicateInArray{
                 input[i] = elmToReplace;
             }
         }
-        return -1;
+        return 0;
     }
 
     public Integer findDuplicateInArrayList(List<Integer> input) {

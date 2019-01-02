@@ -1,7 +1,6 @@
 package edu.ren.datastructure.interviewBit.tree;
 
-public class BinarySearchTree {
-    TreeNode root;
+public class BinarySearchTree extends BinaryTree{
 
     void insert(int val) {
         if (root == null) {
@@ -20,4 +19,17 @@ public class BinarySearchTree {
         return binarySearchTree;
     }
 
+    public boolean isBst(){
+        return  isBst(root,null);
     }
+
+    private boolean isBst(TreeNode root,TreeNode prev) {
+        if(root==null){
+            return true;
+        }
+        isBst(root.left,prev);
+
+        return false;
+    }
+
+}

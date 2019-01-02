@@ -6,7 +6,7 @@ public class MinimumDepthOfBST {
         return minDepth(binarySearchTree.root);
     }
 
-    private int minDepth(TreeNode node) {
+    private int minDepth_(TreeNode node) {
         if (node.left == null && node.right == null) {
             return 1;
         }
@@ -20,5 +20,27 @@ public class MinimumDepthOfBST {
             minRight = minDepth(node.right) + 1;
         }
         return Math.min(minLeft, minRight);
+    }
+
+    private int minDepth(TreeNode node) {
+        if (node == null) {
+            return -1;
+        }
+        if (node.left == null && node.right == null) {
+            return 1;
+        }
+
+
+        int minLeft = minDepth(node.left);
+        int minRight = minDepth(node.right);
+        
+        if (minLeft == -1) {
+            return 1 + minRight;
+        }
+        if (minRight == -1) {
+            return 1 + minLeft;
+        }
+
+        return 1 + Math.min(minLeft, minRight);
     }
 }

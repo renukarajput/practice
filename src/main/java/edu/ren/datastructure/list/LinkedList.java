@@ -147,6 +147,34 @@ public class LinkedList<T> {
         return firstPtr.data;
     }
 
+    public T nthFromLast(int nthIndex) {
+        Node<T> start = this.head;
+        Node<T> slow = start, fast = start;
+        int count = 0;
+
+      while (fast != null) {
+            if (count < nthIndex) {
+                fast = fast.next;
+            } else {
+                slow = slow.next;
+                fast = fast.next;
+            }
+            count++;
+        }
+
+// below loop is more optimized than above
+
+       /* while (fast != null) {
+            if (count >= nthIndex) {
+                slow = slow.next;
+            }
+            fast = fast.next;
+
+            count++;
+        }*/
+        return slow.data;
+    }
+
     public void reverseList(Node<T> node) {
         Node<T> curr = node;
         Node<T> prev = null;

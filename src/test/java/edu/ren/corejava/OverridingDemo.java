@@ -15,5 +15,3 @@ public class OverridingDemo {
         human.getOrigin();
     }
 }
-
-//v-->

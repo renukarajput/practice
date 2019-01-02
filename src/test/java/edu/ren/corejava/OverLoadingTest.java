@@ -5,6 +5,8 @@ import edu.ren.comparison.Human;
 import edu.ren.comparison.Labour;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -52,4 +54,10 @@ public class OverLoadingTest {
         return s;
     }
 
+    @Test
+    public void test() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(1,2,0,3,4));
+        list.remove((Integer)0);
+        System.out.println(list);
+    }
 }
