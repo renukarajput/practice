@@ -52,7 +52,7 @@ public class StringReversalTest {
         String output = StringReversal.reverse(" a");
         assertThat(output, is("a"));
     }
-    @Test
+/*    @Test
     public void reverse_1() throws Exception {
         String str = "  this is   a new   world  of t";
         final String reversed = new StringReversal().reverse(str);
@@ -66,6 +66,6 @@ public class StringReversalTest {
         final String reversed = new StringReversal().reverse(str);
         assertThat(reversed, is("a"));
 
-    }
+    }*/
 
 }
