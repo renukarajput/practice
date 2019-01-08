@@ -2,8 +2,10 @@ package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
 import static org.junit.Assert.*;
 
-public class CoinChangeByMinimumCoinsTest extends CoinChangeByMinimumCoinsAbstractTest{
+public class CoinChangeByMinimumCoinsDPTest extends CoinChangeByMinimumCoinsAbstractTest{
+
+    @Override
     protected CoinChangeByMinimumCoins getCoinChangeByMinimumCoins() {
-        return new CoinChangeByMinimumCoins();
+        return new CoinChangeByMinimumCoinsDP();
     }
 }
