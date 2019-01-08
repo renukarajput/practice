@@ -152,7 +152,7 @@ public class LinkedList<T> {
         Node<T> slow = start, fast = start;
         int count = 0;
 
-      while (fast != null) {
+        while (fast != null) {
             if (count < nthIndex) {
                 fast = fast.next;
             } else {
@@ -208,6 +208,16 @@ public class LinkedList<T> {
         reverse(prevNode, currNode, nextNode);
     }
 
+    public T getMiddleNode(Node<T> node) {
+        Node<T> head = node;
+        Node<T> fast = head, slow = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.data;
+    }
+
     public void rotateClockwise(int noOfTimes) {
         Node<T> current = head;
         int size = size() - 1;
@@ -226,7 +236,7 @@ public class LinkedList<T> {
     public int size() {
         int size = 0;
         Node<T> start = this.head;
-        while (start != null){
+        while (start != null) {
             start = start.next;
             size++;
         }
