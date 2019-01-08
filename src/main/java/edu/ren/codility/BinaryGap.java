@@ -14,7 +14,7 @@ public class BinaryGap {
         for (int i : input) {
             stringBuilder.append(i);
         }
-        return maximumSequenceOFZero_(stringBuilder.toString().toCharArray());
+        return maximumSequenceOFZero(stringBuilder.toString().toCharArray());
     }
 
     //10010
@@ -28,7 +28,7 @@ public class BinaryGap {
                 if (maxLength < count)
                     maxLength = count;
                 startValue = input[i];
-                if (input[i]=='1')
+                if (input[i] == '1')
                     count = 0;
             }
         }
@@ -41,16 +41,19 @@ public class BinaryGap {
 
     //10010
     public int maximumSequenceOFZero(char[] input) {
-        int first = 0, second = 1;
-        int count = 0;
+        int  endOfBlock = 0, startOfBlock = -1;
         int maxCount = 0;
-        if (first > 0 && input[first] == '0' && input[first - 1] == '1') { //0000111100110
-            count = 1;
-        } else if (input[second] == '0' && input[second - 1] == '0') {
-            count++;
-        }
-        if (input[second] == '1' && input[second - 1] == '0') {
-            maxCount = Math.max(count, maxCount);
+        while (endOfBlock < input.length) {
+            if (input[endOfBlock] == '1') { //0000111100110
+                if (startOfBlock != -1 && input[endOfBlock-1]=='0') {
+                   int count=endOfBlock-startOfBlock-1;
+                    maxCount = Math.max(count, maxCount);
+                }
+                startOfBlock = endOfBlock;
+
+            }
+            endOfBlock++;
+
         }
         return maxCount;
     }
