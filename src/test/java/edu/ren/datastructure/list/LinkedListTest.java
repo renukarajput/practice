@@ -171,6 +171,18 @@ public class LinkedListTest {
     }
 
     @Test
+    public void middleNodeOfListInput_1() {
+        LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50);
+        assertThat(linkedList.getMiddleNode(linkedList.head), is(30));
+    }
+
+    @Test
+    public void middleNodeOfListInput_2() {
+        LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50, 60);
+        assertThat(linkedList.getMiddleNode(linkedList.head), is(40));
+    }
+
+    @Test
     public void rotateClockwiseLargerThanLength() {
         LinkedList<Integer> linkedList = getIntegerList(10, 20, 30, 40, 50);
         linkedList.rotateClockwise(6);
