@@ -39,7 +39,7 @@ public class BinaryGap {
         return 0;
     }
 
-    //10010
+    //100111001
     public int maximumSequenceOFZero(char[] input) {
         int  endOfBlock = 0, startOfBlock = -1;
         int maxCount = 0;
