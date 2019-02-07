@@ -31,4 +31,11 @@ public class EvaluateExpressionTest {
         int result = evaluateExpression.result(input);
         assertThat(result, is(-4));
     }
+
+    @Test
+    public void input_4() {
+        String[] input = {"4", "5", "13", "/", "+"};
+        int result = evaluateExpression.result(input);
+        assertThat(result, is(4));
+    }
 }

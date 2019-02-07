@@ -1,9 +1,6 @@
 package edu.ren.datastructure.interviewBit.stack;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class EvaluateExpression {
     // ["2", "1", "+", "3", "*"]
@@ -13,15 +10,19 @@ public class EvaluateExpression {
     Set<String> operatorSet = new HashSet<>();
 
     public int result(String[] input) {
+        return result(new ArrayList<>(Arrays.asList(input)));
+    }
+
+    private int result(ArrayList<String> input) {
         operatorSet.addAll(Arrays.asList("+", "-", "/", "*"));
-        for (int i = 0; i < input.length; i++) {
-            if (!operatorSet.contains(input[i])) {
-                Integer current = Integer.parseInt(input[i]);
+        for (int i = 0; i < input.size(); i++) {
+            if (!operatorSet.contains(input.get(i))) {
+                Integer current = Integer.parseInt(input.get(i));
                 operandStack.push(current);
             } else {
                 Integer op2 = operandStack.pop();
                 Integer op1 = operandStack.pop();
-                Integer result = processOperation(op1, op2, input[i]);
+                Integer result = processOperation(op1, op2, input.get(i));
                 operandStack.push(result);
             }
         }
