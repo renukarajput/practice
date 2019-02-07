@@ -31,4 +31,15 @@ public class DirectoryPathTest {
         String output = directoryPath.simplify("/home/room/../room1");
         assertThat(output, is("/home/room1"));
     }
+
+    @Test
+    public void input_5() {
+        String output = directoryPath.simplify("/../");
+        assertThat(output, is("/"));
+    }
+    @Test
+    public void input_6() {
+        String output = directoryPath.simplify("/home//foo/");
+        assertThat(output, is("/home/foo"));
+    }
 }

@@ -12,14 +12,20 @@ public class DirectoryPath {
         StringBuilder sb = new StringBuilder();
 
         String[] splitArray = input.split("/");
-
         for (int i = 1; i < splitArray.length; i++) {
+            if (splitArray[i].isEmpty()){
+                continue;
+            }
             if (splitArray[i].equals("..")) {
-                stack.pop();
+                if (!stack.isEmpty())
+                    stack.pop();
             } else if (!splitArray[i].equals(".")) {
                 stack.push(splitArray[i]);
             }
+        }
 
+        if (stack.isEmpty()){
+            sb.append("/");
         }
         while (!stack.isEmpty()) {
             String holder = stack.removeLast();
