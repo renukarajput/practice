@@ -1,4 +1,4 @@
-package scala.javaPro;
+package javaPro;
 
 import java.util.ArrayList;
 import java.util.List;

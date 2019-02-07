@@ -1,4 +1,4 @@
-package scala.javaPro;
+package javaPro;
 
 public class OverloadingEx {
 

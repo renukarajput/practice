@@ -1,4 +1,4 @@
-package scala.javaPro;
+package javaPro;
 
 import java.util.Arrays;
 import java.util.HashSet;
