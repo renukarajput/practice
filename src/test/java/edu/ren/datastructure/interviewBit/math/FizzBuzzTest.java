@@ -30,5 +30,8 @@ public class FizzBuzzTest {
         assertThat(actual, is(expected));
     }
 
-
+    @Test
+    public void input_3() {
+        fizzBuzz.printText(100);
+    }
 }

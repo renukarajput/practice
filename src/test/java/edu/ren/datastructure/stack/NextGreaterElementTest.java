@@ -48,4 +48,12 @@ public class NextGreaterElementTest {
         int[] actual = nextGreaterElement.get(input);
         assertThat(actual, is(expected));
     }
+
+    @Test
+    public void input_6() {
+        int[] input = {3, 2, 1};
+        int[] expected = {-1, -1, -1};
+        int[] actual = nextGreaterElement.get(input);
+        assertThat(actual, is(expected));
+    }
 }

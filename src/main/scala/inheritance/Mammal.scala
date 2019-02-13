@@ -1,5 +1,7 @@
 package scala.inheritance
 
+import scala.collection.mutable
+
 /**
   * Created by rrn3194 on 4/7/16.
   */
@@ -27,5 +29,12 @@ object Mammal {
     val list = List("hello", "World", "Are", "you", "there")
     println(list.map(x => x.concat("$$")))
     println(list.flatMap(x => x.concat("**")))
+
+    val map: Map[Int, String] = Map(1->"renuka", 2->"rakesh")
+    println(map)
+    map.+(3->"neha")
+    val map1 = mutable.Map(1->"renuka", 2->"rakesh")
+
+    println(map)
   }
 }

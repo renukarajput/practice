@@ -60,17 +60,28 @@ public class ArrayRotation {
     }
 
     //d = 2, 1 2 3 4 5 => 21 345, 21 543, 345 12
-    public static void rotateUsingReverse(int arr[], int d) {
+    @SuppressWarnings("Duplicates")
+    public static int[] rotateUsingReverse1(int arr[], int d) {
         int len = arr.length;
         reverseArray(arr, 0, d - 1);
-        reverseArray(arr, d, len - 1);
+        reverseArray(arr, d, len-1);
         reverseArray(arr, 0, len - 1);
+        return arr;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public static int[] rotateUsingReverse(int arr[], int d) {
+        int lastIndex = arr.length-1;
+        reverseArray(arr, 0, lastIndex - d);
+        reverseArray(arr, lastIndex - d+1, lastIndex);
+        reverseArray(arr, 0, lastIndex);
+        return arr;
     }
 
     //reverse arr[] from index start to end
     private static void reverseArray(int[] input, int start, int end) {
         int temp;
-        while (start < end) {
+        while (start <= end) {
             temp = input[start];
             input[start] = input[end];
             input[end] = temp;
