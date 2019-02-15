@@ -1,4 +1,4 @@
-package scala.javaPro;
+package javaPro;
 
 class Base{
  void display(int a,int b){

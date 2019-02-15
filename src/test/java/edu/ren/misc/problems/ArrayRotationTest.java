@@ -2,7 +2,9 @@ package edu.ren.misc.problems;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertThat;
 
 public class ArrayRotationTest {
     @Test
@@ -67,11 +69,19 @@ public class ArrayRotationTest {
     }
 
     @Test
+    public void rotateByInput08() {
+        int arr[] = {1, 2, 3, 4, 5};
+        int expected[] = {3, 4, 5, 1, 2};
+        int[] output = ArrayRotation.rotate(arr, 2);
+        assertThat(expected, is(output));
+    }
+
+    @Test
     public void rotateArrayByK() {
         int actual[] = {1, 2, 3, 4, 5};
         int expected[] = {4, 5, 1, 2, 3};
         ArrayRotation.rotateArrByOne(actual, 2);
-        assertArrayEquals(expected, actual);
+        assertThat(expected, is(actual));
     }
 
     @Test
@@ -84,10 +94,31 @@ public class ArrayRotationTest {
 
     @Test
     public void rotateUsingReverse_1() {
-        int actual[] = {1, 2, 3, 4, 5, 6, 7};
-        int expected[] = {3, 4, 5, 6, 7, 1, 2};
-        ArrayRotation.rotateUsingReverse(actual, 2);
-        assertArrayEquals(expected, actual);
+        int actual[] = {1, 2, 3, 4, 5};
+        int expected[] = {4, 5, 1, 2, 3};
+        int[] output = ArrayRotation.rotateUsingReverse(actual, 2);
+        assertThat(output, is(expected));
+
+    }
+
+    @Test
+    public void rotateUsingReverse_01() {
+        int actual[] = {3, 8, 9, 7, 6};
+        //83 976
+        //7 6389
+        int expected[] = {9, 7, 6, 3, 8};
+        int[] output = ArrayRotation.rotateUsingReverse(actual, 3);
+        assertThat(output, is(expected));
+    }
+
+    @Test
+    public void rotateUsingReverse_001() {
+        int actual[] = {1, 2, 3, 4, 5, 6, 7, 8};
+        //83 976
+        //7 6389
+        int expected[] = {9, 7, 6, 3, 8};
+        int[] output = ArrayRotation.rotateUsingReverse(actual, 2);
+        assertThat(output, is(expected));
     }
 
     @Test
@@ -101,8 +132,8 @@ public class ArrayRotationTest {
     @Test
     public void rotateUsingReverse_3() {
         int actual[] = {1, 2, 3, 4, 5};
-        int expected[] = {5, 1, 2, 3, 4};
+        int expected[] = {2, 3, 4, 5, 1};
         ArrayRotation.rotateUsingReverse(actual, 4);
-        assertArrayEquals(expected, actual);
+        assertThat(expected, is(actual));
     }
 }

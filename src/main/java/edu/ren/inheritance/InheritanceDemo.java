@@ -17,6 +17,9 @@ class Vehicle {
         System.out.println("Start vehicle");
     }
 
+    private void test(){
+        System.out.println("test method vehicle");
+    }
     // overloading
     public void display(String str) {
         System.out.println("str= " + str);
@@ -32,6 +35,10 @@ class Bike extends Vehicle{
     @Override
     public void Start(){
         System.out.println("Start Bike");
+    }
+
+    private void test(){
+        System.out.println("test method bike");
     }
 }
 

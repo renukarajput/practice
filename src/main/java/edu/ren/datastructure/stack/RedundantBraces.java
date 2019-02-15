@@ -1,57 +1,42 @@
 package edu.ren.datastructure.stack;
 
-import java.util.*;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-/**
- * Created by rrn3194 on 11/21/18.
- */
 public class RedundantBraces extends MathExpression {
-    public int isRedundant(String input) {
-        Character[] characters = {'+', '-', '*', '/', '{', '[', '('};
 
-        Set<Character> openingCharSet = new HashSet<>();
-        openingCharSet.addAll(Arrays.asList(characters));
-
-        for (int i = 0; i < input.length() - 1; ) {
-            if (input.charAt(i) == input.charAt(i + 1) && openingCharSet.contains(input.charAt(i))) {
-                return 1;
-            } else {
-                i++;
+    //((a + b))=1, a + ((a+b))=1, (a+(a+b))=0
+    public boolean isRedundant(String input) {
+        Deque<Character> stack = new ArrayDeque<>();
+        int operatorCount = 0;
+        for (int i = 0; i < input.length(); i++) {
+            char item = input.charAt(i);
+            if (isOperator(item) || item == '(') {
+                stack.push(item);
             }
+            if (item == ')') {
+                while (stack.peek() != '(') {
+                    if (isOperator(stack.peek())) {
+                        operatorCount++;
+                    }
+                    stack.pop();
+                }
+                if (operatorCount == 0) {
+                    return true;
+                }
+                stack.pop();
+                operatorCount = 0;
+            }
+
         }
-        return 0;
+        return false;
     }
 
-  /*  public int isRedundant(String input) {
-        Stack<Character> stack = new Stack<>();
-        Character[] characters = {'+', '-', '*', '/', '{', '[', '('};
-        Set<Character> charSet = new HashSet<>();
-        charSet.addAll(Arrays.asList(characters));
+    private boolean isOperator(Character ch) {
+        if (ch == '+' || ch == '-' || ch == '/' || ch == '*')
+            return true;
+        else
+            return false;
+    }
 
-        int count = 0;
-        for (Character ch : input.toCharArray()) {
-            if (charSet.contains(ch)) {
-                stack.push(ch);
-            }
-
-            if (ch == '}' || ch == ')' || ch == ']') {
-                if (stack.isEmpty())
-                    return 0;
-                Character top = stack.peek();
-                stack.pop();
-                while (top != '(') {
-                    if (charSet.contains(top)) {
-                        count++;
-                        top = stack.peek();
-                        stack.pop();
-                    }
-                }
-
-                if (count <= 1)
-                    return 1;
-            }
-        }
-        return 0;
-    }*/
 }

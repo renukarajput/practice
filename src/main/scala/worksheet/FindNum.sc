@@ -7,3 +7,12 @@ def findNum = {
 
 findNum
 
+def sad = "meow"
+val cat = sad
+println(cat)
+
+val arr: Array[Int] = Array(10, 20,30)
+arr.update(1,5)
+for (x <- arr) {
+  println(x)
+}
