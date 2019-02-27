@@ -10,6 +10,8 @@ public class MaximumInSlidingWindow {
     List<Integer> getMax(Integer[] arr, int windowSize) {
         return getMax(Arrays.asList(arr),windowSize);
     }
+
+    // 1, 2, 3, 1, ....4, 5, 2, 3, 6
     List<Integer> getMax(List<Integer> arr, int windowSize) {
         List<Integer> windowMax = new ArrayList<>();
         int start = 0, end = windowSize - 1;

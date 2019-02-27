@@ -16,4 +16,17 @@ public class StackBackedQueueTest {
         queue.add(40);
         System.out.print(queue.remove() + " ");
     }
+
+    @Test
+    public void input_2(){
+        A a = new B();
+        System.out.println(((B) a).msg);
+    }
+}
+
+class A {
+    String msg = "hello A";
+}
+class B extends A {
+    String msg = "hello B";
 }

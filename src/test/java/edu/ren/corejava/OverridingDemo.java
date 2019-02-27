@@ -11,7 +11,7 @@ public class OverridingDemo {
     @Test
     public void test() {
         Human human = new Labour("abc", 2000, 29);
-        human.getSocialStatus();
-        human.getOrigin();
+        System.out.println(human.getSocialStatus());
+        System.out.println(human.getOrigin());
     }
 }
