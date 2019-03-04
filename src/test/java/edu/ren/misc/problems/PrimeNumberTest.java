@@ -17,4 +17,9 @@ public class PrimeNumberTest {
     public void input_2() {
         primeNumber.get(100);
     }
+
+    @Test
+    public void input_3() {
+        primeNumber.printPrime(50);
+    }
 }

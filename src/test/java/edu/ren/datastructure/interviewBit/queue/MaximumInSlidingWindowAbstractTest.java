@@ -2,6 +2,7 @@ package edu.ren.datastructure.interviewBit.queue;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
@@ -17,6 +18,13 @@ public abstract class MaximumInSlidingWindowAbstractTest {
         Integer[] arr={1, 2, 3, 1, 4, 5, 2, 3, 6};
         List<Integer> max = maximumInSlidingWindow.getMax(arr, 3);
         assertThat(max,contains(3, 3, 4, 5, 5, 5, 6));
+    }
+
+    @Test
+    public void getMax_1() {
+        Integer[] arr={1, 2, 3, 1};
+        List<Integer> max = maximumInSlidingWindow.getMax(arr, 3);
+        assertThat(max,contains(3,3));
     }
 
     @Test
