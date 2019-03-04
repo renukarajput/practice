@@ -2,6 +2,7 @@ package edu.ren.datastructure.interviewBit.backtracking;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("Duplicates")
 public class Sudoku2 extends Sudoku{
     private final char EMPTY_CELL = '.';
     final int start = 1;

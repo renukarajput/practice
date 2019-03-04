@@ -17,6 +17,20 @@ BinarySearchInRotatedArray binarySearchInRotatedArray=new BinarySearchInRotatedA
     }
 
     @Test
+    public void findIndexOfPeak0() {
+        //0 1 2 4 5 6 7
+        Integer[] arr={2,4,5,6,7,0,1};
+        assertThat(new BinarySearchInRotatedArray().indexOfPeak(Arrays.asList(arr),0,arr.length),is(3));
+    }
+
+  @Test
+    public void findIndexOfPeak1() {
+        //6 7 0 1 2  4 5
+        Integer[] arr={6,7,0,1, 2,4,5};
+        assertThat(new BinarySearchInRotatedArray().indexOfPeak(Arrays.asList(arr),0,arr.length),is(1));
+    }
+
+    @Test
     public void findInSortedAndRotated_1() {
         Integer[] arr={6,7,8,1,2,3,4,5};
         assertThat(new BinarySearchInRotatedArray().findInSortedAndRotated(arr,2),is(4));

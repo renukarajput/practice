@@ -2,6 +2,7 @@ package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
 import java.util.List;
 
+@SuppressWarnings("Duplicates")
 public class DungeonPrincessDP extends DungeonPrincess{
     @Override
     protected int minimumInititalHealth(List<List<Integer>> grid) {

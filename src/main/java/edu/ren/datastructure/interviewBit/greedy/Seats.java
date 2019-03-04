@@ -13,45 +13,42 @@ public class Seats {
     // . . . . x . . x x . . . x . .
     //4 1x 2 2x 3 1x 2
     int shift(char[] seats, int moveToIndex) {
-
-
         int count = 0;
         int firstFreeIndex = 0;
         int lastFreeIndex = moveToIndex;
+
         while (firstFreeIndex < lastFreeIndex) {
-            if (seats[firstFreeIndex] == '.') {
-                firstFreeIndex++;
-            }
-            else if (seats[lastFreeIndex] == 'x') {
-                lastFreeIndex--;
-            }
-            else {
-                //x .
-            //    System.out.println(seats[firstFreeIndex]+" - "+seats[lastFreeIndex]);
+            if(seats[firstFreeIndex]=='x' && seats[lastFreeIndex]=='.'){
+                // System.out.println(seats[firstFreeIndex]+" - "+seats[lastFreeIndex]);
                 seats[lastFreeIndex] = seats[firstFreeIndex];
                 seats[firstFreeIndex] = '.';
                 count += lastFreeIndex-firstFreeIndex;
                 firstFreeIndex++;
                 lastFreeIndex--;
             }
-        }
-        firstFreeIndex = seats.length - 1;
-        lastFreeIndex = moveToIndex;
-        while (firstFreeIndex > lastFreeIndex) {
-            if (seats[firstFreeIndex] == '.') {
-                firstFreeIndex--;
+            else if (seats[firstFreeIndex] == '.') {
+                firstFreeIndex++;
             }
             else if (seats[lastFreeIndex] == 'x') {
-                lastFreeIndex++;
+                lastFreeIndex--;
             }
-            else {
-                //. x
-                System.out.println(seats[lastFreeIndex]+" - "+seats[firstFreeIndex]);
-                seats[lastFreeIndex] = seats[firstFreeIndex];
-                seats[firstFreeIndex] = '.';
-                count += firstFreeIndex-lastFreeIndex;
-                firstFreeIndex--;
-                lastFreeIndex++;
+        }
+        int lastFreeIndexOnRight = seats.length - 1;
+        int firstFreeIndexOnRight = moveToIndex;
+        while (lastFreeIndexOnRight > firstFreeIndexOnRight) {
+
+            if(seats[lastFreeIndexOnRight]=='x' && seats[firstFreeIndexOnRight]=='.'){
+                seats[firstFreeIndexOnRight] = seats[lastFreeIndexOnRight];
+                seats[lastFreeIndexOnRight] = '.';
+                count += lastFreeIndexOnRight-firstFreeIndexOnRight;
+                lastFreeIndexOnRight--;
+                firstFreeIndexOnRight++;
+            }
+           else if (seats[lastFreeIndexOnRight] == '.') {
+                lastFreeIndexOnRight--;
+            }
+            else if (seats[firstFreeIndexOnRight] == 'x') {
+                firstFreeIndexOnRight++;
             }
         }
         return count;

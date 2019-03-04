@@ -2,6 +2,8 @@ package edu.ren.datastructure.interviewBit.array;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class NextHigherPermutation {
     /**
@@ -28,6 +30,52 @@ public class NextHigherPermutation {
     }
 
     void nextPermutation(ArrayList<Integer> arr) {
+        int endOfBlock = arr.size() - 1;
+        int current = endOfBlock;
+
+        while (current > 0 && arr.get(current) < arr.get(current - 1)) {
+            current--;
+        }
+        if (current <= 0) {
+            Collections.sort(arr);
+            return;
+        }
+
+        int element = arr.get(current - 1);
+        int start = current;
+        int end = endOfBlock;
+        int maxDiff = Integer.MAX_VALUE;
+        int position = -1;
+        for (int i = start; i <= end; i++) {
+            int diff = arr.get(i) - element;
+            if (diff < maxDiff && diff>0) {
+                maxDiff = diff;
+                position = i;
+            }
+        }
+        if (position != -1) {
+            swap(arr, current - 1, position);
+            rev(arr, start, endOfBlock);
+        }
+    }
+
+    void rev(ArrayList<Integer> arr, int start, int end) {
+        while (start < end) {
+            int temp = arr.get(end);
+            arr.set(end, arr.get(start));
+            arr.set(start, temp);
+            start++;
+            end--;
+        }
+    }
+
+    protected void swap(ArrayList<Integer> arr, int index, int currentIndex) {
+        int temp = arr.get(index);
+        arr.set(index, arr.get(currentIndex));
+        arr.set(currentIndex, temp);
+    }
+
+    void nextPermutation_(ArrayList<Integer> arr) {
         int currentIndex = arr.size() - 1;
         while (currentIndex > 0) {
             int index = currentIndex - 1;
@@ -80,9 +128,5 @@ public class NextHigherPermutation {
         }
     }
 
-    protected void swap(ArrayList<Integer> arr, int index, int currentIndex) {
-        int temp = arr.get(index);
-        arr.set(index, arr.get(currentIndex));
-        arr.set(currentIndex, temp);
-    }
+
 }

@@ -23,4 +23,18 @@ RemoveElementFromArray removeElementFromArray=new RemoveElementFromArray();
         assertThat(removeElementFromArray.remove(arr,1),is(4));
         System.out.println(arr);
     }
+
+    @Test
+    public void remove_2() {
+        final ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(1,2,4,5));
+        assertThat(removeElementFromArray.remove(arr,3),is(4));
+        System.out.println(arr);
+    }
+
+    @Test
+    public void remove_3() {
+        final ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(1,2,4,5,6,5));
+        assertThat(removeElementFromArray.remove(arr,5),is(4));
+        System.out.println(arr);
+    }
 }

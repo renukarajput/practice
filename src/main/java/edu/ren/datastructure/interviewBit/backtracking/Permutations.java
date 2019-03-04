@@ -10,18 +10,21 @@ public class Permutations {
     }
 
 
-    private void permute(ArrayList<Integer> input, int size, ArrayList<ArrayList<Integer>> result) {
-        if (size == input.size()) {
+    private void permute(ArrayList<Integer> input, int index, ArrayList<ArrayList<Integer>> result) {
+        if (index == input.size()) {
              System.out.println(input);
 
             ArrayList<Integer> copy = new ArrayList<>(input);
             result.add(copy);
             return;
         }
-        for (int i = size; i < input.size(); i++) {
-            swap(input,  i,size);
-            permute(input, size +1, result);
-            swap(input,  i,size);
+        for (int i = index; i < input.size(); i++) {
+            if(index!=i && input.get(i).equals(input.get(index))){
+                continue;
+            }
+            swap(input,  i,index);
+            permute(input, index +1, result);
+            swap(input,  i,index);
         }
     }
 

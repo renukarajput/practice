@@ -18,7 +18,7 @@ public class NextHigherPermutationTest {
     @Test
     public void nextPermutation() {
         Integer [] arr={1,3,4,2};
-        Integer [] expectedArr={1,4,3,2};
+        Integer [] expectedArr={1,4,2,3};
         assertPermutation(arr, expectedArr);
     }
 
@@ -48,7 +48,7 @@ public class NextHigherPermutationTest {
     @Test
     public void nextPermutation_003() {
         Integer [] arr={701,319,695,52};
-        Integer [] expectedArr={701,695,319,52};
+        Integer [] expectedArr={701,695,52,319};
         assertPermutation(arr, expectedArr);
 
     }
@@ -72,7 +72,8 @@ public class NextHigherPermutationTest {
     @Test
     public void nextPermutation_02() {
         Integer [] arr={5,1,3,7,8,4};
-        Integer [] expectedArr={5,1,4,3,7,8};
+      //  Integer [] expectedArr={5,1,4,3,7,8};
+        Integer [] expectedArr={5,1,3,8,4,7};
         assertPermutation(arr, expectedArr);
 
     }

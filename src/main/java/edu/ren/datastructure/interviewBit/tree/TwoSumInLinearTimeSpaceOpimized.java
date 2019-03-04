@@ -49,6 +49,16 @@ public class TwoSumInLinearTimeSpaceOpimized extends TwoSumInLinearTime {
                     inOrderTempRoot = one.right;
                 }
             }
+            List<? extends Number> l=new ArrayList<>();
+            //l.add(new ArrayList<>());
+            //l.add(1L);
+            final Number number = l.get(0);
+            //List<? extends Number> l=new ArrayList<>();
+            //l.add(new ArrayList<>());
+            List<? super Number> l1=new ArrayList<>();
+            l1.add(1L);
+            l1.add(1f);
+            final Object object = l1.get(0);
         }
         return false;
     }
