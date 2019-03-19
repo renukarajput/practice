@@ -1,6 +1,5 @@
 package com.scratch;
 
-import scala.actors.threadpool.Arrays;
 
 import java.util.ArrayList;
 import java.util.Collections;

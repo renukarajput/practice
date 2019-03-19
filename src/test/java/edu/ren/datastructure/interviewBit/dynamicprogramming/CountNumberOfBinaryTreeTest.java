@@ -5,13 +5,12 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-public class CountNumberOfBSTTest {
+public class CountNumberOfBinaryTreeTest {
 CountNumberOfBST countNumberOfBST=new CountNumberOfBST();
+CountNumberOfBinaryTree countNumberOfBinaryTree=new CountNumberOfBinaryTree();
     @Test
     public void get() {
-        assertThat(countNumberOfBST.get(3),is(5));
-    } @Test
-    public void get1() {
-        assertThat(countNumberOfBST.get(4),is(5));
+        int expected =6* countNumberOfBST.get(3);
+        assertThat(countNumberOfBinaryTree.get(3),is(expected));
     }
 }
