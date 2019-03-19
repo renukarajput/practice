@@ -5,6 +5,11 @@ import java.util.Set;
 
 public class ProblemSetter implements Department {
     Set<String> names;
+
+    public Set<String> getNames() {
+        return names;
+    }
+
     static String dept="ProblemSetter";
 
     public ProblemSetter() {
@@ -15,7 +20,7 @@ public class ProblemSetter implements Department {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (String s: names) {
-            sb.append(s).append(',');
+            sb.append(s);
         }
         return  dept +"\n" +
                 "Name : " + sb.toString();

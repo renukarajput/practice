@@ -4,8 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Sales implements Department {
+
     Set<String> names;
     static String dept = "Sales";
+
+    public Set<String> getNames() {
+        return names;
+    }
 
     public Sales() {
         this.names = new HashSet<>();

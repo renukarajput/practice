@@ -6,6 +6,10 @@ import java.util.Set;
 public class Developer implements Department {
     Set<String> names;
 
+    public Set<String> getNames() {
+        return names;
+    }
+
     public Developer() {
         this.names = new HashSet<>();
     }
