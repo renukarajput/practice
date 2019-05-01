@@ -21,4 +21,17 @@ public class NonRepeatingChars {
         else
             return null;
     }
+
+    public static void firstNonRepeatingChar(String input) {
+        char[] chars = input.toCharArray();
+        Set<Character> visitedSet = new LinkedHashSet<>();
+        for (int i = 0; i < chars.length; i++) {
+            if (!visitedSet.contains(chars[i])) {
+                visitedSet.add(chars[i]);
+            } else {
+                visitedSet.remove(chars[i]);
+            }
+        }
+        System.out.println(visitedSet.stream().findFirst().get());
+    }
 }

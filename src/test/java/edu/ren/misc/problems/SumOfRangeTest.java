@@ -33,4 +33,16 @@ public class SumOfRangeTest {
         int[][] actual = sum.getSumForGivenRange(input);
         assertThat(actual[0][3], is(10));
     }
+
+    @Test
+    public void input_01() {
+        int[] input = {1, 2, 4, 3, 5, 6};
+        assertThat(sum.sumOfGivenRange(input, 2, 4), is(12));
+    }
+
+    @Test
+    public void input_02() {
+        int[] input = {1, 2, 4, 3};
+        assertThat(sum.sumOfGivenRange(input, 0, 3), is(9));
+    }
 }

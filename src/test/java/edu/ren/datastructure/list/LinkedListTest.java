@@ -44,6 +44,16 @@ public class LinkedListTest {
     }
 
     @Test
+    public void integer(){
+        Integer i=5;
+        Integer j=5;
+        System.out.println(i==j);
+        Integer i1=500001;
+        Integer j1=500001;
+        System.out.println(i1==j1);
+    }
+
+    @Test
     public void integerInput() {
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.insertAtBeginning(10);

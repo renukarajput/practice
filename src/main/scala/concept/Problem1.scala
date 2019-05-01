@@ -26,4 +26,14 @@ object Problem1 {
     }
     return res
   }
+
+  def test(x:Array[Int]): Unit ={
+    import scala.util.control.Breaks._
+    var i =0;
+    while(i< x.length){
+      breakable{
+        break;
+      }
+    }
+  }
 }

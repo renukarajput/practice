@@ -41,8 +41,24 @@ public class EmployeeTest {
         empArr[0] = new Employee("renuka", 100, 24);
         empArr[1] = new Employee("nilesh", 900, 25);
         empArr[2] = new Labour("jayesh", 600, 27);
-        System.out.println("========");
+        Map<Employee, Integer> m = new HashMap();
+        m.put(new Employee("renuka", 100, 24), 1);
+        m.put(new Employee("renuka", 100, 24), 1);
+        System.out.println("+++++ "+ m.size());
+        Set<Employee> set = new LinkedHashSet<>();
+        set.add(new Employee("renuka", 100, 24));
+        set.add(new Employee("renuka", 100, 24));
+        System.out.println("--- "+ set.size());
 
+        Iterator<Employee> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.println("*** "+iterator.next());
+        }
+
+        Set<Employee> treeSet = new TreeSet<>();
+        treeSet.add(new Employee("renuka", 100, 24));
+        treeSet.add(new Employee("renuka", 100, 24));
+        System.out.println("$$$ "+ treeSet.size());
         //Object x[] = new String[3];
         // x[0] = new Integer(0);
 

@@ -1,6 +1,6 @@
 package edu.ren.corejava.immutableClass;
 
-final public class ImmutableClass {
+public final class ImmutableClass {
     private final int id;
     private final String name;
 

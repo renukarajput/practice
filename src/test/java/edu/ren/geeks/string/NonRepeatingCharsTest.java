@@ -97,4 +97,14 @@ public class NonRepeatingCharsTest {
         }
         assertThat(NonRepeatingChars.getNonRepeatingFirstChar(characterList), is('a'));
     }
+
+    @Test
+    public void input7() {
+        NonRepeatingChars.firstNonRepeatingChar("aabcc");
+        NonRepeatingChars.firstNonRepeatingChar("renuka");
+        NonRepeatingChars.firstNonRepeatingChar("aaaxaaccyxabde");
+        NonRepeatingChars.firstNonRepeatingChar("aaa");
+        NonRepeatingChars.firstNonRepeatingChar("aacbbeef");
+    }
+    //a a b c b e d
 }
