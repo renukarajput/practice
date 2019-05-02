@@ -1,7 +1,5 @@
 package edu.ren.geeks.tree;
 
-import javaPro.A;
-
 import java.util.Arrays;
 
 public class SegmentTree {

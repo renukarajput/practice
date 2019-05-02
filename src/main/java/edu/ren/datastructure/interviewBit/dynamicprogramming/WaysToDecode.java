@@ -1,7 +1,5 @@
 package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
-import scala.Char;
-
 import java.util.HashMap;
 import java.util.Map;
 

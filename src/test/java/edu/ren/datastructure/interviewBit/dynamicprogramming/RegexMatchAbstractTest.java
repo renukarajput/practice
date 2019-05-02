@@ -2,8 +2,8 @@ package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
 import org.junit.Test;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 public abstract class RegexMatchAbstractTest {
     RegexMatch regexMatch= getRegexMatch();
