@@ -20,7 +20,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             return root;
         }
 
-        if (val.compareTo(root.val) > 0)
+        if (val.compareTo(root.getVal()) > 0)
             root.rightChild = insertionInBst(root.rightChild, val);
         else
             root.leftChild = insertionInBst(root.leftChild, val);
@@ -35,7 +35,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     protected void inOrder(Node root) {
         if (root != null) {
             inOrder(root.leftChild);
-            System.out.print(root.val + " - ");
+            System.out.print(root.getVal() + " - ");
             inOrder(root.rightChild);
         }
     }
@@ -51,7 +51,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         if (root != null) {
             stack.push(root);
             if (root.leftChild == null && root.rightChild == null) {
-                System.out.println(Arrays.toString(stack.stream().map(n -> n.val).toArray()));
+                System.out.println(Arrays.toString(stack.stream().map(n -> n.getVal()).toArray()));
                 visitedNodes.add(root);
                 if (!stack.isEmpty()) {
                     stack.pop();
@@ -110,8 +110,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             kThSmallest = getKThSmallest(root.leftChild, cnt, k);
 
         if (cnt[0] == k) {
-            System.out.print("root val = " + root.val + " k : " + cnt[0]);
-            return root.val;
+            System.out.print("root val = " + root.getVal() + " k : " + cnt[0]);
+            return root.getVal();
         }
 
         cnt[0]++;
@@ -132,17 +132,17 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             return;
         delete(root.leftChild);
         delete(root.rightChild);
-        System.out.println("deleting node -> " + root.val);
+        System.out.println("deleting node -> " + root.getVal());
         root.leftChild = null;
         root.rightChild = null;
-        root.val = null;
+        root.setVal(null);
     }
 
 
     public Boolean searchInBst(Node<T> root, T value) {
-        if (value.compareTo(root.val) == 0)
+        if (value.compareTo(root.getVal()) == 0)
             return true;
-        else if (value.compareTo(root.val) < 0) {
+        else if (value.compareTo(root.getVal()) < 0) {
             if (root.leftChild == null)
                 return false;
             else
@@ -156,7 +156,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     public T getMinValue() {
-        return getMinOfBst(root).val;
+        return getMinOfBst(root).getVal();
     }
 
     private Node<T> getMinOfBst(Node<T> root) {
@@ -167,7 +167,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     public T getMaxValue() {
-        return getMaxOfBst(root).val;
+        return getMaxOfBst(root).getVal();
     }
 
     private Node<T> getMaxOfBst(Node<T> root) {
@@ -200,9 +200,9 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         if (root == null)
             return;
 
-        if (value.compareTo(root.val) == 0) {
+        if (value.compareTo(root.getVal()) == 0) {
             return;
-        } else if (value.compareTo(root.val) < 0) {
+        } else if (value.compareTo(root.getVal()) < 0) {
             if (root.leftChild != null) {
                 list.add(root.leftChild);
                 search(root.leftChild, value, list);

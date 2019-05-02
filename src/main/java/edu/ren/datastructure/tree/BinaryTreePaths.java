@@ -7,19 +7,19 @@ public class BinaryTreePaths {
 
     public void printPathRec(Node<Integer> root){
         List<Integer> list = new ArrayList<>();
-        list.add(root.val);
+        list.add(root.getVal());
         printPath(root, list);
     }
 
     private void printPath(Node<Integer> root, List<Integer> list) {
 
         if (root.leftChild != null) {
-            list.add(root.leftChild.val);
+            list.add(root.leftChild.getVal());
             printPath(root.leftChild, list);
             list.remove(list.size()-1);
         }
         if (root.rightChild != null) {
-            list.add(root.rightChild.val);
+            list.add(root.rightChild.getVal());
             printPath(root.rightChild, list);
             list.remove(list.size()-1);
         }
@@ -31,18 +31,18 @@ public class BinaryTreePaths {
 
     public void printSum(Node<Integer> root){
         List<Integer> list = new ArrayList<>();
-        list.add(root.val);
+        list.add(root.getVal());
         printPathSum(root, list);
     }
     private void printPathSum(Node<Integer> root, List<Integer> list) {
 
         if (root.leftChild != null) {
-            list.add(root.leftChild.val);
+            list.add(root.leftChild.getVal());
             printPathSum(root.leftChild, list);
             list.remove(list.size()-1);
         }
         if (root.rightChild != null) {
-            list.add(root.rightChild.val);
+            list.add(root.rightChild.getVal());
             printPathSum(root.rightChild, list);
             list.remove(list.size()-1);
         }

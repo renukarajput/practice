@@ -29,7 +29,7 @@ public class BinaryTreePrinter {
             List<Node<T>> newNodes = new ArrayList<Node<T>>();
             for (Node<T> node : nodes) {
                 if (node != null) {
-                    System.out.print(node.val);
+                    System.out.print(node.getVal());
                     newNodes.add(node.leftChild);
                     newNodes.add(node.rightChild);
                 } else {

@@ -7,7 +7,7 @@ public class BinaryTreeSum {
             return root1;
         }
 
-        Node<Integer> resultRoot = new Node(root1.val + root2.val);
+        Node<Integer> resultRoot = new Node(root1.getVal() + root2.getVal());
 
         resultRoot.leftChild = sumOfTwoTrees(root1.leftChild, root2.leftChild);
         resultRoot.rightChild = sumOfTwoTrees(root1.rightChild, root2.rightChild);

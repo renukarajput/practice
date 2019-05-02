@@ -104,7 +104,7 @@ public class BinaryTree<T> {
         if (node1 == null && node2 != null || node1 != null && node2 == null)
             return 0;
 
-        if (node1.val != node2.val)
+        if (node1.getVal() != node2.getVal())
             return 0;
 
         if ((node1.leftChild == null && node2.leftChild == null) && (node1.rightChild == null && node2.rightChild == null))
@@ -121,17 +121,17 @@ public class BinaryTree<T> {
 
         swapNodeValues(nodeToDelete, rightMostChild);
         Node<T> parentNode = getParentNode(this.root, rightMostChild);
-        System.out.println(parentNode.val);
-        if (parentNode.leftChild != null && parentNode.leftChild.val == rightMostChild.val)
+        System.out.println(parentNode.getVal());
+        if (parentNode.leftChild != null && parentNode.leftChild.getVal() == rightMostChild.getVal())
             parentNode.leftChild = null;
-        if (parentNode.rightChild != null && parentNode.rightChild.val == rightMostChild.val)
+        if (parentNode.rightChild != null && parentNode.rightChild.getVal() == rightMostChild.getVal())
             parentNode.rightChild = null;
     }
 
     private void swapNodeValues(Node<T> nodeOne, Node<T> nodeTwo) {
-        T temp = nodeOne.val;
-        nodeOne.val = nodeTwo.val;
-        nodeTwo.val = temp;
+        T temp = nodeOne.getVal();
+        nodeOne.setVal(nodeTwo.getVal());
+        nodeTwo.setVal(temp);
     }
 
     public Node<T> getRightMostNode(Node<T> root) {
@@ -174,7 +174,7 @@ public class BinaryTree<T> {
     private void inOrder(Node<T> root, List<T> list) {
         if (root != null) {
             inOrder(root.leftChild, list);
-            list.add(root.val);
+            list.add(root.getVal());
             inOrder(root.rightChild, list);
         }
     }
@@ -194,7 +194,7 @@ public class BinaryTree<T> {
         count[0]++;
 
         if (k == count[0]) {
-            System.out.println(k + "Th smallest : " + node.val + "--------------> Cnt : " + count[0]);
+            System.out.println(k + "Th smallest : " + node.getVal() + "--------------> Cnt : " + count[0]);
             return;
         }
         //if (node.rightChild != null) {
@@ -205,7 +205,7 @@ public class BinaryTree<T> {
     private void inOrder(Node<T> root) {
         if (root != null) {
             inOrder(root.leftChild);
-            System.out.println(root.val);
+            System.out.println(root.getVal());
             inOrder(root.rightChild);
         }
     }
@@ -220,8 +220,8 @@ public class BinaryTree<T> {
     }
 
     private T searchPath(Node<T> root, T value, List<T> list) {
-        list.add(root.val);
-        if (root.val == value) {
+        list.add(root.getVal());
+        if (root.getVal() == value) {
             return value;
         }
         T valueFound = null;
@@ -256,7 +256,7 @@ public class BinaryTree<T> {
         }
         while (!stack.isEmpty()) {
             Node<T> top = stack.pop();
-            System.out.print(top.val + " - ");
+            System.out.print(top.getVal() + " - ");
 
             if (top.rightChild != null)
                 current = top.rightChild;
@@ -280,7 +280,7 @@ public class BinaryTree<T> {
             } else {
                 if (!stack.isEmpty()) {
                     Node<T> top = stack.pop();
-                    System.out.print(top.val + " - ");
+                    System.out.print(top.getVal() + " - ");
                     if (top.rightChild != null) {
                         current = top.rightChild;
                     }
@@ -331,9 +331,9 @@ public class BinaryTree<T> {
 
     public Node<T> findLowestCommonAncestor(Node<T> root, T p, T q, int[] nodesFound) {
         cnt++;
-        System.out.print(root.val + "--");
+        System.out.print(root.getVal() + "--");
 
-        if (nodesFound[0] == 2 || root.val == p || root.val == q) {
+        if (nodesFound[0] == 2 || root.getVal() == p || root.getVal() == q) {
             nodesFound[0]++;
             return root;
         }
@@ -371,7 +371,7 @@ public class BinaryTree<T> {
             if (qHead.rightChild != null) {
                 queue.add(qHead.rightChild);
             }
-            System.out.print(qHead.val + " ");
+            System.out.print(qHead.getVal() + " ");
         }
     }
 
@@ -392,11 +392,11 @@ public class BinaryTree<T> {
                 queue.add(marker);
                 while (!stack.isEmpty()) {
                     Node<T> topElem = stack.pop();
-                    System.out.print(topElem.val + " ");
+                    System.out.print(topElem.getVal() + " ");
                 }
                 System.out.println();
             } else {
-                System.out.print(currentElement.val + " ");
+                System.out.print(currentElement.getVal() + " ");
                 addChildrenToStack(queue, stack, currentElement);
             }
         }
@@ -420,10 +420,10 @@ public class BinaryTree<T> {
                 queue.add(marker);
                 while (!stack.isEmpty()) {
                     Node<T> childElm = stack.pop();
-                    System.out.print(childElm.val + " ");
+                    System.out.print(childElm.getVal() + " ");
                 }
             } else {
-                System.out.print(currentElement.val + " ");
+                System.out.print(currentElement.getVal() + " ");
 
                 if (currentElement.leftChild != null) {
                     curr = currentElement.leftChild;
@@ -476,7 +476,7 @@ public class BinaryTree<T> {
         currentLevel.push(root);
         while (!currentLevel.isEmpty()) {
             currentElement = currentLevel.pop();
-            System.out.print(currentElement.val + " ");
+            System.out.print(currentElement.getVal() + " ");
 
             if (leftToRight) {
                 if (currentElement.leftChild != null) {
@@ -517,7 +517,7 @@ public class BinaryTree<T> {
             if (currentElement.rightChild != null)
                 childQueue.add(currentElement.rightChild);
 
-            System.out.print(currentElement.val + " ");
+            System.out.print(currentElement.getVal() + " ");
 
             if (rootQueue.isEmpty()) {
                 Queue<Node<T>> tempQueue = rootQueue;
@@ -549,7 +549,7 @@ public class BinaryTree<T> {
                 bfsQueue.add(currentElement.leftChild);
             if (currentElement.rightChild != null)
                 bfsQueue.add(currentElement.rightChild);
-            System.out.print(currentElement.val + " ");
+            System.out.print(currentElement.getVal() + " ");
         }
     }
 
@@ -575,7 +575,7 @@ public class BinaryTree<T> {
 
     public List<T> preOrderValues() {
         List<Node<T>> nodes = preOrder();
-        return nodes.stream().map(node -> node.val).collect(Collectors.toList());
+        return nodes.stream().map(node -> node.getVal()).collect(Collectors.toList());
     }
 
     public List<Node<T>> preOrder() {
