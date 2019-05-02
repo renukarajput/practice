@@ -124,7 +124,7 @@ public class BinarySearchTreeTest {
         assertNull(binarySearchTree.root);
         assertNull(someNode.leftChild);
         assertNull(someNode.rightChild);
-        assertNull(someNode.val);
+        assertNull(someNode.getVal());
        // assertThat(binarySearchTree.deleteTree());
     }
 

@@ -71,14 +71,14 @@ public class BinaryTreeTest {
 
         Node childNode = treeOne.root.leftChild.rightChild;
         Node parentNode = treeOne.getParentNode(treeOne.root, childNode);
-        assertThat(parentNode.val, is(5));
+        assertThat(parentNode.getVal(), is(5));
 
         Node childNode1 = treeOne.root.leftChild;
         Node parentNode1 = treeOne.getParentNode(treeOne.root, childNode1);
-        assertThat(parentNode1.val, is(10));
+        assertThat(parentNode1.getVal(), is(10));
 
         Node rightMostNode = (treeOne.getRightMostNode(treeOne.root));
-        assertThat(rightMostNode.val, is(4));
+        assertThat(rightMostNode.getVal(), is(4));
 
         treeOne.deleteGivenNode(treeOne.root.leftChild);
         System.out.println("\n");
@@ -136,7 +136,7 @@ public class BinaryTreeTest {
 
     private void testLCA(BinaryTree<Integer> treeOne, int p, int q) {
         Node<Integer> out = treeOne.findLowestCommonAncestor(treeOne.root, p, q);
-        System.out.println("\nLCA of " + p + " and " + q + "= " + out.val);
+        System.out.println("\nLCA of " + p + " and " + q + "= " + out.getVal());
 //        assertThat(treeOne.findLCA(treeOne.root, 2, 3), is(1));
         System.out.println("number of recursive calls = " + BinaryTree.cnt);
     }
