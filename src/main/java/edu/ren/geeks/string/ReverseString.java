@@ -28,4 +28,17 @@ public class ReverseString {
         arr[start] = arr[end];
         arr[end] = temp;
     }
+
+    public static String[] reverseString(String[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start <= end) {
+            String temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+        return arr;
+    }
 }
