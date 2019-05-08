@@ -87,7 +87,20 @@ public class LinkedList<T> {
         Node<T> nexNode = node.next;
         prevNode.next = nexNode;
         return node;
+    }
 
+    public void deleteGivenNode(T val) {
+        Node<T> curr = this.head;
+        Node<T> prev = null, next;
+        while (curr != null && curr.data != val) {
+            prev = curr;
+            curr = curr.next;
+        }
+        if(curr != null) {
+            next = curr.next;
+            prev.next = next;
+            curr.data = null;
+        }
     }
 
     public void deleteLast() {
