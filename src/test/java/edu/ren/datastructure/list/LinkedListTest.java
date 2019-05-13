@@ -228,7 +228,7 @@ public class LinkedListTest {
         assertThat(linkedList.toString(), is("4->5->1->9->8"));
     }
 
-    private LinkedList<Integer> getIntegerList(int... values) {
+    protected LinkedList<Integer> getIntegerList(int... values) {
         LinkedList<Integer> list = new LinkedList<>();
         for (int value : values) {
             list.insertAtEnd(value);

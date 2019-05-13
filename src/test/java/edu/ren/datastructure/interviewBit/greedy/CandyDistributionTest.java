@@ -1,10 +1,6 @@
 package edu.ren.datastructure.interviewBit.greedy;
 
-import javaPro.A;
 import org.junit.Test;
-
-import java.util.Arrays;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
