@@ -33,19 +33,19 @@ public class RemoveAllIdenticalElements {
     }
 
     public void removeDuplicates(Node head) {
-        Node curr = head;
-        while (curr != null) {
-            Node node = curr;
-            while (node != null && node.data == curr.data) {
-                node = node.next;
-            }
-            curr.next = node;
-            curr = curr.next;
-        }
+//        Node curr = head;
+//        while (curr != null) {
+//            Node node = curr;
+//            while (node != null && node.data == curr.data) {
+//                node = node.next;
+//            }
+//            curr.next = node;
+//            curr = curr.next;
+//        }
         //**************
         Node current = head;
         while (current != null && current.next != null) {
-            if (current.next.data == current.data) {
+            if (current.data == current.next.data) {
                 current.next = current.next.next;
             } else {
                 current = current.next;

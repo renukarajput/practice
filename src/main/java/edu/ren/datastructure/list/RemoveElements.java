@@ -10,8 +10,8 @@ public class RemoveElements {
     }
 
     public Node removeElements(Node head, Integer val) {
-        Node curr = head, prev = null, next, newHead = head;
-        boolean headAssigned = false, isPendingRemove=false;
+        Node curr = head, prev = null, newHead = head;
+        boolean headAssigned = false, isPendingRemove = false;
         while (curr != null) {
             if (curr.data != val) {
                 if (!headAssigned) {
@@ -27,11 +27,9 @@ public class RemoveElements {
             }
             curr = curr.next;
         }
-        if(isPendingRemove){
-            prev.next=null;
+        if (isPendingRemove) {
+            prev.next = null;
         }
-
-
         return newHead;
     }
 }
