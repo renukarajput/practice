@@ -1,7 +1,7 @@
 package edu.ren.tictactoe;
 
 public class PlayerO implements Player {
-    private final String playerName = "O";
+    static final String playerName = "O";
 
     public String getPlayerName() {
         return playerName;
