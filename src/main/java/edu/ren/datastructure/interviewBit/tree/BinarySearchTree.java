@@ -19,17 +19,4 @@ public class BinarySearchTree extends BinaryTree{
         return binarySearchTree;
     }
 
-    public boolean isBst(){
-        return  isBst(root,null);
-    }
-
-    private boolean isBst(TreeNode root,TreeNode prev) {
-        if(root==null){
-            return true;
-        }
-        isBst(root.left,prev);
-
-        return false;
-    }
-
 }
