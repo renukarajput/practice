@@ -43,4 +43,15 @@ public class BinarySearchCheck {
         return root.val;
     }
 
+    public boolean isBst(TreeNode root, Integer minVal, Integer maxVal) {
+        if (root == null)
+            return true;
+
+        if (root.getVal() < minVal || root.getVal() > maxVal)
+            return false;
+
+        return isBst(root.getLeft(), minVal, root.getVal()) &&
+                isBst(root.getRight(), root.getVal(), maxVal);
+    }
+
 }
