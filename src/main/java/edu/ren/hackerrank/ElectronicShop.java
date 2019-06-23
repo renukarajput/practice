@@ -23,7 +23,6 @@ public class ElectronicShop {
         int closestIndex = 0;
         while (start <= end) {
             int mid = start + (end - start) / 2;
-          
             int diff = Math.abs(arr[mid] - num);
             if (diff < prevDiff) {
                 prevDiff = diff;
