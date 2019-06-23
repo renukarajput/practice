@@ -6,12 +6,15 @@ import java.util.List;
 class GenericDemo {
 
     public static void processElements(List<?> elements) {
+
+        //elements.add(null);
         for (Object animal : elements) {
             System.out.println(animal);
         }
     }
 
     public static void process(List<? extends Animal> elements) {
+       // Animal animal = elements.get(6);
         for (Animal a : elements) {
             System.out.println(a);
         }
@@ -21,6 +24,7 @@ class GenericDemo {
         list.add(new Animal());
         list.add(new Dogs());
         list.add(new Cats());
+
     }
 
     public static void main(String[] args) {
@@ -30,7 +34,7 @@ class GenericDemo {
         List<Object> listObject = new ArrayList();
 
         // listA = listB; can't do this bcoz animal is expected
-
+        System.out.println("===");
     // unknown wildcard
         GenericDemo.processElements(listA);
         GenericDemo.processElements(listB);
