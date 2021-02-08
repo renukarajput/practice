@@ -18,4 +18,14 @@ public class FirstUniqueElmTest {
         int[] arr = {1, 1, 2,2, 4, 4, 5, 5, 6, 6};
         assertThat(firstUniqueElm.find(arr), is(-1));
     }
+    @Test
+    public void find_3() {
+        int[] arr = {1, 2,2, 4, 4, 5, 5, 6, 6};
+        assertThat(firstUniqueElm.find(arr), is(1));
+    }
+    @Test
+    public void find_4() {
+        int[] arr = {1,1, 2, 4, 4, 7, 5, 6, 6};
+        assertThat(firstUniqueElm.find(arr), is(2 ));
+    }
 }
