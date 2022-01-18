@@ -7,7 +7,8 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by rrn3194 on 8/24/18.
  */
-public class RemoveAllDuplicateElementsTest {
+public class
+RemoveAllDuplicateElementsTest {
 
     @Test
     public void removeAllDuplicates() {

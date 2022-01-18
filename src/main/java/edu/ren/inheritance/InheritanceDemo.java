@@ -9,6 +9,73 @@ public class InheritanceDemo {
 
         Vehicle v1 = new Vehicle();
         v1.display("Renuka"); // static polymorphism (method overloading) acquired within same class
+        A a = new B();
+        B a1 = (B) a;
+        a.sum();
+//        B b = new B();
+//        C c = new C();
+//        c.m1();
+//        System.out.println(c.a);
+//        C c1 = null;
+//        c1.m3();
+    }
+}
+
+class C implements X, Y {
+    int a = 30;
+
+    @Override
+    public void m1() {
+
+    }
+
+    @Override
+    public void m2() {
+
+    }
+
+    public static void m3() {
+        System.out.println("m3");
+    }
+}
+
+interface X {
+    int a = 10;
+
+    default void m1() {
+        System.out.println("1");
+    }
+}
+
+interface Y {
+    int a = 20;
+
+    default void m1() {
+        System.out.println("2");
+    }
+
+    ;
+
+    void m2();
+}
+
+class A {
+    public void sum() {
+        System.out.println("sum");
+    }
+
+    public void sub() {
+        System.out.println("sub");
+    }
+}
+
+class B extends A {
+    public void mul() {
+        System.out.println("mul");
+    }
+
+    public void div() {
+        System.out.println("div");
     }
 }
 
@@ -17,9 +84,10 @@ class Vehicle {
         System.out.println("Start vehicle");
     }
 
-    private void test(){
+    private void test() {
         System.out.println("test method vehicle");
     }
+
     // overloading
     public void display(String str) {
         System.out.println("str= " + str);
@@ -30,21 +98,22 @@ class Vehicle {
     }
 
 }
+
 // overriding
-class Bike extends Vehicle{
+class Bike extends Vehicle {
     @Override
-    public void Start(){
+    public void Start() {
         System.out.println("Start Bike");
     }
 
-    private void test(){
+    private void test() {
         System.out.println("test method bike");
     }
 }
 
-class Car extends  Vehicle{
+class Car extends Vehicle {
     @Override
-    public void Start(){
+    public void Start() {
         System.out.println("Start Car");
     }
 }

@@ -7,8 +7,9 @@ import static org.junit.Assert.*;
 
 public class PaintHousesTest {
 
-    private PaintHouses getPaintHouses() {
-        return new PaintHousesDP();
+    protected PaintHouses getPaintHouses() {
+        //return new PaintHousesDP();
+        return new PaintHouseMemoryOptmizedDP();
     }
 
     @Test

@@ -1,6 +1,28 @@
 package edu.ren.datastructure.leetcode.dp;
 
+import java.util.Arrays;
+
+//8 2*3*3
 public class BreakIntegerMaxProduct {
+    int integerBreak(int num) {
+        int[] cache = new int[num+1];
+        Arrays.fill(cache,-1);
+        return integerBreak(num, cache);
+    }
+    int integerBreak(int num,int[] cache) {
+        if(cache[num]!=-1) return cache[num];
+        if(num==1) return 1;
+        if(num==2) return 1;
+        if(num==3) return 3;
+        int max=1;
+        for (int i = 1; i <num ; i++) {
+            int p = i * integerBreak(num - i,cache);
+            max=Math.max(p,max);
+        }
+        cache[num]=max;
+        return max;
+    }
+
     int get(int num) {
 
         int[] parts = getNum(num);

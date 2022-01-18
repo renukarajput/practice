@@ -1,7 +1,7 @@
 package edu.ren.datastructure.interviewBit.tree;
 
 public class TreeNode {
-    int val;
+    public int val;
 
     @Override
     public String toString() {
@@ -22,8 +22,8 @@ public class TreeNode {
         return right;
     }
 
-    TreeNode left;
-    TreeNode right;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode(int val) {
         this.val = val;
@@ -41,6 +41,32 @@ public class TreeNode {
                 right.insert(val);
             }else {
                 right=new TreeNode(val);
+            }
+        }
+    }
+
+//candidate code
+    public void zigzag(TreeNode head,int i) {
+        int j = i;
+        TreeNode temp = head;
+        System.out.print(temp.val+" ");
+        while (temp!= null){
+            if (i%2==0){
+                if (temp.right != null)
+                    System.out.print(temp.right.val+" ");
+                if (temp.left != null)
+                    System.out.print(temp.left.val+" ");
+            i++;
+            temp = temp.right;
+            zigzag(temp,i);
+            } else {
+                if (temp.right != null)
+                    System.out.print(temp.left.val+" ");
+                if (temp.left != null)
+                    System.out.print(temp.right.val+ " ");
+                i++;
+                temp = temp.left;
+                zigzag(temp,i);
             }
         }
     }

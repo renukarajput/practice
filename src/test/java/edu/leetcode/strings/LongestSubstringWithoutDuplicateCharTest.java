@@ -2,6 +2,9 @@ package edu.leetcode.strings;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.TreeSet;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
@@ -72,6 +75,8 @@ public class LongestSubstringWithoutDuplicateCharTest {
     public void lengthOxfLongestSubstring_10() {
         int len=new LongestSubstringWithoutDuplicateChar().lengthOfLongestSubstring("aabaab!bb");
         assertThat(len,is(3));
+        HashMap<Character, Integer> rightMost = new HashMap<Character, Integer>();
+        TreeSet<Character> chars = new TreeSet<Character>((a, b) -> rightMost.get(a) - rightMost.get(b));
     }
 
 

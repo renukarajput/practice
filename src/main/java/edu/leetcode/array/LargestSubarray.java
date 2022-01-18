@@ -3,6 +3,9 @@ package edu.leetcode.array;
 import java.util.Arrays;
 
 public class LargestSubarray {
+    void test(String greeting){
+        System.out.println("xxxxx "+greeting);
+    }
     public int[] largestSubarray(int[] nums, int k) {
         int largestNum=Integer.MIN_VALUE;
         int startIndexOfMaxSubArray=0;

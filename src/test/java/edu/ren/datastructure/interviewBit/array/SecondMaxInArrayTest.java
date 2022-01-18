@@ -12,9 +12,10 @@ public class SecondMaxInArrayTest {
 
     @Test
     public void findSecondMaxElementInputWithDescendingOrder_rec(){
-        int[] inputArr = {10, 7, 5, 8, 4, 3, 2, 1};
+        int[] inputArr = {10, 7, 5, 8, 4, 3, 2, 9, 1};
         int output = new SecondMaxInArray().findSecondMaxUsingRecursion(inputArr);
-        assertThat(output, is(8));
+        assertThat(output, is(9));
+        assertThat(new SecondMaxInArray().testt(inputArr), is(9));
     }
 
     @Test

@@ -2,7 +2,7 @@ package edu.ren.datastructure.interviewBit.tree;
 
 public class BinaryTreeEquals {
 
-    int isEqual(BinaryTree treeOne, BinaryTree treeTwo) {
+    public int isEqual(BinaryTree treeOne, BinaryTree treeTwo) {
         return isEqual(treeOne.root, treeTwo.root);
     }
 

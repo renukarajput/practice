@@ -21,6 +21,14 @@ public class CheckEqualSumTreeTest {
     }
 
     @Test
+    public void temp() {
+        BinaryTree tree = BinaryTree.buildFromLevelOrder(new int[]{1,2,3,4,5,6,7});
+        BinaryTreePrinter.printNode(tree.getRoot());
+        TreeNode obj = new TreeNode(1);
+        obj.zigzag(tree.getRoot(),1);
+    }
+
+    @Test
     public void checkEqualTree_1() {
         BinaryTree tree = BinaryTree.buildFromLevelOrder(new int[]{1, 2, 10, -1, -1, 2, 20});
         BinaryTreePrinter.printNode(tree.getRoot());

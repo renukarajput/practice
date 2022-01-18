@@ -2,6 +2,8 @@ package edu.ren.corejava.multithreading;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.lang.Thread.sleep;
+
 public class EventOddThread {
 
     AtomicInteger num = new AtomicInteger(1);
@@ -13,7 +15,7 @@ public class EventOddThread {
 
     void generate() {
         Runnable oddR = () -> {
-            while (num.get() < 30) {
+            while (num.get() < 300) {
                 if (!flag) {
                         printElement(num);
                         flag = true;
@@ -22,7 +24,7 @@ public class EventOddThread {
         };
 
         Runnable evenR = () -> {
-            while (num.get() < 30) {
+            while (num.get() < 300) {
                 if (flag) {
                         printElement(num);
                         flag = false;
@@ -36,5 +38,10 @@ public class EventOddThread {
 
     private void printElement(AtomicInteger e) {
         System.out.println(Thread.currentThread().getName() + " " + e.getAndIncrement());
+        try {
+            sleep(500);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
     }
 }

@@ -26,7 +26,7 @@ public class TwoSum {
     public int[] indicesOfTwoNum(int[] input, int target) {
         int[] output = new int[2];
         int i = 0;
-        int j = input.length-1;
+        int j = input.length - 1;
         //2,7,11,15 : 21
         while (i >= 0 && j < input.length) {
             int sum = input[i] + input[j];
@@ -35,13 +35,30 @@ public class TwoSum {
                 output[1] = j;
                 break;
             }
-            if (sum < target){
+            if (sum < target) {
                 i++;
             } else {
                 j--;
             }
         }
-        System.out.println("== "+ Arrays.toString(output));
+        System.out.println("== " + Arrays.toString(output));
         return output;
+    }
+
+    public int[] getTwoNumbers(int[] arr, int target) {
+        int result[] = new int[2];
+        int start = 0, end = arr.length - 1;
+        while (start <= end) { // 1 2 3 4 5
+            if (arr[start] + arr[end] == target) {
+                result[0] = arr[start];
+                result[1] = arr[end];
+            }
+            if (arr[start] + arr[end] < target) {
+                start++;
+            } else {
+                end--;
+            }
+        }
+        return result;
     }
 }

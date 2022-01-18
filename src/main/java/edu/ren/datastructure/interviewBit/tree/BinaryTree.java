@@ -15,4 +15,8 @@ public class BinaryTree {
         return binaryTree;
     }
 
+    public TreeNode getRoot(){
+        return root;
+    }
+
 }
