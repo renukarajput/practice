@@ -3,7 +3,7 @@ package edu.ren.datastructure.interviewBit;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by rrn3194 on 8/16/18.
@@ -63,5 +63,26 @@ public class MergeListsDemoTest {
         ListNode listNode2 = new MergeListsDemo().mergeTwoLists(listNode, listNode1);
 
         assertThat(ListNodeProxy.stringFromListNode(listNode2), is("-1->-2->-3->-4->4->5->10"));
+    }
+
+    @Test
+    public void mergeListWhenGivenListIsNull() {
+        ListNode listNode = new ListNode(0);
+        ListNode listNode2 = new MergeListsDemo().mergeTwoLists(listNode, null);
+
+        assertThat(ListNodeProxy.stringFromListNode(listNode2), is("0"));
+    }
+    @Test
+    public void mergeListWhenGivenListIsNull_1() {
+        ListNode listNode = new ListNode(0);
+        ListNode listNode2 = new MergeListsDemo().mergeTwoLists(null, listNode);
+
+        assertThat(ListNodeProxy.stringFromListNode(listNode2), is("0"));
+    }
+    @Test
+    public void mergeListWhenGivenListIsNull_2() {
+        ListNode listNode2 = new MergeListsDemo().mergeTwoLists(null, null);
+
+        assertThat(ListNodeProxy.stringFromListNode(listNode2), is(""));
     }
 }

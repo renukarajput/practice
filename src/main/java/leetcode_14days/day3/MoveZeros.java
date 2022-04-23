@@ -35,7 +35,7 @@ public class MoveZeros {
     }
 
     public static void moveZeroesSpaceOptimization(int[] nums) {
-        int writeIdx = 0;
+        int writeIdx = 0; //0, 1, 0, 3, 12
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0) {
                 nums[writeIdx++] = nums[i];

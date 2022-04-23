@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCompressor {
-    public static void getCompressed(char[] input) {  //aabbcc
+    public static void getCompressed(char[] input) {  //a4aabbcc
         int length = input.length - 1;
         int writeAt = 1;
         int count = 1;

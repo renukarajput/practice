@@ -37,4 +37,40 @@ public class RemoveNthFromLast {
         }
         return size;
     }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode first = dummy, second = dummy;
+        int count = 0;
+        while (first != null) {
+            if (count > n) {
+                second = second.next;
+            }
+            first = first.next;
+            count++;
+        }
+        if (second.next != null) {
+            second.next = second.next.next;
+        }
+        return dummy.next;
+    }
+    public ListNode removeNthFromEnd1(ListNode head, int k) {
+        if (head == null)
+            return null;
+
+        ListNode slow = head, fast = head;
+        for(int i = 1; i <= k; i++)
+            fast = fast.next;
+
+        if (fast == null)
+            return head.next;
+
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
 }

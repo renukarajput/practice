@@ -1,5 +1,9 @@
 package edu.ren.design.patterns.decorator;
 
+import com.sun.xml.internal.messaging.saaj.packaging.mime.util.LineInputStream;
+
+import java.io.*;
+
 public class DecoratorPatternTest {
 
     public static void main(String[] args) {
@@ -8,5 +12,13 @@ public class DecoratorPatternTest {
         System.out.println("\n***********");
         Car sportsLuxuryCar = new SportsCar(new LuxuryCar(new BasicCar()));
         sportsLuxuryCar.assemble();
+        try {
+            final BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("")));
+            final InputStream inputStream = new LineInputStream(new BufferedInputStream(new FileInputStream("")));
+            final Reader bf = new BufferedReader(new InputStreamReader(System.in));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }

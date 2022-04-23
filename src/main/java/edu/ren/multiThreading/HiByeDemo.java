@@ -19,7 +19,7 @@ public class HiByeDemo {
 
     final Object lock = new Object();
 
-    private int MAX_COUNT=Integer.MAX_VALUE;
+    private final int MAX_COUNT=Integer.MAX_VALUE;
     Runnable r1 = () -> {
         while (count < MAX_COUNT) {
             if (flag == true) {

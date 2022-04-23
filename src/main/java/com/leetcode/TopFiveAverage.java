@@ -1,68 +1,69 @@
 package com.leetcode;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class TopFiveAverage {
-    private static final Map<Integer, Integer> result = new HashMap<>();
-    static Integer[][] topFiveAvg;
+    private final int K = 5;
 
-    public static Integer[][] highFive(int[][] items) {
-        final Map<Integer, Integer> resMap = highFiveUtil(items);
-        topFiveAvg = new Integer[resMap.size()][];
-        final Iterator<Map.Entry<Integer, Integer>> iterator = resMap.entrySet().iterator();
-        int i = 0;
-        while (iterator.hasNext()) {
-            final Map.Entry<Integer, Integer> next = iterator.next();
-            topFiveAvg[i] = (Integer[]) Arrays.asList(next.getKey(), next.getValue()).toArray();
-            i++;
+    public int[][] highFiveUsingMaxHeap(int[][] items) {
+        TreeMap<Integer, Queue<Integer>> allScores = new TreeMap<>();
+        for (int[] item : items) {
+            int id = item[0];
+            int score = item[1];
+            if (!allScores.containsKey(id))
+                // max heap
+                allScores.put(id, new PriorityQueue<>((a, b) -> b - a));  // comparator
+            // Add score to the max heap
+            allScores.get(id).add(score);
         }
-        return topFiveAvg;
-    }
-
-    public static Map<Integer, Integer> highFiveUtil(int[][] items) {
-        List<Integer> scoreList;
-        Map<Integer, List<Integer>> map = new HashMap<>();
-
-        for (int i = 0; i < items.length; i++) {
-            final int key = items[i][0];
-            if (!map.containsKey(key)) {
-                scoreList = new ArrayList<>();
-                scoreList.add(items[i][1]);
-                map.put(key, scoreList);
-            } else {
-                final List<Integer> existingScoreList = map.get(key);
-                existingScoreList.add(items[i][1]);
-                map.put(key, existingScoreList);
+        List<int[]> solution = new ArrayList<>();
+        for (int id : allScores.keySet()) {
+            int sum = 0;
+            // obtain the top k scores (k = 5)
+            for (int i = 0; i < K; ++i) {
+                final Queue<Integer> queue = allScores.get(id);
+                sum += queue.poll();
             }
+            solution.add(new int[]{id, sum / K});
         }
-        System.out.println("map : " + map);
-        final Iterator<Map.Entry<Integer, List<Integer>>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            final Map.Entry<Integer, List<Integer>> next = iterator.next();
-            final Integer key = next.getKey();
-            final List<Integer> marks = map.get(key);
-            if (marks.size() > 5) {
-                final List<Integer> collect = marks.stream().sorted(Comparator.reverseOrder()).limit(5).collect(Collectors.toList());
-                marks.clear();
-                marks.addAll(collect);
-            }
-            int sum = marks.stream().mapToInt(x -> x).sum();
-            result.put(key, sum / 5);
-        }
-        return result;
+        int[][] solutionArray = new int[solution.size()][];
+        return solution.toArray(solutionArray);
     }
 
     public static void main(String[] args) {
-        final Integer[][] res = highFive(new int[][]{{1, 91}, {1, 92}, {2, 93}, {2, 97}, {1, 60}, {2, 77}, {1, 65}, {1, 87}, {1, 100}, {2, 100}, {2, 76}});
-
-        int[][] result = new int[res.length][];
-        int k = 0;
-        for (Integer[] i : res) {
-            final int[] ints = Arrays.stream(i).mapToInt(x -> x).toArray();
-            result[k] = ints;
-            System.out.println(Arrays.toString(result[k]));
-            k++;
-        }
+        TopFiveAverage obj = new TopFiveAverage();
+        final int[][] input = {{1, 91}, {1, 92}, {2, 93}, {2, 97}, {1, 60}, {2, 77}, {1, 65}, {1, 87}, {1, 100}, {2, 100}, {2, 76}};
+        int[][] highFiveUsingMaxHeap = obj.highFiveUsingMaxHeap(input);
+        System.out.println("max heap - res = " + Arrays.deepToString(highFiveUsingMaxHeap));
+        int[][] highFiveUsingMinHeap = obj.highFiveUsingMinHeap(input);
+        System.out.println("min heap - res = " + Arrays.deepToString(highFiveUsingMinHeap));
     }
+
+    public int[][] highFiveUsingMinHeap(int[][] items) {
+        TreeMap<Integer, Queue<Integer>> allScores = new TreeMap<>();
+        for (int[] item : items) {
+            int id = item[0];
+            int score = item[1];
+            if (!allScores.containsKey(id))
+                // insert the score in the min heap
+                allScores.put(id, new PriorityQueue<>());
+            allScores.get(id).add(score);
+            // remove the minimum element from the min heap in case the size of the min heap exceeds 5
+            if (allScores.get(id).size() > K) {
+                allScores.get(id).poll();
+            }
+        }
+        List<int[]> solution = new ArrayList<>();
+        for (int id : allScores.keySet()) {
+            int sum = 0;
+            // obtain the top k scores (k = 5)
+            for (int i = 0; i < K; ++i) {
+                sum += allScores.get(id).poll();
+            }
+            solution.add(new int[]{id, sum / K});
+        }
+        int[][] solutionArray = new int[solution.size()][];
+        return solution.toArray(solutionArray);
+    }
+
 }

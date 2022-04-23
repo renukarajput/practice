@@ -3,12 +3,11 @@ package com.leetcode;
 import java.util.Arrays;
 
 public class NextGreaterPermutation {
-    public static void nextPermutation(int[] arr) {
-        int i = arr.length - 1;
-        while (i > 0 && arr[i] <= arr[i - 1]) {
+    public void nextPermutation(int[] arr) {
+        int i = arr.length - 2;
+        while (i >= 0 && arr[i] >= arr[i + 1]) {
             i--;
         }
-        i--;
         if (i >= 0) {
             int j = arr.length - 1;
             while (arr[j] <= arr[i]) {

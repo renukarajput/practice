@@ -1,0 +1,17 @@
+A cart can be in one of three status active, ordered, discarded
+2. A cart can have products like shirt, pant, tv etc. and these are grouped together in different
+categories like clothing, electronics etc.
+
+        Cart -> List<product>
+        status [enum] - active,ordered,discarded
+
+        categories - clothing, electronics
+
+         product[interface]
+        |   |   |
+      tv  dress shirt -> getter methods
+
+
+      Product-->Clothing-->Shirt
+
+             Electronics  tv

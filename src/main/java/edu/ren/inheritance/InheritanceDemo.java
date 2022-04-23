@@ -1,5 +1,8 @@
 package edu.ren.inheritance;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class InheritanceDemo {
 
     public static void main(String[] args) {
@@ -12,6 +15,10 @@ public class InheritanceDemo {
         A a = new B();
         B a1 = (B) a;
         a.sum();
+        Stream<String> l1 = Stream.of("renuka");
+        Stream<String> l2 = Stream.of("renuka1");
+        final Stream<String> stream = Stream.of(l1, l2).flatMap(Stream::distinct);
+        System.out.println(stream.collect(Collectors.toList()));
 //        B b = new B();
 //        C c = new C();
 //        c.m1();
@@ -53,8 +60,6 @@ interface Y {
     default void m1() {
         System.out.println("2");
     }
-
-    ;
 
     void m2();
 }

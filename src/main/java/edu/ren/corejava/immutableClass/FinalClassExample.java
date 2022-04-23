@@ -20,7 +20,7 @@ public final class FinalClassExample {
     }
 
     public HashMap<String, String> getTestMap() {
-        //return testMap;
+//        return testMap;
         return (HashMap<String, String>) testMap.clone();
     }
 
@@ -77,5 +77,6 @@ public final class FinalClassExample {
         hmTest.put("4", "new");
 
         System.out.println("ce testMap after changing variable from accessor methods:" + ce.getTestMap());
+        System.out.println("local hm :" + hmTest);
     }
 }

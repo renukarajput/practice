@@ -3,7 +3,7 @@ package edu.ren.datastructure.interviewBit;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by rrn3194 on 8/16/18.
@@ -17,8 +17,29 @@ public class RemoveNthFromLastTest {
         listNode.next.next.next = new ListNode(4);
         listNode.next.next.next.next = new ListNode(5);
 
-        ListNode node = new RemoveNthFromLast().removeNthFromLast(listNode, 2);
+        ListNode node = new RemoveNthFromLast().removeNthFromEnd(listNode, 2);
         assertThat(ListNodeProxy.stringFromListNode(node), is("1->2->3->5"));
+    }
+
+    @Test
+    public void removeNthFromEnd() {
+        ListNode listNode = new ListNode(1);
+        ListNode node = new RemoveNthFromLast().removeNthFromEnd(listNode, 1);
+        assertThat(ListNodeProxy.stringFromListNode(node), is(""));
+    }
+    @Test
+    public void removeNthFromEnd1() {
+        ListNode listNode = new ListNode(1);
+        listNode.next = new ListNode(2);
+        ListNode node = new RemoveNthFromLast().removeNthFromEnd(listNode, 1);
+        assertThat(ListNodeProxy.stringFromListNode(node), is("1"));
+    }
+    @Test
+    public void removeNthFromEnd2() {
+        ListNode listNode = new ListNode(1);
+        listNode.next = new ListNode(2);
+        ListNode node = new RemoveNthFromLast().removeNthFromEnd(listNode, 2);
+        assertThat(ListNodeProxy.stringFromListNode(node), is("2"));
     }
 
     @Test

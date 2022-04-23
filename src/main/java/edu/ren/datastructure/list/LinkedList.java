@@ -145,7 +145,9 @@ public class LinkedList<T> {
         }
         return start.data;
     }
-
+// 1-> [2,4]    4-> 6    2-> 5
+    //1-> 5  2->7   4->10   6->1  5->3
+   // f(4)  f(1)
     public T getNthFromLastUsingOneLoop(int nthIndex) {
         Node<T> start = this.head;
         Node<T> firstPtr = start, secondPtr = start;
