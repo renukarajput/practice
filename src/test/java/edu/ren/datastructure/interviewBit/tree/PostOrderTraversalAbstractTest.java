@@ -20,7 +20,7 @@ public abstract class PostOrderTraversalAbstractTest {
     @Test
     public void postOrder_1() {
         BinarySearchTree binarySearchTree=BinarySearchTree.fromArray(new int[]{8,6,10,4,5,3,2,1,12,13});
-       // BinaryTreePrinter.printNode(binarySearchTree.root);
+        BinaryTreePrinter.printNode(binarySearchTree.root);
         assertThat(getPostOrderTraversal().postOrder(binarySearchTree),contains(1,2,3,5,4,6,13,12,10,8));
     }
 

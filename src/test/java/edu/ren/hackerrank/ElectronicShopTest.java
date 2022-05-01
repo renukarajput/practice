@@ -47,4 +47,10 @@ public class ElectronicShopTest {
         int[] keyboards = {1, 3, 5, 7, 9, 100, 110, 120};
         assertThat(electronicShop.closestElement(keyboards, 90), is(100));
     }
+
+    @Test
+    public void input_6() {
+        int[] keyboards = {1, 3, 5, 7, 9, 100, 110, 120};
+        assertThat(electronicShop.closestElement(keyboards, 100), is(100));
+    }
 }

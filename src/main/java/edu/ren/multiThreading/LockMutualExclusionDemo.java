@@ -2,6 +2,8 @@ package edu.ren.multiThreading;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by rrn3194 on 10/1/18.
  */
@@ -19,9 +21,12 @@ public class LockMutualExclusionDemo {
                 lock.lock();
                 if (flag == true) {
                     count++;
+                    sleep(500);
                     System.out.println(Thread.currentThread().getName() + " Hiii" + count + " " + flag);
                     flag = false;
                 }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             } finally {
                 lock.unlock();
             }
@@ -34,9 +39,12 @@ public class LockMutualExclusionDemo {
                 lock.lock();
                 if (flag == false) {
                     count++;
+                    sleep(500);
                     System.out.println(Thread.currentThread().getName() + " Bye" + count + " " + flag);
                     flag = true;
                 }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             } finally {
                 lock.unlock();
             }
@@ -44,6 +52,8 @@ public class LockMutualExclusionDemo {
     };
 
     public static void main(String[] args) throws InterruptedException {
+        System.out.println("running - ");
+                Thread.sleep(5000);
         new LockMutualExclusionDemo().threadCreation();
     }
 

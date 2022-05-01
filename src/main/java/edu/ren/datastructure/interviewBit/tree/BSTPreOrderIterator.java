@@ -3,34 +3,39 @@ package edu.ren.datastructure.interviewBit.tree;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class BSTIterator {
+public class BSTPreOrderIterator {
     TreeNode root;
     Deque<TreeNode> stack;
 
-    public BSTIterator(BinarySearchTree binarySearchTree) {
+    public BSTPreOrderIterator(BinarySearchTree binarySearchTree) {
         this.root = binarySearchTree.root;
         stack = new ArrayDeque<>();
+        stack.push(root);
     }
 
-    protected void fillLeftBranch() {
-        while (root != null) {
+    protected TreeNode fillLeftBranch() {
+       TreeNode next=root;
+        if (root != null) {
             stack.push(root);
             root = root.left;
         }
+        return next;
     }
 
     boolean hasNext() {
-        if (root == null && stack.isEmpty()) {
+        if (stack.isEmpty()) {
             return false;
         }
         return true;
     }
 
     int next() {
-        fillLeftBranch();
         TreeNode top = stack.pop();
         if (top.right != null) {
-            root = top.right;
+            stack.push(top.right);
+        }
+        if (top.left != null) {
+            stack.push(top.left);
         }
         return top.val;
     }
