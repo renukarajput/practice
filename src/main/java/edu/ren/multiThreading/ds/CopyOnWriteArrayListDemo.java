@@ -18,9 +18,9 @@ public class CopyOnWriteArrayListDemo {
 
             List<Integer> sub = cowal.subList(1, 2);
 
-            cowal.add(4);
-            cowal.get(0);
-            // sub.get(0); //throws ConcurrentModificationException
+           cowal.add(4);
+           cowal.get(0);
+         //sub.get(0); //throws ConcurrentModificationException
 
             for (int i:cowal){
                 System.out.println(i+"-->");

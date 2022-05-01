@@ -2,6 +2,15 @@ package edu.ren.datastructure.interviewBit.dynamicprogramming;
 
 import java.util.*;
 
+/**
+ * final xyx
+ * lock(){
+ * sync(xyz)
+ *     currentOwner =
+ *     else con.await
+ *           retry
+ * }
+ */
 public class UniquePathsInGrid {
 
     int get(Integer[][] grid) {

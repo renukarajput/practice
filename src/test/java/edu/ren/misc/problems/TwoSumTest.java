@@ -16,6 +16,13 @@ public class TwoSumTest {
     }
 
     @Test
+    public void indicesOfTwoNumForSortedArray() {
+        int[] arr = {1,2,3,4,5};
+        int[] expected = {4,5};
+        assertArrayEquals(expected, twoSum.getTwoNumbers(arr, 9));
+    }
+
+    @Test
     public void indicesOfTwoNum_2() {
         int[] arr = {2, 7, 11, 15};
         int[] expected = {7, 15};

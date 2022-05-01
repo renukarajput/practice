@@ -13,7 +13,14 @@ public abstract class CoinChangeByMinimumCoinsAbstractTest {
     @Test
     public void minCoins() {
         int[] coins = {1, 3, 5, 6, 7};
-        assertThat(coinChangeByMinimumCoins.getResult(coins, 11), is(2));
+        assertThat(coinChangeByMinimumCoins.getResult(coins, 27), is(4));
+    }
+
+
+    @Test
+    public void minCoins1() {
+        int[] coins = {2, 5, 10, 1};
+        assertThat(coinChangeByMinimumCoins.getResult(coins, 27), is(4));
     }
 
     @Test

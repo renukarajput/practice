@@ -1,7 +1,8 @@
 package edu.ren.barclays;
 
 
-public class Bag<T extends Currency> {
+public class
+Bag<T extends Currency> {
 
     CurrencyVisitor currencyVisitor;
 

@@ -19,6 +19,16 @@ public class KthSmallestInBSTTest {
     }
 
     @Test
+    public void getKthLargest() {
+        int[] nodes1 = {5, 3, 4, 15, 13, 20};
+        BinarySearchTree binarySearchTree = fromArray(nodes1);
+        BinaryTreePrinter.printNode(binarySearchTree.root);
+        assertThat(kthSmallestInBST.kthLargest(binarySearchTree.root,6),is(20));
+        assertThat(kthSmallestInBST.kthLargest(binarySearchTree.root,5),is(15));
+        assertThat(kthSmallestInBST.kthLargest(binarySearchTree.root,4),is(13));
+    }
+
+    @Test
     public void getKthSmallest_1() {
         int[] nodes1 = {5, 3, 4, 15, 13, 20};
         BinarySearchTree binarySearchTree = fromArray(nodes1);

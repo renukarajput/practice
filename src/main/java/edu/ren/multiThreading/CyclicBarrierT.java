@@ -7,12 +7,13 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CyclicBarrierT {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int[][] matrix = {{1,2,3},
                 {4,5,6},
                 {7,8,9}};
         Solver solver = new Solver(matrix);
         new Thread(solver).start();
+        Thread.sleep(500000);
     }
 }
 

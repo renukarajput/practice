@@ -128,6 +128,7 @@ public class LinkedListTest {
         assertEquals((Integer) 50, linkedList.nthFromLast(2));
     }
 
+
     @Test
     public void nThFromLast1() {
         LinkedList<Integer> linkedList = getIntegerList(60, 40, 30, 50, 10, 70, 80, 90);
@@ -221,6 +222,7 @@ public class LinkedListTest {
         linkedList.deleteGivenNode(8);
         assertThat(linkedList.toString(), is("4->5->1->9"));
     }
+
     @Test
     public void deleteGivenNodeInput_4() {
         LinkedList<Integer> linkedList = getIntegerList(4, 5, 1, 9, 8);

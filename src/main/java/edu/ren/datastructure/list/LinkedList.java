@@ -96,7 +96,7 @@ public class LinkedList<T> {
             prev = curr;
             curr = curr.next;
         }
-        if(curr != null) {
+        if (curr != null) {
             next = curr.next;
             prev.next = next;
             curr.data = null;
@@ -245,6 +245,18 @@ public class LinkedList<T> {
         lastNode.next = head;
         head = newHead;
     }
+
+    public void removeGivenNodeWithoutHeadPtr(Node deleteNode) {
+        if (deleteNode == null || deleteNode.next == null)
+            return;
+
+        Node temp = deleteNode.next;
+        deleteNode.data = temp.data;
+        deleteNode.next = temp.next;
+        deleteNode = null;
+//        System.gc();
+    }
+
 
     public int size() {
         int size = 0;

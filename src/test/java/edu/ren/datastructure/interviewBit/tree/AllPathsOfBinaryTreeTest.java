@@ -21,4 +21,35 @@ public class AllPathsOfBinaryTreeTest {
         assertThat(allPaths.getAllPaths(binarySearchTree).get(2),contains(1,6,8,2));
         assertThat(allPaths.getAllPaths(binarySearchTree).get(3),contains(1,6,8,3));
     }
+
+    @Test
+    public void test() {
+       // BinarySearchTree binarySearchTree=new TreeFromBFS().createFromArray(new int[]{1,2,6,3,5,8,-1,4,-1,7,-1,20,3});
+       BinarySearchTree binarySearchTree=new TreeFromBFS().createFromArray(new int[]{5,6,9,8,12,13,2,14});
+        BinaryTreePrinter.printNode(binarySearchTree.root);
+        //System.out.println("preorder");
+       postorder(binarySearchTree.root);
+    }
+    void inorder(TreeNode root){
+        if(root==null)
+            return;
+        inorder(root.left);
+        System.out.print(root.val+" ");
+        inorder(root.right);
+    }
+
+    void preorder(TreeNode root){
+        if(root==null)
+            return;
+        System.out.print(root.val+" ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+    void postorder(TreeNode root){
+        if(root==null)
+            return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.val+" ");
+    }
 }

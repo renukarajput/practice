@@ -136,4 +136,13 @@ public class ArrayRotationTest {
         ArrayRotation.rotateUsingReverse(actual, 4);
         assertThat(expected, is(actual));
     }
+
+    @Test
+    public void rotateUsingReverse_4() {
+        int actual[] = {1, 2};
+        int expected[] = {2, 1};
+        int[] output = ArrayRotation.rotateUsingReverse(actual, 3);
+        assertThat(output, is(expected));
+
+    }
 }

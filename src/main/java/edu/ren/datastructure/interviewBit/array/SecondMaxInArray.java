@@ -25,6 +25,21 @@ public class SecondMaxInArray {
         return smax;
     }
 
+    public int testt(int a[]){
+        int max=a[0];
+        int smax=0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] > max) {
+                max=a[i];
+            }
+            if (a[i] >= smax && a[i] < max){
+                smax=a[i];
+            }
+        }
+        System.out.println("smax "+ smax);
+        return smax;
+    }
+
     public static int findSecondMaxUsingRecursion(int[] a) {
         int max, smax, pos = 0;
         max = a[0];
