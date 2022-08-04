@@ -1,4 +1,4 @@
-package scala.javaPro.dataStructure.tree;
+package javaPro.dataStructure.tree;
 
 /**
  * Created by rrn3194 on 1/3/17.
