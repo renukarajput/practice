@@ -6,7 +6,7 @@ https://leetcode.com/problems/search-in-rotated-sorted-array/
  4,5,6,7,0,1,2 -> target=3, o/p = -1
  10 14 16 17 18 5 7 -> target=14, o/p = 1
 */
-public class SearchInRotatedArray {
+public class SearchInRotatedSortedArray {
 
     public int search(int[] nums, int target) {
         int start = 0, end = nums.length - 1;

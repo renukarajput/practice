@@ -1,4 +1,4 @@
-package scala.javaPro.dataStructure.tree;
+package javaPro.dataStructure.tree;
 
 public class Node<T> {
     T val;

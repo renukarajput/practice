@@ -1,6 +1,5 @@
 package edu.ren.datastructure.interviewBit.tree;
 
-import javaPro.B;
 import org.junit.Test;
 
 import java.util.ArrayList;

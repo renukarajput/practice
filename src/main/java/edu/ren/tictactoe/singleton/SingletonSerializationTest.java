@@ -1,4 +1,4 @@
-package edu.ren.singleton;
+package edu.ren.tictactoe.singleton;
 
 import java.io.*;
 

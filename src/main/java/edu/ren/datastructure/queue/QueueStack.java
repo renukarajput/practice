@@ -1,4 +1,4 @@
-package edu.ren.datastructure.list.queue;
+package edu.ren.datastructure.queue;
 
 import java.util.LinkedList;
 import java.util.NoSuchElementException;

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CommonWords {
+    //common words with count exactly = 1
     public static void main(String[] args) {
         countCommonWords(new String[]{"leetcode","is","amazing","as","is"}, new String[]{"amazing","leetcode","is"});
         countCommonWords(new String[]{"b","bb","bbb"}, new String[]{"a","aa","aaa"});

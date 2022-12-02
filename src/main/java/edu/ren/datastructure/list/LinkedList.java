@@ -248,15 +248,14 @@ public class LinkedList<T> {
         head = newHead;
     }
 
-    public void removeGivenNodeWithoutHeadPtr(Node deleteNode) {
-        if (deleteNode == null || deleteNode.next == null)
+    public void removeGivenNodeWithoutHeadPtr(Node nodeToDelete) {  // 1 2 3 4 5 , toDelete= 2
+        if (nodeToDelete == null || nodeToDelete.next == null)
             return;
 
-        Node temp = deleteNode.next;
-        deleteNode.data = temp.data;
-        deleteNode.next = temp.next;
-        deleteNode = null;
-//        System.gc();
+        Node nextNode = nodeToDelete.next; // 3
+        nodeToDelete.data = nextNode.data;
+        nodeToDelete.next = nextNode.next;
+        nextNode.next = null;
     }
 
 

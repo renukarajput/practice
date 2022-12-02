@@ -28,15 +28,16 @@ public class TwoSum {
     public static int[] twoSumUsingHashMap(int[] arr, int target) {
         int[] result = new int[2];
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            map.put(arr[i], i);
-        }
+//        for (int i = 0; i < arr.length; i++) {
+//            map.put(arr[i], i);
+//        }
         for (int j = 0; j < arr.length; j++) {
             int diff = target - arr[j];
             if (map.containsKey(diff) && map.get(diff) != j) {
                 result[0] = j;
                 result[1] = map.get(diff);
             }
+            map.put(arr[j], j);
         }
         return result;
     }

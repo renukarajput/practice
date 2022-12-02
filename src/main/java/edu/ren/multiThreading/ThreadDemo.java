@@ -6,7 +6,12 @@ import java.util.Random;
 
 public class ThreadDemo {
     static StringBuilder stringBuilder = new StringBuilder();
+    Runnable r1 = new Runnable() {
+        @Override
+        public void run() {
 
+        }
+    };
     class NameAppenderRunnable implements Runnable {
         String name;
 

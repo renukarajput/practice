@@ -4,11 +4,6 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.TreeSet;
 
-class MyHashSet extends HashSet<String> {
-
-
-
-}
 public class CaseInsensitiveSet {
     public static void main(String[] args) throws IOException {
         String s= new String("q");
@@ -24,5 +19,4 @@ public class CaseInsensitiveSet {
         System.out.println(treeSet);
 
     }
-
 }

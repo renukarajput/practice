@@ -18,6 +18,14 @@ public class NextGreaterPermutationTest {
     }
 
     @Test
+    public void input_01() {
+        int[] input = {1,5,8,4,7,6,5,3,1};
+        obj.nextPermutation(input);
+        int[] expected = {1,5,8,5,1,3,4,6,7};
+        assertThat(input, is(expected));
+    }
+
+    @Test
     public void input_1() {
         int[] input = {1, 2};
         obj.nextPermutation(input);

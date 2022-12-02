@@ -1,5 +1,6 @@
 package com.leetcode;
 
+// https://leetcode.com/problems/find-peak-element/
 public class PeakOfTheArray {
     public int findPeakElement(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {

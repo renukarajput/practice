@@ -25,21 +25,17 @@ class Producer implements Runnable {
     public Producer(BlockingQueue<Integer> queue) {
         this.queue = queue;
     }
-
-
     @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
             try {
                 queue.offer(i, 3, TimeUnit.MILLISECONDS);
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 }
-
 class Consumer implements Runnable{
 
     BlockingQueue queue = null;

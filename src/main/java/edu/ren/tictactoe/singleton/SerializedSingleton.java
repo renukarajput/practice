@@ -1,12 +1,11 @@
-package edu.ren.singleton;
-
+package edu.ren.tictactoe.singleton;
 
 import java.io.Serializable;
 
 public class SerializedSingleton implements Serializable{
 
     private static final long serialVersionUID = -7604766932017737115L;
-transient int x;
+    transient int x;
     private SerializedSingleton(){}
 
     private static class SingletonHelper{

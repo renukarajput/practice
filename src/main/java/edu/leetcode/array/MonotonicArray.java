@@ -1,4 +1,4 @@
-package edu.leetcode.practice2021;
+package edu.leetcode.array;
 
 public class MonotonicArray {
 

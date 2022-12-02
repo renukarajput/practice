@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class RemoveKdigitsTest {
-RemoveKdigits removeKdigits=new RemoveKdigits();
+    RemoveKdigits removeKdigits=new RemoveKdigits();
     @Test
     public void removeKdigits() {
      assertThat(removeKdigits.removeKdigits("149",1),is("14"));

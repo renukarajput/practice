@@ -39,5 +39,11 @@ public class AnagramTest {
         String input2 = "AA";
         Boolean out = Anagram.isAnagram(input1,input2);
         assertFalse(out);
+    }    @Test
+    public void input_4() {
+        String input1 = "a";
+        String input2 = "ab";
+        Boolean out = Anagram.isAnagram(input1,input2);
+        assertFalse(out);
     }
 }

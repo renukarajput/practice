@@ -1,6 +1,5 @@
 package edu.ren.datastructure.interviewBit.twopointer;
 
-import javaPro.C;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;

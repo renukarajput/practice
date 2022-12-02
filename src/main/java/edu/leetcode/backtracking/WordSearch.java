@@ -1,72 +1,43 @@
 package edu.leetcode.backtracking;
 
 public class WordSearch {
+    int[][] directions = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+
     public boolean exist(char[][] board, String word) {
-        boolean[][] visited = new boolean[board.length][board[0].length];
-        for (int i = 0; i < board.length; i++)
+        boolean[][] visitedIndex = new boolean[board.length][board[0].length];
+        for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                visited[i][j] = true;
-                if (exist(board, word, 0, i, j, visited)) {
+                if (find(board, i, j, word, 0, visitedIndex)) {
                     return true;
                 }
-                visited[i][j] = false;
-                //System.out.println();
             }
+        }
         return false;
     }
 
-    public boolean exist(char[][] board, String word, int matchedCount, int boardX, int boardY, boolean[][] visited) {
-        if (matchedCount == word.length())
-            return false;
-
-
-        if (board[boardX][boardY] != word.charAt(matchedCount))
-            return false;
-
-        if (matchedCount == word.length()-1)
+    //backtracking
+    boolean find(char[][] board, int i, int j, String word, int wordIndex,
+                 boolean[][] visitedIndex) {
+        if (wordIndex == word.length()) {
             return true;
-
-        //System.out.print(board[boardX][boardY]);
-
-        boolean result = false;
-        if (isValid(board, boardX + 1, boardY, visited)) {
-            visited[boardX + 1][boardY] = true;
-            result = exist(board, word, matchedCount + 1, boardX + 1, boardY, visited);
-            visited[boardX + 1][boardY] = false;
         }
-
-        if (result) {
-            return result;
+        if (i >= board.length || j >= board[0].length
+            || i < 0 || j < 0
+            || board[i][j] != word.charAt(wordIndex)
+            || visitedIndex[i][j]) {
+            return false;
         }
-        if (isValid(board, boardX - 1, boardY, visited)) {
-            visited[boardX - 1][boardY] = true;
-            result = exist(board, word, matchedCount + 1, boardX - 1, boardY, visited);
-            visited[boardX - 1][boardY] = false;
+        visitedIndex[i][j] = true;
+        for (int[] d : directions) {
+            if (find(board, i + d[0], j + d[1], word, wordIndex + 1, visitedIndex)) {
+                return true;
+            }
         }
-        if (result) {
-            return result;
-        }
-
-        if (isValid(board, boardX, boardY - 1, visited)) {
-            visited[boardX][boardY - 1] = true;
-            result = exist(board, word, matchedCount + 1, boardX, boardY - 1, visited);
-            visited[boardX][boardY - 1] = false;
-        }
-        if (result) {
-            return result;
-        }
-        if (isValid(board, boardX, boardY + 1, visited)) {
-            visited[boardX][boardY + 1] = true;
-            result = exist(board, word, matchedCount + 1, boardX, boardY + 1, visited);
-            visited[boardX][boardY + 1] = false;
-        }
-        if (result) {
-            return result;
-        }
+        visitedIndex[i][j] = false;
         return false;
     }
 
-    boolean isValid(char[][] board, int boardX, int boardY, boolean[][] visited) {
+  /*  boolean isValid(char[][] board, int boardX, int boardY, boolean[][] visited) {
         return boardX >= 0 && boardX < board.length && boardY >= 0 && boardY < board[0].length && !visited[boardX][boardY];
-    }
+    }*/
 }

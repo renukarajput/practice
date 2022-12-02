@@ -31,14 +31,15 @@ public class SmsApiService {
         //India app secret = hVnKCLAGE2Wo73UqtM38mmgTVr5q
         // HK = "hMmCoxCKom5dCNX7oIhipA3NywOD";
         String sender = "csms12345678"; //Channel number for Chinese mainland SMS or international SMS
-        String templateId = "3dff56d0faae4f4fa8ef7a36f1610b38"; //Template ID
+        String templateId = "1454cdcecde24266a2071f98961d8e20";
+//                "1454cdcecde24266a2071f98961d8e20"; //Template ID
 
         //Mandatory for Chinese mainland SMS. This parameter is valid and mandatory when Template Type corresponding to templateId is Universal template. The signature name must be approved and be the same type as the template.
         //This parameter is not required for international SMS.
         String signature = "HUAWEI CLOUD SMS test"; //Signature name
 
         //Mandatory. Global number format (including the country code), for example, +8615123456789. Use commas (,) to separate multiple numbers.
-        String receiver = "+919156165852"; //Recipient number
+        String receiver = "+917066518794,+919156165852"; //Recipient number
 
         //Optional. Address for receiving SMS status reports. The domain name is recommended. If this parameter is set to an empty value or left unspecified, customers do not receive status reports.
         String statusCallBack = "";
@@ -49,7 +50,7 @@ public class SmsApiService {
          *Example of a dual-variable template: If the template content is "You have ${NUM_2} delivered to ${TXT_20}", templateParas can be set to "[\"3\",\"main gate of People's Park\"]".
          * To view more information, choose Service Overview > Template and Variable Specifications.
          */
-        String templateParas = "[\"369751\",\"5\"]"; //Template variable. The following uses a single-variable verification code SMS message as an example. The customer needs to generate a 6-digit verification code and define it as a character string to prevent the loss of first digits 0 (for example, 002569 is changed to 2569).
+        String templateParas = String.format("[\"%s\", \"%s\"]", "131313" , "15"); //"[\"121212\",\"15\"]"; //Template variable. The following uses a single-variable verification code SMS message as an example. The customer needs to generate a 6-digit verification code and define it as a character string to prevent the loss of first digits 0 (for example, 002569 is changed to 2569).
 
         //Request body. If the signature name is not required, set signature to null.
         String body = buildRequestBody(sender, receiver, templateId, templateParas, statusCallBack, signature);

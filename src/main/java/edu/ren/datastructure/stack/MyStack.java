@@ -28,6 +28,6 @@ class MyStack {
     }
 
     public boolean empty() {
-        return queue.isEmpty() ? true : false;
+        return queue.isEmpty();
     }
 }

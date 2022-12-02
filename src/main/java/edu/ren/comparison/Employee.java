@@ -72,4 +72,16 @@ public class Employee extends Human implements Comparable<Employee> {
         }*/
 //    return 0; if we return this then this'll consider the entry as true in any case
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
 }

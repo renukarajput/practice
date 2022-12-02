@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class SearchInRotatedArrayTest {
-    SearchInRotatedArray obj = new SearchInRotatedArray();
+    SearchInRotatedSortedArray obj = new SearchInRotatedSortedArray();
     @Test
     public void search() {
         assertThat(obj.search(new int[]{4,5,6,7,0,1,2}, 0),is(4));

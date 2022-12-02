@@ -16,19 +16,19 @@ public class MergeIntervals {
             int[] currentPair = intervals[i];
 
             if (prevPair[1] >= currentPair[0]) {  //end >=next start
-                int minStart=prevPair[0];
+                int minStart = prevPair[0];
                 int j = result.size() - 1;
                 while (j >= 0 && !result.isEmpty() && result.get(j)[1] >= currentPair[0]) {
-                    int[] removed=result.remove(result.size() - 1);
-                    minStart=Math.min(minStart,removed[0]);
+                    int[] removed = result.remove(result.size() - 1);
+                    minStart = Math.min(minStart, removed[0]);
                     j--;
                 }
 
-                prevPair = new int[]{Math.min(minStart,currentPair[0]), currentPair[1]};
+                prevPair = new int[]{Math.min(minStart, currentPair[0]), currentPair[1]};
                 result.add(prevPair);
             } else {
                 result.add(currentPair);
-                prevPair=currentPair;
+                prevPair = currentPair;
             }
 
         }

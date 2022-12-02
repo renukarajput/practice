@@ -11,6 +11,8 @@ public class PrimeNumberTest {
     @Test
     public void input_1() {
         primeNumber.generate(100);
+        System.out.println();
+        primeNumber.generatePrimeNumForRange(100);
     }
 
     @Test
@@ -21,5 +23,13 @@ public class PrimeNumberTest {
     @Test
     public void input_3() {
         primeNumber.printPrime(50);
+    }
+    @Test
+    public void input_4() {
+        assertTrue(primeNumber.isPrimeNo(9));
+        assertTrue(primeNumber.isPrimeNo(19));
+        assertTrue(primeNumber.isPrimeNo(11));
+        assertFalse(primeNumber.isPrimeNo(20));
+        assertFalse(primeNumber.isPrimeNo(35));
     }
 }
